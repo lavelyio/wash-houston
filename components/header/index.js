@@ -6,7 +6,8 @@ import Button from "@material-ui/core/Button";
 import IconButton from "@material-ui/core/IconButton";
 import SearchIcon from "@material-ui/icons/Search";
 import Typography from "@material-ui/core/Typography";
-import CallIcon from "@material-ui/icons/Call";
+import EmailOutlinedIcon from "@material-ui/icons/EmailOutlined";
+import CallOutlinedIcon from "@material-ui/icons/CallOutlined";
 import Hidden from "@material-ui/core/Hidden";
 import Link from "@material-ui/core/Link";
 
@@ -42,13 +43,15 @@ export default function Header(props) {
           </Button>
         </Hidden>
         <Hidden only={["sm", "md", "lg"]}>
-          <IconButton
-            style={{ float: "right" }}
-            aria-label="contact"
-            color="primary"
-          >
-            <CallIcon />
-          </IconButton>
+          <div style={{ float: "right", display: "flex" }}>
+            <IconButton aria-label="contact" color="primary">
+              <EmailOutlinedIcon />
+            </IconButton>
+
+            <IconButton aria-label="contact" color="primary">
+              <CallOutlinedIcon />
+            </IconButton>
+          </div>
         </Hidden>
       </Toolbar>
       <Toolbar
