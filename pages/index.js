@@ -9,17 +9,15 @@ const Home = () => (
         rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
       />
+      <link rel="manifest" href="site.webmanifest.json"></link>
       <title>Wash Houston</title>
     </Head>
-    <div>
-      <Initial />
-
-      <style jsx>{`
-        :global(html, body) {
-          background-color: #f8f8f8;
-        }
-      `}</style>
-    </div>
+    <style jsx>{`
+      :global(html, body) {
+        background-color: #f8f8f8;
+      }
+    `}</style>
+    <Initial />
   </>
 );
 

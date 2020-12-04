@@ -6,6 +6,8 @@ import Button from "@material-ui/core/Button";
 import IconButton from "@material-ui/core/IconButton";
 import SearchIcon from "@material-ui/icons/Search";
 import Typography from "@material-ui/core/Typography";
+import CallIcon from "@material-ui/icons/Call";
+import Hidden from "@material-ui/core/Hidden";
 import Link from "@material-ui/core/Link";
 
 const useStyles = makeStyles((theme) => ({
@@ -33,10 +35,21 @@ export default function Header(props) {
   return (
     <React.Fragment>
       <Toolbar className={classes.toolbar}>
-        <img height={55} width={250} src="/images/logo_header.png" />
-        <Button variant="outlined" size="small">
-          Contact Us
-        </Button>
+        <img height={55} width={200} src="/images/logo_header.png" />
+        <Hidden only="xs">
+          <Button variant="outlined" size="small">
+            Contact Us
+          </Button>
+        </Hidden>
+        <Hidden only={["sm", "md", "lg"]}>
+          <IconButton
+            style={{ float: "right" }}
+            aria-label="contact"
+            color="primary"
+          >
+            <CallIcon />
+          </IconButton>
+        </Hidden>
       </Toolbar>
       <Toolbar
         component="nav"

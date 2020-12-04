@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.grey[800],
     color: theme.palette.common.white,
     marginBottom: theme.spacing(4),
-    backgroundImage: "url(/images/wash-houston-dark-bg.jpg)",
+    backgroundImage: "url(/images/wash-houston-light-bg.jpg)",
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
     backgroundPosition: "center",
@@ -43,7 +43,7 @@ export default function Hero(props) {
   return (
     <Paper
       className={classes.mainFeaturedPost}
-      style={{ backgroundImage: `url(${post.image})`, minHeight: "85vh" }}
+      style={{ backgroundImage: `url(${post.image})` }}
     >
       {/* Increase the priority of the hero background image */}
       {
@@ -68,7 +68,7 @@ export default function Hero(props) {
             <Typography variant="h5" color="inherit" paragraph>
               {post.description}
             </Typography>
-            <Button size="large" color="primary" variant="outlined">
+            <Button size="large" color="secondary" variant="contained">
               {post.linkText}
             </Button>
           </div>

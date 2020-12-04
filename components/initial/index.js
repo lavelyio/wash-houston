@@ -30,19 +30,21 @@ const sections = [
 
 const mainFeaturedPost = {
   title: "Wash Houston",
-  description: `Wash Houston Services, LLC is Houston's first choice for top quality pressure washing, 
-        roof cleaning, and exterior property restoration services.  We provide many services to enhance and 
+  description: `Houston's first choice for top quality pressure washing, 
+        roof cleaning, and exterior property restoration services. `,
+  image: "/images/wash-houston-light-bg.jpg",
+  imgText: "main image description",
+  linkText: "Contact Us…",
+};
+
+const bodyText = ` We provide many services to enhance and 
         maintain the overall quality of your home or business.  You can put your trust in us, with over 20 years 
         pressure washing and roof cleaning experience in the Greater Houston area.  
         
         We have continued to perfect our services, while protecting and maintaining the curb appeal of your home or business.  
         With regular pressure washing and chemically cleaning your roof, you can extend the lifespan of your siding, brick, roof, deck, and driveway.  
         Whether you manage a large apartment complex or need a small porch or deck cleaned, no job is too big or too small.  
-        Give us a call and let the professionals handle the job..`,
-  image: "/images/wash-houston-light-bg.jpg",
-  imgText: "main image description",
-  linkText: "Contact Us…",
-};
+        Give us a call and let the professionals handle the job..`;
 
 const featuredPosts = [
   {
