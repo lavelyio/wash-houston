@@ -1,6 +1,8 @@
 # Wash Houston
 
-This is the official website of `Wash Houston Services, LLC`
+This is the :rocket: official :rocket: website of [Wash Houston Services, LLC](https://houstonwash.com/)
+
+Check out the [Help section](#Wash-Houston-Help) for information on the packages and systems used to build an run this application
 
 ## Usage
 
@@ -56,3 +58,20 @@ The deploy to Netlify button above will create a new site and repo in one click.
 - [Create a new site on Netlify](https://app.netlify.com/start) and link the repository.
 
 Now Netlify will build and deploy your site whenever you push to git.
+
+Made with :heart: by [LavelyIO, LLC] (https://lavely.io/)
+
+# Wash Houston Help
+
+### Development Tools & Documentation
+
+- [Node.js](https://nodejs.org/en/) - Javascript runtime to assist in website development (click latest features)
+- [Yarn](https://classic.yarnpkg.com/) - Manage our Javascript dependencies that our site depends on
+- [VS Code](https://code.visualstudio.com/download) - Running, editing and debugging the website code
+- [Netlify Docs](https://docs.netlify.com/cli/get-started/) - Netlify Documentation regarding command-line tools and others
+- [React - Javascript Framework](https://reactjs.org/tutorial/tutorial.html) - Learn React to understand the code a bit better
+- [Next.js](https://nextjs.org/) - Our Server-Side Rendering framework that helps us render each page as it's own `.html`
+
+### Hosting:
+
+Server is hosted at \[Netlify\](https://netlify.com)
