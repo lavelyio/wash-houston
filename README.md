@@ -4,6 +4,8 @@ This is the :rocket: official :rocket: website of [Wash Houston Services, LLC](h
 
 Check out the [Help section](#Wash-Houston-Help) for information on the packages and systems used to build an run this application
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/194c3e40-5eb6-4774-841e-1bab2e457a0c/deploy-status)](https://app.netlify.com/sites/sleepy-fermi-efa9a2/deploys)
+
 ## Usage
 
 ### Getting started

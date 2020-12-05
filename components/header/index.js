@@ -6,6 +6,9 @@ import Button from '@material-ui/core/Button'
 import IconButton from '@material-ui/core/IconButton'
 import SearchIcon from '@material-ui/icons/Search'
 import Typography from '@material-ui/core/Typography'
+import Menu from '@material-ui/core/Menu'
+import MenuItem from '@material-ui/core/MenuItem'
+import MoreVertIcon from '@material-ui/icons/MoreVert'
 import EmailOutlinedIcon from '@material-ui/icons/EmailOutlined'
 import CallOutlinedIcon from '@material-ui/icons/CallOutlined'
 import Hidden from '@material-ui/core/Hidden'
@@ -29,9 +32,21 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
+const ITEM_HEIGHT = 48
+
 export default function Header(props) {
   const classes = useStyles()
   const { sections, title } = props
+  const [anchorEl, setAnchorEl] = React.useState(null)
+  const open = Boolean(anchorEl)
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget)
+  }
+
+  const handleClose = () => {
+    setAnchorEl(null)
+  }
 
   return (
     <React.Fragment>
