@@ -17,7 +17,7 @@ const theme = responsiveFontSizes(
         main: '#d0d0d2',
       },
       error: {
-        main: red.A400,
+        main: '#ea4131',
       },
       background: {
         default: '#fff',
