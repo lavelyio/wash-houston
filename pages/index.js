@@ -19,7 +19,7 @@ const Home = () => (
         background-color: #f8f8f8;
       }
     `}</style>
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={createMuiTheme(theme)}>
       <Initial />
     </ThemeProvider>
   </>

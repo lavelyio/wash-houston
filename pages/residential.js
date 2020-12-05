@@ -3,7 +3,7 @@ import Head from 'next/head'
 import { ThemeProvider } from '@material-ui/core/styles'
 import theme from '../theme'
 
-export default Residential = () => (
+export default residential = () => (
   <>
     <Head>
       <link

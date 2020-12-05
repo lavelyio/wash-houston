@@ -1,9 +1,9 @@
 import React from 'react'
 import Head from 'next/head'
-import { ThemeProvider } from '@material-ui/core/styles'
+import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles'
 import theme from '../theme'
 
-export default Contact = () => (
+export default contact = () => (
   <>
     <Head>
       <link
@@ -13,6 +13,6 @@ export default Contact = () => (
       <link rel='manifest' href='site.webmanifest.json'></link>
       <title>Wash Houston - Contact Us</title>
     </Head>
-    <ThemeProvider theme={theme}></ThemeProvider>
+    <ThemeProvider theme={createMuiTheme(theme)}></ThemeProvider>
   </>
 )
