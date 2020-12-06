@@ -1,7 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { makeStyles } from '@material-ui/core/styles'
+import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
+import CssBaseline from '@material-ui/core/CssBaseline'
+import useScrollTrigger from '@material-ui/core/useScrollTrigger'
+import Box from '@material-ui/core/Box'
+import Container from '@material-ui/core/Container'
+import Slide from '@material-ui/core/Slide'
 import Button from '@material-ui/core/Button'
 import IconButton from '@material-ui/core/IconButton'
 import SearchIcon from '@material-ui/icons/Search'
@@ -12,6 +18,7 @@ import MoreVertIcon from '@material-ui/icons/MoreVert'
 import EmailOutlinedIcon from '@material-ui/icons/EmailOutlined'
 import CallOutlinedIcon from '@material-ui/icons/CallOutlined'
 import Hidden from '@material-ui/core/Hidden'
+import SpeedDialButton from '../buttons/SpeedDialButton'
 import Link from '@material-ui/core/Link'
 
 const useStyles = makeStyles((theme) => ({
@@ -38,6 +45,7 @@ export default function Header(props) {
   const classes = useStyles()
   const { sections, title } = props
   const [anchorEl, setAnchorEl] = React.useState(null)
+  const [mounted, setMounted] = React.useState(false)
   const open = Boolean(anchorEl)
 
   const handleClick = (event) => {
@@ -52,22 +60,7 @@ export default function Header(props) {
     <React.Fragment>
       <Toolbar className={classes.toolbar}>
         <img height={55} width={200} src='/images/logo_header.png' />
-        <Hidden only='xs'>
-          <Button variant='outlined' size='small'>
-            Contact Us
-          </Button>
-        </Hidden>
-        <Hidden only={['sm', 'md', 'lg']}>
-          <div style={{ float: 'right', display: 'flex' }}>
-            <IconButton aria-label='contact' color='primary'>
-              <EmailOutlinedIcon />
-            </IconButton>
-
-            <IconButton aria-label='contact' color='primary'>
-              <CallOutlinedIcon />
-            </IconButton>
-          </div>
-        </Hidden>
+        <SpeedDialButton />
       </Toolbar>
       <Toolbar component='nav' variant='dense' className={classes.toolbarSecondary}>
         {sections.map((section) => (
