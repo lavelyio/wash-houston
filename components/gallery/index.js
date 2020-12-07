@@ -7,6 +7,8 @@ import GridListTile from '@material-ui/core/GridListTile'
 import ComparisonSlider from './ComparisonSlider'
 import { isMobile } from '../../utils'
 import ServicesGridList from '../services/ServicesGridList'
+import { ParallaxBanner } from 'react-scroll-parallax'
+import { Typography } from '@material-ui/core'
 
 // { height: 600, width: isMobile() ? 400 : 650 }
 
@@ -19,15 +21,27 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'center',
     color: theme.palette.text.secondary,
   },
-  root: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    justifyContent: 'space-around',
-    overflow: 'hidden',
-    backgroundColor: theme.palette.background.paper,
-  },
   gridList: {
     height: 450,
+  },
+  containerBanner: {
+    paddingLeft: '15%',
+    paddingRight: '15%',
+    backgroundColor: 'rgba(0,0,0,0.6)',
+    zIndex: 1350,
+    width: '100vw',
+    display: 'flex',
+    flexDirection: 'column',
+  },
+  gridList: {
+    height: '70%',
+    display: 'flex',
+  },
+  icon: {
+    color: 'rgba(255, 255, 255, 0.54)',
+  },
+  bannerBg: {
+    minHeight: '100vh',
   },
 }))
 
@@ -50,23 +64,51 @@ const Gallery = (props) => {
   const toggleModal = () => setModal(!modalOpen)
 
   return (
-    <div className={classes.root}>
-      <Grid container spacing={3}>
-        <Grid item xs={12} sm={6} lg={6}>
-          <div className={classes.root}>
-            <GridList cellHeight={160} className={classes.gridList} cols={2}>
-              {images.map((tile) => (
-                <GridListTile key={tile.src} cols={tile.cols || 1}>
-                  <img src={tile.src} alt={tile.title} />
-                </GridListTile>
-              ))}
-            </GridList>
+    <div className='vertical'>
+      <ParallaxBanner
+        className={classes.bannerBg}
+        layers={[
+          {
+            image: '/images/murals/Para-Mi-Gente.png',
+            amount: 0.2,
+          },
+        ]}>
+        <div
+          style={{
+            minHeight: '100vh',
+            display: 'flex',
+            flexDirection: 'column',
+            zIndex: 1300,
+            height: '15vh',
+            justifyContent: 'center',
+          }}>
+          <div className={classes.containerBanner}>
+            <Grid item>
+              <Typography variant='h3' style={{ zIndex: 1350, color: '#d0d0d2' }}>
+                {' '}
+                Our Recent Work{' '}
+              </Typography>
+            </Grid>
+            <Grid
+              container
+              spacing={2}
+              style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap' }}>
+              <Grid item xs={12} sm={6} md={6} lg={6} xl={6}>
+                <GridList cellHeight={180} className={classes.gridList} cols={2}>
+                  {images.map((tile) => (
+                    <GridListTile key={tile.src} cols={tile.cols || 1}>
+                      <img src={tile.src} alt={tile.title} />
+                    </GridListTile>
+                  ))}
+                </GridList>
+              </Grid>
+              <Grid item xs={12} sm={6} md={6} lg={6} xl={6}>
+                <ComparisonSlider />
+              </Grid>
+            </Grid>
           </div>
-        </Grid>
-        <Grid item xs={12} sm={6} lg={6}>
-          <ComparisonSlider />
-        </Grid>
-      </Grid>
+        </div>
+      </ParallaxBanner>
     </div>
   )
 }

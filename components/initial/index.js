@@ -13,6 +13,7 @@ import Main from '../main'
 import Sidebar from '../sidebar'
 import Footer from '../footer'
 import { post1, post2, post3 } from '../posts'
+import { ParallaxProvider } from 'react-scroll-parallax'
 import Gallery from '../gallery'
 import { Typography } from '@material-ui/core'
 
@@ -62,11 +63,12 @@ const sections = [
 
 const mainFeaturedPost = {
   title: 'Wash Houston',
-  description: `Houston's first choice for top quality pressure washing, 
-        roof cleaning, and exterior property restoration services. `,
+  description: `We live and breathe Houston, and take pride in our city. Thats why we're Greater Houston Area's first choice for top quality pressure washing, 
+        roof cleaning, and exterior property restoration services for residential and commercial customers. Let's help celebrate our city's culture by
+        keeping it clean.`,
   image: '/images/spacecity-bg.jpg',
   imgText: 'main image description',
-  linkText: 'Contact Us…',
+  linkText: 'Contact Us',
 }
 
 const bodyText = ` We provide many services to enhance and 
@@ -127,19 +129,12 @@ export default function Initial() {
 
   return (
     <>
-      <Header title='Wash Houston' sections={sections} />
-      <Hero post={mainFeaturedPost} />
-
-      <ServicesGridList />
-      <Container maxWidth='lg'>
-        <main>
-          <Grid spacing={4} container style={{ marginTop: 10, padding: 10 }}>
-            <Typography variant='h3' component='p' align='center'>
-              Our Recent Work
-            </Typography>
-            <Gallery />
-          </Grid>
-
+      <ParallaxProvider>
+        <Header title='Wash Houston' sections={sections} />
+        <Hero post={mainFeaturedPost} />
+        <ServicesGridList />
+        <Gallery />
+        <Container maxWidth='lg'>
           <Grid container spacing={5} className={classes.mainGrid}>
             <Main title='From the nozzle' posts={posts} />
             <Sidebar
@@ -149,9 +144,9 @@ export default function Initial() {
               social={sidebar.social}
             />
           </Grid>
-        </main>
-      </Container>
-      <Footer title='Footer' description='Something here to give the footer a purpose!' />
+        </Container>
+        <Footer title='Footer' description='Something here to give the footer a purpose!' />
+      </ParallaxProvider>
     </>
   )
 }

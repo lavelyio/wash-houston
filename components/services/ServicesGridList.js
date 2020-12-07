@@ -39,59 +39,55 @@ export default function ServicesGridList() {
   const classes = useStyles()
 
   return (
-    <ParallaxProvider>
-      <div className='vertical'>
-        <ParallaxBanner
-          className={classes.bannerBg}
-          layers={[
-            {
-              image: '/images/murals/Houston-Heights-Mural.jpg',
-              amount: 0.2,
-            },
-          ]}>
-          <div
+    <div className='vertical'>
+      <ParallaxBanner
+        className={classes.bannerBg}
+        layers={[
+          {
+            image: '/images/murals/Houston-Heights-Mural.jpg',
+            amount: 0.2,
+          },
+        ]}>
+        <div
+          style={{
+            minHeight: '100vh',
+            display: 'flex',
+            flexDirection: 'column',
+            zIndex: 1500,
+            justifyContent: 'center',
+          }}>
+          <Typography variant='h3' component='h3'>
+            Our Services
+          </Typography>
+          <Container
+            maxWidth='xl'
             style={{
-              minHeight: '100vh',
-              display: 'flex',
-              flexDirection: 'column',
-              zIndex: 1500,
-              justifyContent: 'center',
+              padding: '5% 15%',
+              backgroundColor: 'rgba(0,0,0,0.8)',
+              zIndex: 1350,
+              width: '100vw',
             }}>
-            <Typography variant='h3' component='h3'>
-              Our Services
-            </Typography>
-            <Container
-              maxWidth='xl'
-              style={{
-                padding: '5% 15%',
-                backgroundColor: 'rgba(0,0,0,0.8)',
-                zIndex: 1350,
-                width: '100vw',
-              }}>
-              <GridList className={classes.gridList}>
-                {servicesData.map((tile) => (
-                  <GridListTile
-                    key={tile.src}
-                    style={{ width: isMobile() ? '300px' : '400px', borderRadius: '6px' }}>
-                    <img src={tile.src} alt={tile.title} />
-                    <GridListTileBar
-                      title={tile.title}
-                      subtitle={<span>{tile.meta}</span>}
-                      actionIcon={
-                        <IconButton
-                          aria-label={`info about ${tile.title}`}
-                          className={classes.icon}>
-                          <InfoIcon />
-                        </IconButton>
-                      }
-                    />
-                  </GridListTile>
-                ))}
-              </GridList>
-            </Container>
-          </div>
-        </ParallaxBanner>
-      </div>
-    </ParallaxProvider>
+            <GridList className={classes.gridList}>
+              {servicesData.map((tile) => (
+                <GridListTile
+                  key={tile.src}
+                  style={{ width: '50%', height: '30vh', borderRadius: '6px' }}>
+                  <img src={tile.src} alt={tile.title} />
+                  <GridListTileBar
+                    title={tile.title}
+                    subtitle={<span>{tile.meta}</span>}
+                    actionIcon={
+                      <IconButton aria-label={`info about ${tile.title}`} className={classes.icon}>
+                        <InfoIcon />
+                      </IconButton>
+                    }
+                  />
+                </GridListTile>
+              ))}
+            </GridList>
+          </Container>
+        </div>
+      </ParallaxBanner>
+    </div>
   )
 }
