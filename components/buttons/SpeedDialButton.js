@@ -19,9 +19,9 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
   speedDial: {
-    position: 'absolute',
+    position: 'fixed',
     top: theme.spacing(2),
-    right: theme.spacing(2),
+    right: '20vw',
   },
 }))
 
@@ -54,8 +54,9 @@ export default function SpeedDialButton() {
       <SpeedDial
         ariaLabel='SpeedDial openIcon example'
         className={classes.speedDial}
+        color='secondary'
         hidden={hidden}
-        icon={<SpeedDialIcon openIcon={<EditIcon />} />}
+        icon={<SpeedDialIcon />}
         onClose={handleClose}
         onOpen={handleOpen}
         direction='down'

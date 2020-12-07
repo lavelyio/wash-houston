@@ -7,6 +7,8 @@ import TextareaAutosize from '@material-ui/core/TextareaAutosize'
 import Typography from '@material-ui/core/Typography'
 import { makeStyles } from '@material-ui/core/styles'
 import Container from '@material-ui/core/Container'
+import axios from 'axios'
+import { ErrorNotification } from '../notifications'
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -31,8 +33,32 @@ const useStyles = makeStyles((theme) => ({
 export default function RequestQuote() {
   const classes = useStyles()
 
+  const [form, updateForm] = React.useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    message: '',
+  })
+  const [submitError, setSubmitError] = React.useState(null)
+
+  const handleSubmit = async (e) => {
+    if (e) e.preventDefault()
+
+    try {
+      const resp = axios.post('/.netlify/functions/sendgrid', {
+        ...form,
+        date: new Date().toDateString(),
+      })
+      console.log(resp)
+    } catch (err) {
+      setSubmitError(err?.message)
+      console.log(err)
+    }
+  }
+
   return (
     <Container component='main' maxWidth='xs'>
+      <ErrorNotification hasError={!!submitError} msg={submitError} />
       <CssBaseline />
       <div className={classes.paper}>
         <Typography component='h1' variant='h5'>
@@ -45,6 +71,7 @@ export default function RequestQuote() {
                 autoComplete='fname'
                 name='firstName'
                 variant='outlined'
+                defaultValue={form.firstName}
                 required
                 fullWidth
                 id='firstName'
@@ -56,6 +83,7 @@ export default function RequestQuote() {
                 variant='outlined'
                 required
                 fullWidth
+                defaultValue={form.lastName}
                 id='lastName'
                 label='Last Name'
                 name='lastName'
@@ -65,6 +93,7 @@ export default function RequestQuote() {
             <Grid item xs={12}>
               <TextField
                 variant='outlined'
+                defaultValue={form.email}
                 required
                 fullWidth
                 id='email'
@@ -74,7 +103,13 @@ export default function RequestQuote() {
               />
             </Grid>
             <Grid item xs={12}>
-              <TextareaAutosize style={{ width: '100%' }} rows={6} aria-label='description' />
+              <TextareaAutosize
+                defaultValue={form.message}
+                id='message'
+                style={{ width: '100%' }}
+                rows={6}
+                aria-label='description'
+              />
             </Grid>
           </Grid>
           <Button
@@ -82,6 +117,7 @@ export default function RequestQuote() {
             fullWidth
             variant='contained'
             color='primary'
+            onClick={handleSubmit}
             className={classes.submit}>
             Send
           </Button>

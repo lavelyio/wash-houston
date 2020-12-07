@@ -34,7 +34,7 @@ const mainFeaturedPost = {
   title: 'Wash Houston',
   description: `Houston's first choice for top quality pressure washing, 
         roof cleaning, and exterior property restoration services. `,
-  image: '/images/wash-houston-light-bg.jpg',
+  image: '/images/spacecity-bg.jpg',
   imgText: 'main image description',
   linkText: 'Contact Us…',
 }
