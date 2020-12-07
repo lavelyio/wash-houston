@@ -6,6 +6,7 @@ import Container from '@material-ui/core/Container'
 import GridListTile from '@material-ui/core/GridListTile'
 import ComparisonSlider from './ComparisonSlider'
 import { isMobile } from '../../utils'
+import ServicesGridList from '../services/ServicesGridList'
 
 // { height: 600, width: isMobile() ? 400 : 650 }
 

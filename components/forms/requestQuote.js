@@ -9,7 +9,7 @@ import { makeStyles } from '@material-ui/core/styles'
 import Container from '@material-ui/core/Container'
 import axios from 'axios'
 import Reward from 'react-rewards'
-import { ErrorNotification } from '../notifications'
+import { ErrorNotification, SuccessNotification } from '../notifications'
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -41,7 +41,9 @@ export default function RequestQuote() {
     message: '',
   })
   const [submitError, setSubmitError] = React.useState(null)
+  const [submitOK, setSubmitOK] = React.useState(false)
   const reward = React.useRef(null)
+  const formRef = React.useRef(null)
 
   const handleSubmit = async (e) => {
     if (e) e.preventDefault()
@@ -52,7 +54,14 @@ export default function RequestQuote() {
         date: new Date().toDateString(),
       })
       reward.current.rewardMe()
+      setSubmitOK(true)
+      try {
+        formRef.current.reset()
+      } catch (err) {
+        console.error(err)
+      }
     } catch (err) {
+      setSubmitOK(false)
       setSubmitError(err?.message)
       reward.current.punishMe()
       console.log(err)
@@ -66,13 +75,14 @@ export default function RequestQuote() {
 
   return (
     <Container component='main' maxWidth='xs'>
+      {submitOK && <SuccessNotification msg={`We'll get back with you shortly.`} />}
       <ErrorNotification hasError={!!submitError} msg={submitError} />
       <CssBaseline />
       <div className={classes.paper}>
         <Typography component='h1' variant='h5'>
           Request A Quote
         </Typography>
-        <form className={classes.form} noValidate>
+        <form className={classes.form} noValidate onSubmit={handleSubmit} ref={formRef}>
           <Grid container spacing={2}>
             <Grid item xs={12}>
               <TextField
@@ -125,25 +135,26 @@ export default function RequestQuote() {
               />
             </Grid>
           </Grid>
-          <Reward
-            ref={reward}
-            type='confetti'
-            lifetime={200}
-            decay={0.9}
-            spread={76}
-            startVelocity={48}
-            elementCount={65}
-            elementSize={8}>
-            <Button
-              type='submit'
-              fullWidth
-              variant='contained'
-              color='primary'
-              onClick={handleSubmit}
-              className={classes.submit}>
-              Send
-            </Button>
-          </Reward>
+
+          <Button
+            type='submit'
+            fullWidth
+            variant='contained'
+            color='primary'
+            onClick={handleSubmit}
+            className={classes.submit}>
+            <Reward
+              ref={reward}
+              type='confetti'
+              lifetime={200}
+              decay={0.9}
+              spread={76}
+              startVelocity={48}
+              elementCount={65}
+              elementSize={8}
+            />
+            Send
+          </Button>
         </form>
       </div>
     </Container>

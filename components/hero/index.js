@@ -13,8 +13,7 @@ const useStyles = makeStyles((theme) => ({
     position: 'relative',
     backgroundColor: theme.palette.grey[800],
     color: '#d0d0d2',
-    marginBottom: theme.spacing(4),
-    backgroundSize: 'contain',
+    backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
   },
@@ -24,12 +23,12 @@ const useStyles = makeStyles((theme) => ({
     bottom: 0,
     right: 0,
     left: 0,
-    backgroundColor: 'rgba(0,0,0,.3)',
+    backgroundColor: 'rgba(0,0,0,.2)',
   },
   mainFeaturedPostContent: {
     position: 'relative',
     padding: theme.spacing(3),
-    height: '80%',
+    height: '100%',
     [theme.breakpoints.up('md')]: {
       padding: theme.spacing(6),
       paddingRight: 0,
@@ -41,23 +40,20 @@ export default function Hero(props) {
   const classes = useStyles()
   const { post } = props
   const paperStyles = isMobile()
-    ? { backgroundImage: `url(${post.image})`, height: 300 }
-    : { backgroundImage: `url(${post.image})`, height: 500 }
+    ? { backgroundImage: `url(${post.image})`, height: '100vh' }
+    : { backgroundImage: `url(${post.image})`, height: '100vh' }
   return (
-    <Paper className={classes.mainFeaturedPost} style={paperStyles}>
-      {/* Increase the priority of the hero background image */}
-      {<img style={{ display: 'none' }} src={post.image} alt={post.imageText} />}
-      <div className={classes.overlay} />
+    <div className={classes.mainFeaturedPost} style={paperStyles}>
       <Grid
         container
         justify='space-between'
         style={{
           display: 'flex',
           flexDirection: 'column',
-          margin: 10,
+          padding: 10,
           height: paperStyles.height - 20,
         }}>
-        <Grid item md={6}>
+        <Grid item md={6} style={{ bottom: 0, position: 'absolute', minHeight: 300 }}>
           <div className={classes.mainFeaturedPostContent}>
             <Typography component='h1' variant='h3' color='inherit' gutterBottom>
               {post.title}
@@ -70,9 +66,9 @@ export default function Hero(props) {
             </Button>
           </div>
         </Grid>
-        <Grid item md={6} spacing={2}></Grid>
       </Grid>
-    </Paper>
+      <div className='scroll-down' />
+    </div>
   )
 }
 

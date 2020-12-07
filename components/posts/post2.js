@@ -1,22 +1,21 @@
+import Paper from '@material-ui/core/Paper'
+
 export default function Post2() {
   return (
-    <div>
+    <Paper elevation={4} style={{ padding: 15, marginBottom: 30 }}>
       <h1> Another Sample </h1>
       <time> December 4, 2020 </time>
       <p>
-        Cum sociis natoque penatibus et magnis dis parturient montes, nascetur
-        ridiculus mus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam
-        venenatis vestibulum. Sed posuere consectetur est at lobortis. Cras
-        mattis consectetur purus sit amet fermentum. Curabitur blandit tempus
-        porttitor. **Nullam quis risus eget urna mollis** ornare vel eu leo.
-        Nullam id dolor id nibh ultricies vehicula ut id elit. Etiam porta sem
-        malesuada magna mollis euismod. Cras mattis consectetur purus sit amet
-        fermentum. Aenean lacinia bibendum nulla sed consectetur. Vivamus
-        sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis
-        mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia
-        odio sem nec elit. Morbi leo risus, porta ac consectetur ac, vestibulum
-        at eros.
+        Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean
+        eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere
+        consectetur est at lobortis. Cras mattis consectetur purus sit amet fermentum. Curabitur
+        blandit tempus porttitor. **Nullam quis risus eget urna mollis** ornare vel eu leo. Nullam
+        id dolor id nibh ultricies vehicula ut id elit. Etiam porta sem malesuada magna mollis
+        euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed
+        consectetur. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis
+        mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.
+        Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
       </p>
-    </div>
-  );
+    </Paper>
+  )
 }

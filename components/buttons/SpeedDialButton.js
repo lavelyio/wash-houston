@@ -11,6 +11,7 @@ import PrintIcon from '@material-ui/icons/Print'
 import ShareIcon from '@material-ui/icons/Share'
 import FavoriteIcon from '@material-ui/icons/Favorite'
 import EditIcon from '@material-ui/icons/Edit'
+import { Link } from '@material-ui/core'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -21,14 +22,15 @@ const useStyles = makeStyles((theme) => ({
   speedDial: {
     position: 'fixed',
     top: theme.spacing(2),
-    right: '20vw',
+    right: '10vw',
+    zIndex: 1250,
   },
 }))
 
 const actions = [
   { icon: <MailIcon />, name: 'Send us a Message' },
-  { icon: <CallOutlineIcon />, name: 'Call Us' },
-  { icon: <ShareIcon />, name: 'Share' },
+  { icon: <CallOutlineIcon />, name: 'Call Us', link: 'tel:+1-936-346-5322' },
+  { icon: <ShareIcon />, name: 'Share with friends' },
 ]
 
 export default function SpeedDialButton() {
@@ -61,14 +63,27 @@ export default function SpeedDialButton() {
         onOpen={handleOpen}
         direction='down'
         open={open}>
-        {actions.map((action) => (
-          <SpeedDialAction
-            key={action.name}
-            icon={action.icon}
-            tooltipTitle={action.name}
-            onClick={handleClose}
-          />
-        ))}
+        {actions.map((action) => {
+          if (action?.link) {
+            return (
+              <SpeedDialAction
+                key={action.name}
+                icon={action.icon}
+                tooltipTitle={action.name}
+                onClick={handleClose}>
+                <Link to={action.link} />
+              </SpeedDialAction>
+            )
+          }
+          return (
+            <SpeedDialAction
+              key={action.name}
+              icon={action.icon}
+              tooltipTitle={action.name}
+              onClick={handleClose}
+            />
+          )
+        })}
       </SpeedDial>
     </>
   )

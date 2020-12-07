@@ -25,4 +25,22 @@ const ErrorNotification = ({ hasError, msg }) => {
   )
 }
 
-export { ErrorNotification }
+const SuccessNotification = ({ msg }) => {
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return
+    }
+
+    setOpen(false)
+  }
+
+  return (
+    <Snackbar open={true} autoHideDuration={6000} onClose={handleClose}>
+      <Alert onClose={handleClose} severity='success'>
+        {msg}
+      </Alert>
+    </Snackbar>
+  )
+}
+
+export { ErrorNotification, SuccessNotification }

@@ -8,7 +8,7 @@ import FacebookIcon from '@material-ui/icons/Facebook'
 import TwitterIcon from '@material-ui/icons/Twitter'
 import Header from '../header'
 import Hero from '../hero'
-import Services from '../services'
+import ServicesGridList from '../services/ServicesGridList'
 import Main from '../main'
 import Sidebar from '../sidebar'
 import Footer from '../footer'
@@ -19,6 +19,36 @@ import { Typography } from '@material-ui/core'
 const useStyles = makeStyles((theme) => ({
   mainGrid: {
     marginTop: theme.spacing(3),
+  },
+  parallaxChildren: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    display: 'flex',
+    flexFlow: 'row wrap',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  bannerContainer: {
+    width: '100%',
+    height: '100%',
+    display: 'flex',
+    alignItems: 'center',
+  },
+
+  bannerBg: {
+    background: 'rgba(0,0,0,0)',
+  },
+
+  customChild: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    textAlign: 'center',
   },
 }))
 
@@ -96,17 +126,13 @@ export default function Initial() {
   const classes = useStyles()
 
   return (
-    <React.Fragment>
-      <CssBaseline />
+    <>
+      <Header title='Wash Houston' sections={sections} />
+      <Hero post={mainFeaturedPost} />
+
+      <ServicesGridList />
       <Container maxWidth='lg'>
-        <Header title='Wash Houston' sections={sections} />
         <main>
-          <Hero post={mainFeaturedPost} />
-          <Grid container spacing={4}>
-            {featuredPosts.map((post) => (
-              <Services key={post.title} post={post} />
-            ))}
-          </Grid>
           <Grid spacing={4} container style={{ marginTop: 10, padding: 10 }}>
             <Typography variant='h3' component='p' align='center'>
               Our Recent Work
@@ -126,6 +152,6 @@ export default function Initial() {
         </main>
       </Container>
       <Footer title='Footer' description='Something here to give the footer a purpose!' />
-    </React.Fragment>
+    </>
   )
 }
