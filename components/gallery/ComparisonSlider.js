@@ -16,6 +16,10 @@ import { isMobile } from '../../utils'
 const useStyles = makeStyles({
   card: {
     display: 'flex',
+    height: 400,
+    padding: 20,
+    background: 'transparent',
+    borderRadius: '6px',
   },
   cardDetails: {
     flex: 1,
@@ -28,7 +32,7 @@ const useStyles = makeStyles({
 const ComparisonSlider = (props) => {
   const [mounted, setMounted] = React.useState(false)
   const [dimensions, setDimensions] = React.useState({
-    height: '75%',
+    height: 400,
     width: '100%',
   })
   useEffect(() => {
@@ -44,7 +48,7 @@ const ComparisonSlider = (props) => {
           <ImageSlider
             image1={`${window.location.href}images/compare/drivethrough-after.png`}
             image2={`${window.location.href}images/compare/drivethrough-before.png`}
-            sliderWidth={2}
+            sliderWidth={1}
             sliderColor='red'
             handleColor='red'
             handleBackgroundColor='white'

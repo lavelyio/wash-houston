@@ -11,6 +11,7 @@ import Link from '@material-ui/core/Link'
 const useStyles = makeStyles((theme) => ({
   mainFeaturedPost: {
     position: 'relative',
+
     backgroundColor: theme.palette.grey[800],
     color: '#d0d0d2',
     backgroundSize: 'cover',
@@ -23,12 +24,17 @@ const useStyles = makeStyles((theme) => ({
     bottom: 0,
     right: 0,
     left: 0,
-    backgroundColor: 'rgba(0,0,0,.2)',
+    backgroundColor: 'rgba(0,0,0,.4)',
   },
   mainFeaturedPostContent: {
-    position: 'relative',
+    position: 'absolute',
+    top: 0,
     padding: theme.spacing(3),
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-evenly',
     height: '100%',
+    width: '100vw',
     [theme.breakpoints.up('md')]: {
       padding: theme.spacing(6),
       paddingRight: 0,
@@ -46,26 +52,25 @@ export default function Hero(props) {
     <div className={classes.mainFeaturedPost} style={paperStyles}>
       <Grid
         container
-        justify='space-between'
         style={{
-          display: 'flex',
-          flexDirection: 'column',
           padding: 10,
           height: paperStyles.height - 20,
         }}>
-        <Grid item md={6} style={{ bottom: 0, position: 'absolute', minHeight: 300 }}>
-          <div className={classes.mainFeaturedPostContent}>
-            <Typography component='h1' variant='h3' color='inherit' gutterBottom>
-              {post.title}
-            </Typography>
-            <Typography variant='p' color='inherit' paragraph gutterBottom>
-              {post.description}
-            </Typography>
-            <Button size='large' color='secondary' variant='contained'>
-              {post.linkText}
-            </Button>
-          </div>
-        </Grid>
+        <div className={classes.mainFeaturedPostContent}>
+          <Typography component='h1' variant='h3' color='inherit' gutterBottom>
+            {post.title}
+          </Typography>
+          <Typography variant='p' color='inherit' paragraph gutterBottom>
+            {post.description}
+          </Typography>
+          <Button
+            size='large'
+            color='secondary'
+            variant='contained'
+            style={{ width: '150px', position: 'absolute', bottom: '4rem' }}>
+            {post.linkText}
+          </Button>
+        </div>
       </Grid>
       <div className='scroll-down' />
     </div>

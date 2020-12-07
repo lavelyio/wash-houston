@@ -13,7 +13,7 @@ import Main from '../main'
 import Sidebar from '../sidebar'
 import Footer from '../footer'
 import { post1, post2, post3 } from '../posts'
-import { ParallaxProvider } from 'react-scroll-parallax'
+import { ParallaxProvider, ParallaxBanner } from 'react-scroll-parallax'
 import Gallery from '../gallery'
 import { Typography } from '@material-ui/core'
 
@@ -38,7 +38,12 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     alignItems: 'center',
   },
-
+  mural: {
+    height: '50vh',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+  },
   bannerBg: {
     background: 'rgba(0,0,0,0)',
   },
@@ -132,6 +137,29 @@ export default function Initial() {
       <ParallaxProvider>
         <Header title='Wash Houston' sections={sections} />
         <Hero post={mainFeaturedPost} />
+        <ParallaxBanner
+          className={classes.mural}
+          layers={[
+            {
+              image: '/images/murals/Houston-Heights-Mural-mobile.jpg',
+              amount: 0.2,
+            },
+          ]}>
+          <div
+            style={{
+              minHeight: '100%',
+              display: 'flex',
+              flexDirection: 'column',
+              zIndex: 1300,
+              justifyContent: 'center',
+            }}>
+            <Container style={{ backgroundColor: 'rgba(245, 245, 245, 0.8)' }}>
+              <Typography color='secondary' variant='h4'>
+                Maintaining local treasures is a goal of ours
+              </Typography>
+            </Container>
+          </div>
+        </ParallaxBanner>
         <ServicesGridList />
         <Gallery />
         <Container maxWidth='lg'>

@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
     position: 'fixed',
     top: theme.spacing(2),
     right: '10vw',
-    zIndex: 1250,
+    zIndex: 1450,
   },
 }))
 

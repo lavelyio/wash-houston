@@ -4,44 +4,39 @@ import Grid from '@material-ui/core/Grid'
 import GridList from '@material-ui/core/GridList'
 import Container from '@material-ui/core/Container'
 import GridListTile from '@material-ui/core/GridListTile'
+import GridListTileBar from '@material-ui/core/GridListTileBar'
 import ComparisonSlider from './ComparisonSlider'
 import { isMobile } from '../../utils'
 import ServicesGridList from '../services/ServicesGridList'
 import { ParallaxBanner } from 'react-scroll-parallax'
+import IconButton from '@material-ui/core/IconButton'
+import StarBorderIcon from '@material-ui/icons/StarBorderOutlined'
 import { Typography } from '@material-ui/core'
 
 // { height: 600, width: isMobile() ? 400 : 650 }
-
 const useStyles = makeStyles((theme) => ({
-  container: {
-    flexGrow: 1,
-  },
-  paper: {
-    padding: theme.spacing(2),
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
-  },
-  gridList: {
-    height: 450,
-  },
-  containerBanner: {
-    paddingLeft: '15%',
-    paddingRight: '15%',
-    backgroundColor: 'rgba(0,0,0,0.6)',
-    zIndex: 1350,
-    width: '100vw',
-    display: 'flex',
-    flexDirection: 'column',
-  },
-  gridList: {
-    height: '70%',
-    display: 'flex',
-  },
-  icon: {
-    color: 'rgba(255, 255, 255, 0.54)',
-  },
   bannerBg: {
     minHeight: '100vh',
+    marginTop: 50,
+  },
+  root: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    height: '100vh',
+    justifyContent: 'space-around',
+    overflow: 'hidden',
+  },
+  gridList: {
+    flexWrap: 'nowrap',
+    // Promote the list into his own layer on Chrome. This cost memory but helps keeping high FPS.
+    transform: 'translateZ(0)',
+  },
+  title: {
+    color: theme.palette.primary,
+  },
+  titleBar: {
+    background:
+      'linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)',
   },
 }))
 
@@ -71,44 +66,36 @@ const Gallery = (props) => {
           {
             image: '/images/murals/Para-Mi-Gente.png',
             amount: 0.2,
-          },
-        ]}>
-        <div
-          style={{
-            minHeight: '100vh',
-            display: 'flex',
-            flexDirection: 'column',
-            zIndex: 1300,
-            height: '15vh',
-            justifyContent: 'center',
-          }}>
-          <div className={classes.containerBanner}>
-            <Grid item>
-              <Typography variant='h3' style={{ zIndex: 1350, color: '#d0d0d2' }}>
-                {' '}
-                Our Recent Work{' '}
-              </Typography>
-            </Grid>
-            <Grid
-              container
-              spacing={2}
-              style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap' }}>
-              <Grid item xs={12} sm={6} md={6} lg={6} xl={6}>
-                <GridList cellHeight={180} className={classes.gridList} cols={2}>
+            children: (
+              <div
+                style={{
+                  height: '100vh',
+                  marginTop: 30,
+                  display: 'flex',
+                  flexDirection: 'column',
+                  zIndex: 1300,
+                  justifyContent: 'center',
+                }}>
+                <ComparisonSlider />
+                <GridList className={classes.gridList} cols={2.5}>
                   {images.map((tile) => (
-                    <GridListTile key={tile.src} cols={tile.cols || 1}>
+                    <GridListTile key={tile.img}>
                       <img src={tile.src} alt={tile.title} />
+                      <GridListTileBar
+                        title={tile.title}
+                        classes={{
+                          root: classes.titleBar,
+                          title: classes.title,
+                        }}
+                      />
                     </GridListTile>
                   ))}
                 </GridList>
-              </Grid>
-              <Grid item xs={12} sm={6} md={6} lg={6} xl={6}>
-                <ComparisonSlider />
-              </Grid>
-            </Grid>
-          </div>
-        </div>
-      </ParallaxBanner>
+              </div>
+            ),
+          },
+        ]}
+      />
     </div>
   )
 }
