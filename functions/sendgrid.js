@@ -10,7 +10,7 @@ function sendEmail(client, message, senderEmail, senderName) {
       },
       subject: `New Message from ${message.email}`,
       to: SENDGRID_SEND_TO,
-      html: `New Request for Contact/ Quote <br/>Message: [${message.firstName} ${messge.lastName}]\n ${message.message}`,
+      html: `New Request for Contact/ Quote <br/>Message: [${message.firstName} ${message.lastName}]\n ${message.message}`,
     }
 
     client
