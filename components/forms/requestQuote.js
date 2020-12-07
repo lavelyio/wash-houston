@@ -8,6 +8,7 @@ import Typography from '@material-ui/core/Typography'
 import { makeStyles } from '@material-ui/core/styles'
 import Container from '@material-ui/core/Container'
 import axios from 'axios'
+import Reward from 'react-rewards'
 import { ErrorNotification } from '../notifications'
 
 const useStyles = makeStyles((theme) => ({
@@ -40,20 +41,27 @@ export default function RequestQuote() {
     message: '',
   })
   const [submitError, setSubmitError] = React.useState(null)
+  const reward = React.useRef(null)
 
   const handleSubmit = async (e) => {
     if (e) e.preventDefault()
 
     try {
-      const resp = axios.post('/.netlify/functions/sendgrid', {
+      const resp = await axios.post('/api/send', {
         ...form,
         date: new Date().toDateString(),
       })
-      console.log(resp)
+      reward.current.rewardMe()
     } catch (err) {
       setSubmitError(err?.message)
+      reward.current.punishMe()
       console.log(err)
     }
+  }
+
+  const handleChange = ({ target }) => {
+    const { name, value } = target
+    updateForm((form) => ({ ...form, [name]: value }))
   }
 
   return (
@@ -74,6 +82,7 @@ export default function RequestQuote() {
                 defaultValue={form.firstName}
                 required
                 fullWidth
+                onChange={handleChange}
                 id='firstName'
                 label='First Name'
               />
@@ -86,6 +95,7 @@ export default function RequestQuote() {
                 defaultValue={form.lastName}
                 id='lastName'
                 label='Last Name'
+                onChange={handleChange}
                 name='lastName'
                 autoComplete='lname'
               />
@@ -98,6 +108,7 @@ export default function RequestQuote() {
                 fullWidth
                 id='email'
                 label='Email Address'
+                onChange={handleChange}
                 name='email'
                 autoComplete='email'
               />
@@ -106,21 +117,33 @@ export default function RequestQuote() {
               <TextareaAutosize
                 defaultValue={form.message}
                 id='message'
+                name='message'
                 style={{ width: '100%' }}
                 rows={6}
+                onChange={handleChange}
                 aria-label='description'
               />
             </Grid>
           </Grid>
-          <Button
-            type='submit'
-            fullWidth
-            variant='contained'
-            color='primary'
-            onClick={handleSubmit}
-            className={classes.submit}>
-            Send
-          </Button>
+          <Reward
+            ref={reward}
+            type='confetti'
+            lifetime={200}
+            decay={0.9}
+            spread={76}
+            startVelocity={48}
+            elementCount={65}
+            elementSize={8}>
+            <Button
+              type='submit'
+              fullWidth
+              variant='contained'
+              color='primary'
+              onClick={handleSubmit}
+              className={classes.submit}>
+              Send
+            </Button>
+          </Reward>
         </form>
       </div>
     </Container>
