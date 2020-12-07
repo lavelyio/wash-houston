@@ -40,8 +40,8 @@ export default function Hero(props) {
   const classes = useStyles()
   const { post } = props
   const paperStyles = isMobile()
-    ? { backgroundImage: `url(${post.image})`, height: '100vh' }
-    : { backgroundImage: `url(${post.image})`, height: '100vh' }
+    ? { backgroundImage: `url(${post.image})`, height: '102vh' }
+    : { backgroundImage: `url(${post.image})`, height: '102vh' }
   return (
     <div className={classes.mainFeaturedPost} style={paperStyles}>
       <Grid

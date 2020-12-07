@@ -7,8 +7,8 @@ import ListSubheader from '@material-ui/core/ListSubheader'
 import IconButton from '@material-ui/core/IconButton'
 import InfoIcon from '@material-ui/icons/Info'
 import { ParallaxBanner, ParallaxProvider } from 'react-scroll-parallax'
-
 import { Container, Typography } from '@material-ui/core'
+import { isMobile } from '../../utils'
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -20,6 +20,7 @@ const useStyles = makeStyles((theme) => ({
   },
   gridList: {
     height: '70%',
+    display: 'flex',
   },
   icon: {
     color: 'rgba(255, 255, 255, 0.54)',
@@ -63,17 +64,19 @@ export default function ServicesGridList() {
               maxWidth='xl'
               style={{
                 padding: '5% 15%',
-                backgroundColor: 'rgba(0,0,0,0.7)',
+                backgroundColor: 'rgba(0,0,0,0.8)',
                 zIndex: 1350,
                 width: '100vw',
               }}>
-              <GridList cellHeight={300} className={classes.gridList}>
+              <GridList className={classes.gridList}>
                 {servicesData.map((tile) => (
-                  <GridListTile key={tile.src}>
+                  <GridListTile
+                    key={tile.src}
+                    style={{ width: isMobile() ? '300px' : '400px', borderRadius: '6px' }}>
                     <img src={tile.src} alt={tile.title} />
                     <GridListTileBar
                       title={tile.title}
-                      subtitle={<span>by: {tile?.author}</span>}
+                      subtitle={<span>{tile.meta}</span>}
                       actionIcon={
                         <IconButton
                           aria-label={`info about ${tile.title}`}
