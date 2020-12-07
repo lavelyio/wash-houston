@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 const sgMail = require('@sendgrid/mail')
 
 export default async function (req, res) {
