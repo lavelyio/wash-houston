@@ -58,7 +58,7 @@ export default function Hero(props) {
             <Typography component='h1' variant='h3' color='inherit' gutterBottom>
               {post.title}
             </Typography>
-            <Typography variant='h5' color='inherit' paragraph gutterBottom>
+            <Typography variant='p' color='inherit' paragraph gutterBottom>
               {post.description}
             </Typography>
             <Button size='large' color='secondary' variant='contained'>
