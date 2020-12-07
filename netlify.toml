@@ -1,7 +1,7 @@
 [build]
   command = "yarn build"
   publish = "out"
-  functions = "./pages/api"
+  functions = "functions"
 
 [[plugins]]
 package = "@netlify/plugin-sitemap"

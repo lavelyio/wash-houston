@@ -47,7 +47,7 @@ export default function RequestQuote() {
     if (e) e.preventDefault()
 
     try {
-      const resp = await axios.post('/api/send', {
+      const resp = await axios.post('/.netlify/functions/sendgrid', {
         ...form,
         date: new Date().toDateString(),
       })
