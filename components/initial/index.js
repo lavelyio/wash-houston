@@ -1,4 +1,5 @@
-import React, { lazy } from 'react'
+import React from 'react'
+import dynamic from 'next/dynamic'
 import { makeStyles } from '@material-ui/core/styles'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import Grid from '@material-ui/core/Grid'
@@ -10,13 +11,13 @@ import { post1, post2, post3 } from '../posts'
 import { ParallaxProvider, ParallaxBanner } from 'react-scroll-parallax'
 import { Typography } from '@material-ui/core'
 
-const Header = lazy(() => import('../header'))
-const Hero = lazy(() => import('../hero'))
-const ServicesGridList = lazy(() => import('../services/ServicesGridList'))
-const Main = lazy(() => import('../main'))
-const Sidebar = lazy(() => import('../sidebar'))
-const Footer = lazy(() => import('../footer'))
-const Gallery = lazy(() => import('../gallery'))
+const Header = dynamic(() => import('../header'))
+const Hero = dynamic(() => import('../hero'))
+const ServicesGridList = dynamic(() => import('../services/ServicesGridList'))
+const Main = dynamic(() => import('../main'))
+const Sidebar = dynamic(() => import('../sidebar'))
+const Footer = dynamic(() => import('../footer'))
+const Gallery = dynamic(() => import('../gallery'))
 
 const useStyles = makeStyles((theme) => ({
   mainGrid: {
