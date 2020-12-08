@@ -2,7 +2,7 @@
   command = "yarn build"
   publish = "out"
   functions = "functions"
-
+  env = "production"
 [[plugins]]
 package = "@netlify/plugin-sitemap"
 

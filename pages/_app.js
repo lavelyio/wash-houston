@@ -61,10 +61,7 @@ export default class App extends NextApp {
           <Head>
             <meta charSet='utf-8' />
             <meta httpEquiv='X-UA-Compatible' content='IE=edge' />
-            <meta
-              name='viewport'
-              content='width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no'
-            />
+            <meta name='viewport' content='width=device-width,initial-scale=1' />
             <meta
               name='description'
               content="The Greater Houston Area's Most Trusted Power Cleaning, Pressure Washing Company"
@@ -76,10 +73,6 @@ export default class App extends NextApp {
             <meta name='author' content='Wash Houston' />
             <meta name='copyright' content='Houston Wash Services, LLC' />
             <meta name='robots' content='index,follow' />
-            <meta
-              name='keywords'
-              content='Pressure Wash Power Washing Houston Texas Cleaning Residential Power Washing'
-            />
             <title>Wash Houston</title>
 
             {/* Android */}
@@ -124,6 +117,12 @@ export default class App extends NextApp {
             {/* Orientation */}
             <meta name='screen-orientation' content='portrait' />
             <link rel='manifest' href='dunplab-manifest-35608.json' />
+
+            <link rel='preconnect' href='https://fonts.gstatic.com' />
+            <link
+              href='https://fonts.googleapis.com/css2?family=Hind+Vadodara&family=Roboto&display=swap'
+              rel='stylesheet'
+            />
           </Head>
           <CssBaseline />
           <Component {...pageProps} />
