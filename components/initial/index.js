@@ -16,7 +16,7 @@ const ServicesGridList = lazy(() => import('../services/ServicesGridList'))
 const Main = lazy(() => import('../main'))
 const Sidebar = lazy(() => import('../sidebar'))
 const Footer = lazy(() => import('../footer'))
-const Gallery = = lazy(() => import('../gallery'))
+const Gallery = lazy(() => import('../gallery'))
 
 const useStyles = makeStyles((theme) => ({
   mainGrid: {
