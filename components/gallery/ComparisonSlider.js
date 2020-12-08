@@ -46,8 +46,8 @@ const ComparisonSlider = (props) => {
       <Suspense fallback={<p>Loading</p>}>
         <Card className={classes.card} style={dimensions}>
           <ImageSlider
-            image1={`${window.location.href}images/compare/drivethrough-after.png`}
-            image2={`${window.location.href}images/compare/drivethrough-before.png`}
+            image1={`${window.location.href}images/compare/drivethrough-after.webp`}
+            image2={`${window.location.href}images/compare/drivethrough-before.webp`}
             sliderWidth={1}
             sliderColor='red'
             handleColor='red'

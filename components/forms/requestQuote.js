@@ -31,15 +31,17 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
+const initialForm = {
+  firstName: '',
+  lastName: '',
+  email: '',
+  message: '',
+}
+
 export default function RequestQuote() {
   const classes = useStyles()
 
-  const [form, updateForm] = React.useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    message: '',
-  })
+  const [form, updateForm] = React.useState(initialForm)
   const [submitError, setSubmitError] = React.useState(null)
   const [submitOK, setSubmitOK] = React.useState(false)
   const reward = React.useRef(null)
@@ -57,6 +59,7 @@ export default function RequestQuote() {
       setSubmitOK(true)
       try {
         formRef.current.reset()
+        updateForm(initialForm)
       } catch (err) {
         console.error(err)
       }

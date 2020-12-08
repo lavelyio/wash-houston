@@ -20,6 +20,7 @@ import { Typography } from '@material-ui/core'
 const useStyles = makeStyles((theme) => ({
   mainGrid: {
     marginTop: theme.spacing(3),
+    background: '#fefefe',
   },
   parallaxChildren: {
     position: 'absolute',
@@ -39,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
   },
   mural: {
-    height: '50vh',
+    height: '70vh',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
@@ -71,7 +72,7 @@ const mainFeaturedPost = {
   description: `We live and breathe Houston, and take pride in our city. Thats why we're Greater Houston Area's first choice for top quality pressure washing, 
         roof cleaning, and exterior property restoration services for residential and commercial customers. Let's help celebrate our city's culture by
         keeping it clean.`,
-  image: '/images/spacecity-bg.jpg',
+  image: '/images/spacecity-bg.webp',
   imgText: 'main image description',
   linkText: 'Contact Us',
 }
@@ -133,48 +134,46 @@ export default function Initial() {
   const classes = useStyles()
 
   return (
-    <>
-      <ParallaxProvider>
-        <Header title='Wash Houston' sections={sections} />
-        <Hero post={mainFeaturedPost} />
-        <ParallaxBanner
-          className={classes.mural}
-          layers={[
-            {
-              image: '/images/murals/Houston-Heights-Mural-mobile.jpg',
-              amount: 0.2,
-            },
-          ]}>
-          <div
-            style={{
-              minHeight: '100%',
-              display: 'flex',
-              flexDirection: 'column',
-              zIndex: 1300,
-              justifyContent: 'center',
-            }}>
-            <Container style={{ backgroundColor: 'rgba(245, 245, 245, 0.8)' }}>
-              <Typography color='secondary' variant='h4'>
-                Maintaining local treasures is a goal of ours
-              </Typography>
-            </Container>
-          </div>
-        </ParallaxBanner>
-        <ServicesGridList />
-        <Gallery />
-        <Container maxWidth='lg'>
-          <Grid container spacing={5} className={classes.mainGrid}>
-            <Main title='From the nozzle' posts={posts} />
-            <Sidebar
-              title={sidebar.title}
-              description={sidebar.description}
-              archives={sidebar.archives}
-              social={sidebar.social}
-            />
-          </Grid>
-        </Container>
-        <Footer title='Footer' description='Something here to give the footer a purpose!' />
-      </ParallaxProvider>
-    </>
+    <ParallaxProvider>
+      <Header title='Wash Houston' sections={sections} />
+      <Hero post={mainFeaturedPost} />
+      <ParallaxBanner
+        className={classes.mural}
+        layers={[
+          {
+            image: '/images/murals/Houston-Heights-Mural-mobile.webp',
+            amount: 0.2,
+          },
+        ]}>
+        <div
+          style={{
+            minHeight: '100%',
+            display: 'flex',
+            flexDirection: 'column',
+            zIndex: 1300,
+            justifyContent: 'center',
+          }}>
+          <Container style={{ backgroundColor: 'rgba(245, 245, 245, 0.8)' }}>
+            <Typography color='secondary' variant='h4'>
+              Maintaining local treasures is a goal of ours
+            </Typography>
+          </Container>
+        </div>
+      </ParallaxBanner>
+      <ServicesGridList />
+      <Gallery />
+      <Container maxWidth='lg'>
+        <Grid container spacing={5} className={classes.mainGrid}>
+          <Main title='From the nozzle' posts={posts} />
+          <Sidebar
+            title={sidebar.title}
+            description={sidebar.description}
+            archives={sidebar.archives}
+            social={sidebar.social}
+          />
+        </Grid>
+      </Container>
+      <Footer title='Footer' description='Something here to give the footer a purpose!' />
+    </ParallaxProvider>
   )
 }

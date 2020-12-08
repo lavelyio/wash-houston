@@ -13,6 +13,8 @@ import IconButton from '@material-ui/core/IconButton'
 import StarBorderIcon from '@material-ui/icons/StarBorderOutlined'
 import { Typography } from '@material-ui/core'
 
+const mobile = isMobile()
+
 // { height: 600, width: isMobile() ? 400 : 650 }
 const useStyles = makeStyles((theme) => ({
   bannerBg: {
@@ -22,15 +24,25 @@ const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
     flexWrap: 'wrap',
-    height: '100vh',
+    height: '100%',
     justifyContent: 'space-around',
     overflow: 'hidden',
+    padding: '0px 10%',
   },
   gridList: {
     flexWrap: 'nowrap',
     // Promote the list into his own layer on Chrome. This cost memory but helps keeping high FPS.
     transform: 'translateZ(0)',
   },
+  gridItem: mobile
+    ? {
+        height: 250,
+        width: 200,
+      }
+    : {
+        height: 400,
+        width: 600,
+      },
   title: {
     color: theme.palette.primary,
   },
@@ -41,16 +53,16 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 const images = [
-  { title: 'Buisness Lot', cols: 2, src: 'images/gallery/commercial-1.png' },
-  { title: 'Residential Sidewalk', cols: 1, src: 'images/gallery/residential-2.png' },
-  { title: 'Driveway Deep Clean', cols: 1, src: 'images/gallery/residential-1.png' },
-  { title: 'Storefront', cols: 1, src: 'images/gallery/commercial-2.png' },
-  { title: 'Extra Large Lot', cols: 1, src: 'images/gallery/commercial-3.png' },
+  { title: 'Buisness Lot', cols: 2, src: 'images/gallery/commercial-1.webp' },
+  { title: 'Residential Sidewalk', cols: 1, src: 'images/gallery/residential-2.webp' },
+  { title: 'Driveway Deep Clean', cols: 1, src: 'images/gallery/residential-1.webp' },
+  { title: 'Storefront', cols: 1, src: 'images/gallery/commercial-2.webp' },
+  { title: 'Extra Large Lot', cols: 1, src: 'images/gallery/commercial-3.webp' },
 ]
 
 const compareImages = [
-  { src: 'images/compare/drivethrough-before.png' },
-  { src: 'images/compare/drivethrough-after.png' },
+  { src: 'images/compare/drivethrough-before.webp' },
+  { src: 'images/compare/drivethrough-after.webp' },
 ]
 
 const Gallery = (props) => {
@@ -64,22 +76,23 @@ const Gallery = (props) => {
         className={classes.bannerBg}
         layers={[
           {
-            image: '/images/murals/Para-Mi-Gente.png',
+            image: '/images/murals/Para-Mi-Gente.webp',
             amount: 0.2,
             children: (
-              <div
+              <Container
                 style={{
-                  height: '100vh',
-                  marginTop: 30,
+                  height: '100%',
+                  paddingTop: 30,
+                  margin: '0 auto',
                   display: 'flex',
                   flexDirection: 'column',
                   zIndex: 1300,
                   justifyContent: 'center',
                 }}>
-                <ComparisonSlider />
+                <ComparisonSlider isMobile={mobile} />
                 <GridList className={classes.gridList} cols={2.5}>
                   {images.map((tile) => (
-                    <GridListTile key={tile.img}>
+                    <GridListTile key={tile.img} className={classes.gridItem}>
                       <img src={tile.src} alt={tile.title} />
                       <GridListTileBar
                         title={tile.title}
@@ -91,7 +104,7 @@ const Gallery = (props) => {
                     </GridListTile>
                   ))}
                 </GridList>
-              </div>
+              </Container>
             ),
           },
         ]}

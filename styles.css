@@ -1,12 +1,33 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto+Mono:400,700');
+@import url('https://fonts.googleapis.com/css2?family=Hind+Vadodara&family=Roboto&display=swap');
 :global html {
   height: 100%;
+  --light: 80;
+  /* the threshold at which colors are considered "light." Range: integers from 0 to 100,
+recommended 50 - 70 */
+  --threshold: 70;
 }
 :global body,
 :global #root {
   display: flex;
   min-width: 100%;
   min-height: 100%;
+}
+
+:global h1,
+h2,
+h3,
+h4 {
+  font-family: 'Hind Vadodara', sans-serif;
+}
+:global h5,
+h6,
+p {
+  font-family: 'Roboto', sans-serif;
+}
+
+:global .hero-callout {
+  --switch: calc((var(--light) - var(--threshold)) * -100%);
+  color: hsl(0, 0%, var(--switch));
 }
 
 :global .scroll-container {

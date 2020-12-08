@@ -45,29 +45,43 @@ const useStyles = makeStyles((theme) => ({
 export default function Hero(props) {
   const classes = useStyles()
   const { post } = props
-  const paperStyles = isMobile()
+  const mobile = isMobile()
+  const paperStyles = mobile
     ? { backgroundImage: `url(${post.image})`, height: '102vh' }
     : { backgroundImage: `url(${post.image})`, height: '102vh' }
   return (
     <div className={classes.mainFeaturedPost} style={paperStyles}>
-      <Grid
-        container
-        style={{
-          padding: 10,
-          height: paperStyles.height - 20,
-        }}>
+      <Grid container>
         <div className={classes.mainFeaturedPostContent}>
-          <Typography component='h1' variant='h3' color='inherit' gutterBottom>
+          <Typography
+            variant='h1'
+            style={{ fontSize: mobile ? 'inherit' : '7em' }}
+            className='hero-callout'
+            gutterBottom>
             {post.title}
           </Typography>
-          <Typography variant='p' color='inherit' paragraph gutterBottom>
+          <Typography
+            variant='p'
+            style={{
+              width: mobile ? 355 : '65%',
+              overflowWrap: 'break-word',
+              fontSize: mobile ? 'inherit' : '2.2em',
+            }}
+            color='inherit'
+            className='hero-callout'
+            paragraph
+            gutterBottom>
             {post.description}
           </Typography>
           <Button
             size='large'
             color='secondary'
             variant='contained'
-            style={{ width: '150px', position: 'absolute', bottom: '4rem' }}>
+            style={{
+              width: mobile ? 150 : 250,
+              position: 'absolute',
+              bottom: '4rem',
+            }}>
             {post.linkText}
           </Button>
         </div>
