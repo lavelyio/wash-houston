@@ -36,6 +36,7 @@ const initialForm = {
   lastName: '',
   email: '',
   message: '',
+  requestedDate: new Date().toUTCString(),
 }
 
 export default function RequestQuote() {
@@ -127,11 +128,25 @@ export default function RequestQuote() {
               />
             </Grid>
             <Grid item xs={12}>
+              <TextField
+                id='datetime-local'
+                label='Availability'
+                type='datetime-local'
+                name='requestedDate'
+                defaultValue={form.requestedDate}
+                className={classes.textField}
+                InputLabelProps={{
+                  shrink: true,
+                }}
+                onChange={handleChange}
+              />
+            </Grid>
+            <Grid item xs={12}>
               <TextareaAutosize
                 defaultValue={form.message}
                 id='message'
                 name='message'
-                style={{ width: '100%' }}
+                style={{ width: '100%', padding: 5 }}
                 rows={6}
                 onChange={handleChange}
                 aria-label='description'
