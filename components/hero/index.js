@@ -1,13 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { makeStyles } from '@material-ui/core/styles'
-import Paper from '@material-ui/core/Paper'
 import Typography from '@material-ui/core/Typography'
 import Grid from '@material-ui/core/Grid'
 import Button from '@material-ui/core/Button'
 import { isMobile } from '../../utils'
-import Link from '@material-ui/core/Link'
-import { Container } from '@material-ui/core'
 
 const useStyles = makeStyles((theme) => ({
   mainFeaturedPost: {

@@ -9,7 +9,6 @@ import InfoIcon from '@material-ui/icons/Info'
 import { ParallaxBanner, ParallaxProvider } from 'react-scroll-parallax'
 import { Container, Typography } from '@material-ui/core'
 import { isMobile } from '../../utils'
-import Image from 'next/image'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -103,7 +102,7 @@ export default function ServicesGridList() {
         <GridList className={classes.gridList} spacing={10}>
           {servicesData.map((tile) => (
             <GridListTile key={tile.src} className={classes.gridTile}>
-              <Image src={tile.src} alt={tile.title} layout='fill' className={classes.tileImg} />
+              <img src={tile.src} alt={tile.title} className={classes.tileImg} />
               <GridListTileBar
                 title={tile.title}
                 subtitle={<span>{tile.meta}</span>}
