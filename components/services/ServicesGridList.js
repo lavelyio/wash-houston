@@ -28,8 +28,8 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
   },
   gridTitle: {
-    color: theme.palette.common.white,
-    content: 'Our Tailored Approach',
+    color: '#fff',
+    textShadow: '1px 1px black',
     [theme.breakpoints.up('sm')]: {
       fontSize: '6vw',
     },

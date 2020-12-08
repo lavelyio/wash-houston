@@ -7,11 +7,11 @@ import Grid from '@material-ui/core/Grid'
 import Button from '@material-ui/core/Button'
 import { isMobile } from '../../utils'
 import Link from '@material-ui/core/Link'
+import { Container } from '@material-ui/core'
 
 const useStyles = makeStyles((theme) => ({
   mainFeaturedPost: {
     position: 'relative',
-
     backgroundColor: theme.palette.grey[800],
     color: '#d0d0d2',
     backgroundSize: 'cover',
@@ -53,14 +53,14 @@ export default function Hero(props) {
   return (
     <div className={classes.mainFeaturedPost} style={paperStyles}>
       <Grid container>
-        <div className={classes.mainFeaturedPostContent}>
-          <Typography variant='h1' className='hero-callout' gutterBottom>
+        <Grid item className={classes.mainFeaturedPostContent}>
+          <Typography variant='h1' gutterBottom>
             {post.title}
           </Typography>
           <Typography
             variant='h5'
             style={{
-              width: mobile ? 355 : '70%',
+              width: '70%',
               overflowWrap: 'break-word',
             }}
             color='inherit'
@@ -69,18 +69,19 @@ export default function Hero(props) {
             gutterBottom>
             {post.description}
           </Typography>
+
           <Button
             size='large'
             color='secondary'
             variant='contained'
             style={{
-              width: mobile ? 150 : 250,
+              width: '40vw',
               position: 'absolute',
               bottom: '4rem',
             }}>
             {post.linkText}
           </Button>
-        </div>
+        </Grid>
       </Grid>
       <div className='scroll-down' />
     </div>

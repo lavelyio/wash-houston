@@ -27,7 +27,7 @@ p {
   font-family: 'Roboto', sans-serif;
 }
 
-:global .hero-callout {
+.hero-callout {
   --switch: calc((var(--light) - var(--threshold)) * -100%);
   color: hsl(0, 0%, var(--switch));
   text-shadow: 1px 1px black;
