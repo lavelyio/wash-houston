@@ -34,6 +34,7 @@
     "react-optimized-image": "^0.4.1",
     "react-rewards": "^1.1.2",
     "react-scroll-parallax": "^2.3.5",
+    "styled-components": "^5.2.1",
     "ua-parser-js": "^0.7.22",
     "url-loader": "^2.1.0",
     "webfontloader": "^1.6.28"

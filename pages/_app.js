@@ -67,8 +67,15 @@ export default class App extends NextApp {
             />
             <meta
               name='description'
-              content="The Greater Houston Area's premier Pressure Washing Service. Residential and Commercial services are offered."
+              content="The Greater Houston Area's Most Trusted Power Cleaning, Pressure Washing Company"
             />
+            <meta
+              name='keywords'
+              content='Pressure Washing, Power Washing, Cleaning, Houston Texas, Cleaning, Wash, Pressure Wash, Power Wash, Power'
+            />
+            <meta name='author' content='Wash Houston' />
+            <meta name='copyright' content='Houston Wash Services, LLC' />
+            <meta name='robots' content='index,follow' />
             <meta
               name='keywords'
               content='Pressure Wash Power Washing Houston Texas Cleaning Residential Power Washing'
@@ -116,6 +123,7 @@ export default class App extends NextApp {
 
             {/* Orientation */}
             <meta name='screen-orientation' content='portrait' />
+            <link rel='manifest' href='dunplab-manifest-35608.json' />
           </Head>
           <CssBaseline />
           <Component {...pageProps} />

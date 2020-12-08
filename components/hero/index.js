@@ -25,11 +25,11 @@ const useStyles = makeStyles((theme) => ({
   },
   mainFeaturedPostContent: {
     position: 'absolute',
-    padding: theme.spacing(5),
+    padding: theme.spacing(4),
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
-    height: '100%',
+    height: '100vh',
     width: '100vw',
     [theme.breakpoints.up('md')]: {
       padding: theme.spacing(6),
