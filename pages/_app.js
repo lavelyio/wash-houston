@@ -37,8 +37,9 @@ const desktopMuiTheme = createMuiTheme({
   },
 })
 
-export default class App extends NextApp {
-  static async getInitialProps(ctx) {
+import { useEffect } from 'react'
+function MyApp({ Component, pageProps }) {
+  const getInitialProps = async (ctx) => {
     // I'm guessing on this line based on your _document.js example
     const initialProps = await NextApp.getInitialProps(ctx)
     // OP's edit: The ctx that we really want is inside the function parameter "ctx"
@@ -46,79 +47,89 @@ export default class App extends NextApp {
     // I'm guessing on the pageProps key here based on a couple examples
     return { pageProps: { ...initialProps, deviceType } }
   }
-  componentDidMount() {
+
+  useEffect(() => {
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function () {
+        navigator.serviceWorker.register('/sw.js').then(
+          function (registration) {
+            console.log('Service Worker registration successful with scope: ', registration.scope)
+          },
+          function (err) {
+            console.log('Service Worker registration failed: ', err)
+          }
+        )
+      })
+    }
     const jssStyles = document.querySelector('#jss-server-side')
     if (jssStyles && jssStyles.parentNode) jssStyles.parentNode.removeChild(jssStyles)
-  }
+  }, [])
 
-  render() {
-    const { Component, pageProps } = this.props
+  return (
+    <MuiThemeProvider theme={pageProps.deviceType === 'mobile' ? mobileMuiTheme : desktopMuiTheme}>
+      <ThemeProvider theme={theme}>
+        <Head>
+          <meta charSet='utf-8' />
+          <meta httpEquiv='X-UA-Compatible' content='IE=edge' />
+          <meta name='viewport' content='minimum-scale=1, initial-scale=1, width=device-width' />
+          <meta
+            name='description'
+            content="The Greater Houston Area's Most Trusted Power Cleaning, Pressure Washing Company"
+          />
+          <meta
+            name='keywords'
+            content='Pressure Washing, Power Washing, Cleaning, Houston Texas, Cleaning, Wash, Pressure Wash, Power Wash, Power'
+          />
+          <meta name='author' content='Wash Houston' />
+          <meta name='copyright' content='Houston Wash Services, LLC' />
+          <meta name='robots' content='index,follow' />
+          <title>Wash Houston</title>
 
-    return (
-      <MuiThemeProvider
-        theme={pageProps.deviceType === 'mobile' ? mobileMuiTheme : desktopMuiTheme}>
-        <ThemeProvider theme={theme}>
-          <Head>
-            <meta charSet='utf-8' />
-            <meta httpEquiv='X-UA-Compatible' content='IE=edge' />
-            <meta name='viewport' content='minimum-scale=1, initial-scale=1, width=device-width' />
-            <meta
-              name='description'
-              content="The Greater Houston Area's Most Trusted Power Cleaning, Pressure Washing Company"
-            />
-            <meta
-              name='keywords'
-              content='Pressure Washing, Power Washing, Cleaning, Houston Texas, Cleaning, Wash, Pressure Wash, Power Wash, Power'
-            />
-            <meta name='author' content='Wash Houston' />
-            <meta name='copyright' content='Houston Wash Services, LLC' />
-            <meta name='robots' content='index,follow' />
-            <title>Wash Houston</title>
+          {/* Android */}
+          <meta name='theme-color' content='red' />
+          <meta name='mobile-web-app-capable' content='yes' />
 
-            {/* Android */}
-            <meta name='theme-color' content='red' />
-            <meta name='mobile-web-app-capable' content='yes' />
+          {/* iOS */}
+          <meta name='apple-mobile-web-app-title' content='Application Title' />
+          <meta name='apple-mobile-web-app-capable' content='yes' />
+          <meta name='apple-mobile-web-app-status-bar-style' content='default' />
 
-            {/* iOS */}
-            <meta name='apple-mobile-web-app-title' content='Application Title' />
-            <meta name='apple-mobile-web-app-capable' content='yes' />
-            <meta name='apple-mobile-web-app-status-bar-style' content='default' />
+          {/* Windows */}
+          <meta name='msapplication-navbutton-color' content='red' />
+          <meta name='msapplication-TileColor' content='red' />
+          <meta name='msapplication-TileImage' content='ms-icon-144x144.png' />
+          <meta name='msapplication-config' content='browserconfig.xml' />
 
-            {/* Windows */}
-            <meta name='msapplication-navbutton-color' content='red' />
-            <meta name='msapplication-TileColor' content='red' />
-            <meta name='msapplication-TileImage' content='ms-icon-144x144.png' />
-            <meta name='msapplication-config' content='browserconfig.xml' />
+          {/* Pinned Sites */}
+          <meta name='application-name' content='Application Name' />
+          <meta name='msapplication-tooltip' content='Tooltip Text' />
+          <meta name='msapplication-starturl' content='/' />
 
-            {/* Pinned Sites */}
-            <meta name='application-name' content='Application Name' />
-            <meta name='msapplication-tooltip' content='Tooltip Text' />
-            <meta name='msapplication-starturl' content='/' />
+          {/* Tap highlighting */}
+          <meta name='msapplication-tap-highlight' content='no' />
 
-            {/* Tap highlighting */}
-            <meta name='msapplication-tap-highlight' content='no' />
+          {/* UC Mobile Browser */}
+          <meta name='full-screen' content='yes' />
+          <meta name='browsermode' content='application' />
 
-            {/* UC Mobile Browser */}
-            <meta name='full-screen' content='yes' />
-            <meta name='browsermode' content='application' />
+          {/* Disable night mode for this page */}
+          <meta name='nightmode' content='enable/disable' />
 
-            {/* Disable night mode for this page */}
-            <meta name='nightmode' content='enable/disable' />
+          {/* Orientation */}
+          <meta name='screen-orientation' content='portrait' />
+          <link rel='manifest' href='dunplab-manifest-35608.json' />
 
-            {/* Orientation */}
-            <meta name='screen-orientation' content='portrait' />
-            <link rel='manifest' href='dunplab-manifest-35608.json' />
-
-            <link rel='preconnect' href='https://fonts.gstatic.com' />
-            <link
-              href='https://fonts.googleapis.com/css2?family=Hind+Vadodara&family=Roboto&display=swap'
-              rel='stylesheet'
-            />
-          </Head>
-          <CssBaseline />
-          <Component {...pageProps} />
-        </ThemeProvider>
-      </MuiThemeProvider>
-    )
-  }
+          <link rel='preconnect' href='https://fonts.gstatic.com' />
+          <link
+            href='https://fonts.googleapis.com/css2?family=Hind+Vadodara&family=Roboto&display=swap'
+            rel='stylesheet'
+          />
+        </Head>
+        <CssBaseline />
+        <Component {...pageProps} />
+      </ThemeProvider>
+    </MuiThemeProvider>
+  )
 }
+
+export default MyApp
