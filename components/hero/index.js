@@ -39,6 +39,7 @@ const useStyles = makeStyles((theme) => ({
       padding: theme.spacing(6),
       paddingRight: 0,
     },
+    textShadow: '1px 1px black',
   },
 }))
 
@@ -47,25 +48,20 @@ export default function Hero(props) {
   const { post } = props
   const mobile = isMobile()
   const paperStyles = mobile
-    ? { backgroundImage: `url(${post.image})`, height: '102vh' }
-    : { backgroundImage: `url(${post.image})`, height: '102vh' }
+    ? { backgroundImage: `url(${post.image})`, height: '100vh' }
+    : { backgroundImage: `url(${post.image})`, height: '100vh' }
   return (
     <div className={classes.mainFeaturedPost} style={paperStyles}>
       <Grid container>
         <div className={classes.mainFeaturedPostContent}>
-          <Typography
-            variant='h1'
-            style={{ fontSize: mobile ? 'inherit' : '7em' }}
-            className='hero-callout'
-            gutterBottom>
+          <Typography variant='h1' className='hero-callout' gutterBottom>
             {post.title}
           </Typography>
           <Typography
-            variant='p'
+            variant='h5'
             style={{
-              width: mobile ? 355 : '65%',
+              width: mobile ? 355 : '70%',
               overflowWrap: 'break-word',
-              fontSize: mobile ? 'inherit' : '2.2em',
             }}
             color='inherit'
             className='hero-callout'

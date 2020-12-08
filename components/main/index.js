@@ -10,6 +10,9 @@ const useStyles = makeStyles((theme) => ({
     ...theme.typography.body2,
     padding: theme.spacing(3, 0),
   },
+  title: {
+    color: theme.palette.lightGrey.main,
+  },
 }))
 
 export default function Main(props) {
@@ -18,7 +21,7 @@ export default function Main(props) {
 
   return (
     <Grid item xs={12} md={8}>
-      <Typography variant='h4' gutterBottom>
+      <Typography variant='h3' gutterBottom>
         {title}
       </Typography>
       <Divider />

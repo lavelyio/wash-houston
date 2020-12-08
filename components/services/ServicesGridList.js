@@ -9,6 +9,7 @@ import InfoIcon from '@material-ui/icons/Info'
 import { ParallaxBanner, ParallaxProvider } from 'react-scroll-parallax'
 import { Container, Typography } from '@material-ui/core'
 import { isMobile } from '../../utils'
+import Image from 'next/image'
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -26,6 +27,37 @@ const useStyles = makeStyles((theme) => ({
     flexFlow: 'row wrap',
     width: '100%',
   },
+  gridTitle: {
+    color: theme.palette.common.white,
+    content: 'Our Tailored Approach',
+    [theme.breakpoints.up('sm')]: {
+      fontSize: '6vw',
+    },
+    [theme.breakpoints.down('sm')]: {
+      fontSize: '9vw',
+    },
+  },
+  gridTile: {
+    flexGrow: 1,
+    marginTop: 5,
+    marginBottom: 5,
+    height: '40vh',
+    [theme.breakpoints.down('sm')]: {
+      minWidth: 320,
+      minHeight: 275,
+    },
+    [theme.breakpoints.up('sm')]: {
+      minWidth: 500,
+      minHeight: '40vh',
+    },
+  },
+  tileImg: {
+    borderRadius: '6px',
+    [theme.breakpoints.down('sm')]: {
+      minWidth: 350,
+      minHeight: 275,
+    },
+  },
   tileBar: {
     height: '30%',
   },
@@ -38,8 +70,8 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 const servicesData = [
-  { title: 'Residential', meta: '', cols: 2, src: 'images/residential-service.webp' },
-  { title: 'Commercial', meta: '', cols: 2, src: 'images/commercial_service.webp' },
+  { title: 'Residential', meta: '', cols: 2, src: '/images/residential-service.webp' },
+  { title: 'Commercial', meta: '', cols: 2, src: '/images/commercial_service.webp' },
 ]
 
 export default function ServicesGridList() {
@@ -66,22 +98,13 @@ export default function ServicesGridList() {
             zIndex: 1300,
             width: '100vw',
           }}>
-          <Typography variant='h2' gutterBottom>
-            A Tailored Approach
+          <Typography variant='h2' className={classes.gridTitle} gutterBottom>
+            Our Tailored Approach
           </Typography>
-          <GridList className={classes.gridList} cols={2} spacing={10}>
+          <GridList className={classes.gridList} spacing={10}>
             {servicesData.map((tile) => (
-              <GridListTile
-                key={tile.src}
-                style={{
-                  marginTop: 10,
-                  marginBottom: 5,
-                  borderRadius: '6px',
-                  height: '40vh',
-                  boxShadow:
-                    '0px 3px 3px -2px rgba(0,0,0,0.2), 0px 3px 4px 0px rgba(0,0,0,0.14), 0px 1px 8px 0px rgba(0,0,0,0.12)',
-                }}>
-                <img src={tile.src} alt={tile.title} />
+              <GridListTile key={tile.src} className={classes.gridTile}>
+                <Image src={tile.src} alt={tile.title} layout='fill' className={classes.tileImg} />
                 <GridListTileBar
                   title={tile.title}
                   subtitle={<span>{tile.meta}</span>}

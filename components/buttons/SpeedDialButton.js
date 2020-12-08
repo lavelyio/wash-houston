@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 const actions = [
-  { icon: <MailIcon />, name: 'Send us a Message' },
+  { icon: <MailIcon />, name: 'Send us a Message', link: 'mailto:contact@houstonwash.com' },
   { icon: <CallOutlineIcon />, name: 'Call Us', link: 'tel:+1-936-346-5322' },
   { icon: <ShareIcon />, name: 'Share with friends' },
 ]
@@ -70,9 +70,9 @@ export default function SpeedDialButton() {
                 key={action.name}
                 icon={action.icon}
                 tooltipTitle={action.name}
-                onClick={handleClose}>
-                <Link to={action.link} />
-              </SpeedDialAction>
+                onClick={(e) => {
+                  window.location.href = action.link
+                }}></SpeedDialAction>
             )
           }
           return (
