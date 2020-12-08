@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { lazy } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import Grid from '@material-ui/core/Grid'
@@ -6,16 +6,17 @@ import Container from '@material-ui/core/Container'
 import GitHubIcon from '@material-ui/icons/GitHub'
 import FacebookIcon from '@material-ui/icons/Facebook'
 import TwitterIcon from '@material-ui/icons/Twitter'
-import Header from '../header'
-import Hero from '../hero'
-import ServicesGridList from '../services/ServicesGridList'
-import Main from '../main'
-import Sidebar from '../sidebar'
-import Footer from '../footer'
 import { post1, post2, post3 } from '../posts'
 import { ParallaxProvider, ParallaxBanner } from 'react-scroll-parallax'
-import Gallery from '../gallery'
 import { Typography } from '@material-ui/core'
+
+const Header = lazy(() => import('../header'))
+const Hero = lazy(() => import('../hero'))
+const ServicesGridList = lazy(() => import('../services/ServicesGridList'))
+const Main = lazy(() => import('../main'))
+const Sidebar = lazy(() => import('../sidebar'))
+const Footer = lazy(() => import('../footer'))
+const Gallery = = lazy(() => import('../gallery'))
 
 const useStyles = makeStyles((theme) => ({
   mainGrid: {
