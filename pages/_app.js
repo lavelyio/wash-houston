@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types'
 import NextApp from 'next/app'
 import Head from 'next/head'
 import React from 'react'
@@ -60,9 +59,63 @@ export default class App extends NextApp {
         theme={pageProps.deviceType === 'mobile' ? mobileMuiTheme : desktopMuiTheme}>
         <ThemeProvider theme={theme}>
           <Head>
-            {' '}
+            <meta charset='utf-8' />
+            <meta http-equiv='X-UA-Compatible' content='IE=edge' />
+            <meta
+              name='viewport'
+              content='width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no'
+            />
+            <meta
+              name='description'
+              content="The Greater Houston Area's premier Pressure Washing Service. Residential and Commercial services are offered."
+            />
+            <meta
+              name='keywords'
+              content='Pressure Wash Power Washing Houston Texas Cleaning Residential Power Washing'
+            />
             <title>Wash Houston</title>
-            <meta name='viewport' content='minimum-scale=1, initial-scale=1, width=device-width' />
+
+            {/* Android */}
+            <meta name='theme-color' content='red' />
+            <meta name='mobile-web-app-capable' content='yes' />
+
+            {/* iOS */}
+            <meta name='apple-mobile-web-app-title' content='Application Title' />
+            <meta name='apple-mobile-web-app-capable' content='yes' />
+            <meta name='apple-mobile-web-app-status-bar-style' content='default' />
+
+            {/* Windows */}
+            <meta name='msapplication-navbutton-color' content='red' />
+            <meta name='msapplication-TileColor' content='red' />
+            <meta name='msapplication-TileImage' content='ms-icon-144x144.png' />
+            <meta name='msapplication-config' content='browserconfig.xml' />
+
+            {/* Pinned Sites */}
+            <meta name='application-name' content='Application Name' />
+            <meta name='msapplication-tooltip' content='Tooltip Text' />
+            <meta name='msapplication-starturl' content='/' />
+
+            {/* Tap highlighting */}
+            <meta name='msapplication-tap-highlight' content='no' />
+
+            {/* UC Mobile Browser */}
+            <meta name='full-screen' content='yes' />
+            <meta name='browsermode' content='application' />
+
+            {/* Disable night mode for this page */}
+            <meta name='nightmode' content='enable/disable' />
+
+            {/* Fitscreen */}
+            <meta name='viewport' content='uc-fitscreen=yes' />
+
+            {/* Layout mode */}
+            <meta name='layoutmode' content='fitscreen/standard' />
+
+            {/* imagemode - show image even in text only mode */}
+            <meta name='imagemode' content='force' />
+
+            {/* Orientation */}
+            <meta name='screen-orientation' content='portrait' />
           </Head>
           <CssBaseline />
           <Component {...pageProps} />
