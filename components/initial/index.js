@@ -40,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
   },
   mural: {
-    height: '70vh',
+    height: '80vh',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
@@ -142,7 +142,7 @@ export default function Initial() {
         layers={[
           {
             image: '/images/murals/Houston-Heights-Mural-mobile.webp',
-            amount: 0.2,
+            amount: 0.3,
           },
         ]}>
         <div
@@ -153,8 +153,8 @@ export default function Initial() {
             zIndex: 1300,
             justifyContent: 'center',
           }}>
-          <Container style={{ backgroundColor: 'rgba(245, 245, 245, 0.8)' }}>
-            <Typography color='secondary' variant='h4'>
+          <Container>
+            <Typography style={{ color: '#f8f8f8', textShadow: '1px 1px black' }} variant='h3'>
               Maintaining local treasures is a goal of ours
             </Typography>
           </Container>

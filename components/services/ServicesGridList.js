@@ -12,6 +12,17 @@ import { isMobile } from '../../utils'
 import Image from 'next/image'
 
 const useStyles = makeStyles((theme) => ({
+  root: {
+    minHeight: '100vh',
+    display: 'flex',
+    flexDirection: 'column',
+    zIndex: 1300,
+    justifyContent: 'center',
+    backgroundColor: '#d0d0d2',
+    backgroundImage: 'url(images/Tailored-Work.webp)',
+    backgroundSize: 'cover',
+    backgroundRepeat: 'no-repeat',
+  },
   container: {
     paddingLeft: '20%',
     paddingRight: '20%',
@@ -78,48 +89,35 @@ export default function ServicesGridList() {
   const classes = useStyles()
   const mobile = isMobile()
   return (
-    <div className='vertical'>
-      <div
+    <div className={classes.root}>
+      <Container
+        maxWidth='xl'
         style={{
-          minHeight: '100vh',
-          display: 'flex',
-          flexDirection: 'column',
+          padding: '0% 8%',
           zIndex: 1300,
-          justifyContent: 'center',
-          backgroundColor: '#d0d0d2',
-          backgroundImage: 'url(images/Tailored-Work.webp)',
-          backgroundSize: 'cover',
-          backgroundRepeat: 'no-repeat',
+          width: '100vw',
         }}>
-        <Container
-          maxWidth='xl'
-          style={{
-            padding: '0% 8%',
-            zIndex: 1300,
-            width: '100vw',
-          }}>
-          <Typography variant='h2' className={classes.gridTitle} gutterBottom>
-            Our Tailored Approach
-          </Typography>
-          <GridList className={classes.gridList} spacing={10}>
-            {servicesData.map((tile) => (
-              <GridListTile key={tile.src} className={classes.gridTile}>
-                <Image src={tile.src} alt={tile.title} layout='fill' className={classes.tileImg} />
-                <GridListTileBar
-                  title={tile.title}
-                  subtitle={<span>{tile.meta}</span>}
-                  className={classes.tileBar}
-                  actionIcon={
-                    <IconButton aria-label={`info about ${tile.title}`} className={classes.icon}>
-                      <InfoIcon />
-                    </IconButton>
-                  }
-                />
-              </GridListTile>
-            ))}
-          </GridList>
-        </Container>
-      </div>
+        <Typography variant='h2' className={classes.gridTitle} gutterBottom>
+          Our Tailored Approach
+        </Typography>
+        <GridList className={classes.gridList} spacing={10}>
+          {servicesData.map((tile) => (
+            <GridListTile key={tile.src} className={classes.gridTile}>
+              <Image src={tile.src} alt={tile.title} layout='fill' className={classes.tileImg} />
+              <GridListTileBar
+                title={tile.title}
+                subtitle={<span>{tile.meta}</span>}
+                className={classes.tileBar}
+                actionIcon={
+                  <IconButton aria-label={`info about ${tile.title}`} className={classes.icon}>
+                    <InfoIcon />
+                  </IconButton>
+                }
+              />
+            </GridListTile>
+          ))}
+        </GridList>
+      </Container>
     </div>
   )
 }
