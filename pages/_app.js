@@ -61,7 +61,7 @@ export default class App extends NextApp {
           <Head>
             <meta charSet='utf-8' />
             <meta httpEquiv='X-UA-Compatible' content='IE=edge' />
-            <meta name='viewport' content='width=device-width,initial-scale=1' />
+            <meta name='viewport' content='minimum-scale=1, initial-scale=1, width=device-width' />
             <meta
               name='description'
               content="The Greater Houston Area's Most Trusted Power Cleaning, Pressure Washing Company"
@@ -104,15 +104,6 @@ export default class App extends NextApp {
 
             {/* Disable night mode for this page */}
             <meta name='nightmode' content='enable/disable' />
-
-            {/* Fitscreen */}
-            <meta name='viewport' content='uc-fitscreen=yes' />
-
-            {/* Layout mode */}
-            <meta name='layoutmode' content='fitscreen/standard' />
-
-            {/* imagemode - show image even in text only mode */}
-            <meta name='imagemode' content='force' />
 
             {/* Orientation */}
             <meta name='screen-orientation' content='portrait' />

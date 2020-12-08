@@ -7,11 +7,6 @@ import theme from '../theme'
 const Home = () => (
   <>
     <Head>
-      <link
-        rel='stylesheet'
-        href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap'
-      />
-      <link rel='manifest' href='site.webmanifest.json'></link>
       <title>Wash Houston</title>
     </Head>
     <style jsx>{`
