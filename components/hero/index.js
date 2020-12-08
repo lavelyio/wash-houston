@@ -50,7 +50,7 @@ export default function Hero(props) {
     <div className={classes.mainFeaturedPost} style={paperStyles}>
       <Grid container>
         <Grid item className={classes.mainFeaturedPostContent}>
-          <Typography variant='h1' gutterBottom>
+          <Typography variant='h1' style={{ marginTop: 30 }} gutterBottom>
             {post.title}
           </Typography>
           <Typography
@@ -73,7 +73,7 @@ export default function Hero(props) {
             style={{
               width: '40vw',
               position: 'absolute',
-              bottom: '4rem',
+              bottom: '3rem',
             }}>
             {post.linkText}
           </Button>
