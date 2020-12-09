@@ -93,14 +93,14 @@ const Commercial = (props) => {
         <title>Wash Houston - Commercial Services</title>
       </Head>
       <Container style={{ backgroundColor: '#f8f8f8', height: '100%', paddingBottom: 30 }}>
+        <img
+          src={commercial.headerImg}
+          width='100%'
+          height={500}
+          style={{ marginBottom: 20, borderRadius: 4 }}
+        />
         <Container maxWidth='lg' style={{ marginBottom: 30 }}>
           <Paper elevation={4} style={{ padding: 20 }}>
-            <img
-              src={commercial.headerImg}
-              width='100%'
-              height={500}
-              style={{ marginBottom: 20, borderRadius: 4 }}
-            />
             <Box maxWidth='lg' mt={6} style={{ padding: 10 }}>
               <Typography variant='h2' gutterBottom component='h2' color='primary'>
                 {commercial.headerText}
