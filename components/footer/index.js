@@ -3,14 +3,8 @@ import PropTypes from 'prop-types'
 import { makeStyles } from '@material-ui/core/styles'
 import Container from '@material-ui/core/Container'
 import Grid from '@material-ui/core/Grid'
-import Box from '@material-ui/core/Box'
 import Typography from '@material-ui/core/Typography'
 import FavoriteOutlinedIcon from '@material-ui/icons/FavoriteOutlined'
-import GitHubIcon from '@material-ui/icons/GitHub'
-import FacebookIcon from '@material-ui/icons/Facebook'
-import TwitterIcon from '@material-ui/icons/Twitter'
-import List from '@material-ui/core/List'
-import ListItem from '@material-ui/core/ListItem'
 
 import Link from '@material-ui/core/Link'
 
@@ -30,15 +24,6 @@ function Copyright() {
     </Typography>
   )
 }
-
-const useStyles = makeStyles((theme) => ({
-  footer: {
-    backgroundColor: 'rgb(0 0 0 / 80%)',
-    color: theme.palette.lightGrey.main,
-    // marginTop: theme.spacing(8),
-    padding: theme.spacing(4, 2),
-  },
-}))
 
 const content = () => (
   <div class='elementor-row'>
@@ -427,66 +412,116 @@ const footers = [
   },
 ]
 
-const social = [
-  { name: 'GitHub', icon: GitHubIcon },
-  { name: 'Twitter', icon: TwitterIcon },
-  { name: 'Facebook', icon: FacebookIcon },
-]
+const useStyles = makeStyles((theme) => ({
+  root: {
+    display: 'flex',
+    backgroundColor: 'rgba(0,0,0,0.2)',
+  },
+  container: {
+    marginTop: theme.spacing(8),
+    marginBottom: theme.spacing(8),
+    display: 'flex',
+  },
+  iconsWrapper: {
+    height: 120,
+  },
+  icons: {
+    display: 'flex',
+  },
+  icon: {
+    width: 48,
+    height: 48,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgb(25 66 111 / 0.7)',
+    marginRight: theme.spacing(1),
+    '&:hover': {
+      backgroundColor: 'rgb(25 66 111 / 0.9)',
+    },
+  },
+  list: {
+    margin: 0,
+    listStyle: 'none',
+    padding: 0,
+  },
+  listItem: {
+    paddingTop: theme.spacing(0.5),
+    paddingBottom: theme.spacing(0.5),
+  },
+}))
 
-export default function Footer(props) {
+export default function Footer() {
   const classes = useStyles()
-  return (
-    <Container maxWidth='xl' component='footer' className={classes.footer}>
-      <Grid container justify='space-between' spacing={1}>
-        {footers.map((footer) => (
-          <Grid item xs={6} key={footer.title}>
-            <Typography variant='h6' style={{ color: '#fefefe' }} gutterBottom>
-              {footer.title}
-            </Typography>
-            <List dense>
-              {footer.description.map((item) => (
-                <ListItem key={item} style={{ listDecoration: 'none' }}>
-                  <Link href='#' variant='subtitle1' style={{ color: '#f8f8f8' }}>
-                    {item}
-                  </Link>
-                </ListItem>
-              ))}
-            </List>
-          </Grid>
-        ))}
-        <Container item style={{ padding: '10% 10%' }}>
-          <Typography variant='subtitle2' color='inherit'>
-            Consider donating to{' '}
-            <Link to='https://www.artleaguehouston.org/support-us'>Art League of Houston </Link>
-            to help our local Artisans and keep Houston beautiful.{' '}
-            <FavoriteOutlinedIcon style={{ marginLeft: 5, color: 'red' }} />
-          </Typography>
-          {/*
-          <Typography variant='h6' gutterBottom color='inherit' style={{ marginTop: 20 }}>
-            Social
-          </Typography>
-          <div style={{ display: 'flex', flexFlow: 'row wrap', marginTop: 10 }}>
-            {social.map((network) => (
-              <Link
-                display='block'
-                variant='body1'
-                color='inherit'
-                href='#'
-                key={network}
-                style={{ marginLeft: 10 }}>
-                <network.icon />
-              </Link>
-            ))}
-          </div>
-            */}
-        </Container>
-      </Grid>
-      <Copyright />
-    </Container>
-  )
-}
 
-Footer.propTypes = {
-  description: PropTypes.string,
-  title: PropTypes.string,
+  return (
+    <Typography component='footer' className={classes.root}>
+      <Container className={classes.container}>
+        <Grid container spacing={5}>
+          <Grid item xs={6} sm={4} md={3}>
+            <Grid
+              container
+              direction='column'
+              justify='flex-end'
+              className={classes.iconsWrapper}
+              spacing={2}>
+              <Grid item className={classes.icons}>
+                <a href='https://facebook.com/' className={classes.icon}>
+                  <img src='/images/facebook-icon.png' alt='Facebook' />
+                </a>
+                <a href='https://twitter.com/' className={classes.icon}>
+                  <img src='/images/twitter-icon.png' alt='Twitter' />
+                </a>
+              </Grid>
+              <Grid item>
+                <Copyright />
+              </Grid>
+            </Grid>
+          </Grid>
+          <Grid item xs={6} sm={4} md={2}>
+            <Typography variant='h6' marked='left' gutterBottom>
+              Contact
+            </Typography>
+            <ul className={classes.list}>
+              <li className={classes.listItem}>
+                <Link href='/premium-themes/onepirate/terms/'>Terms</Link>
+              </li>
+              <li className={classes.listItem}>
+                <Link href='/premium-themes/onepirate/privacy/'>Privacy</Link>
+              </li>
+            </ul>
+          </Grid>
+          <Grid item xs={6} sm={4} md={2}>
+            <Typography variant='h6' marked='left' gutterBottom>
+              Legal
+            </Typography>
+            <ul className={classes.list}>
+              <li className={classes.listItem}>
+                <Link href='/premium-themes/onepirate/terms/'>Terms</Link>
+              </li>
+              <li className={classes.listItem}>
+                <Link href='/premium-themes/onepirate/privacy/'>Privacy</Link>
+              </li>
+            </ul>
+          </Grid>
+          <Grid item xs={6} sm={8} md={4}>
+            <Typography variant='h6' marked='left' gutterBottom>
+              Murals
+            </Typography>
+            <Typography variant='body2'>
+              Consider donating to{' '}
+              <Link to='https://www.artleaguehouston.org/support-us'>Art League of Houston </Link>
+              to support our local Artisans and keep Houston beautiful.{' '}
+              <FavoriteOutlinedIcon style={{ marginLeft: 5, color: 'red' }} />
+            </Typography>
+          </Grid>
+          <Grid item>
+            <Link href='https://lavely.io' target='_' rel='sponsored' title='LavelyIO'>
+              <img src='/images/developedby_lavelyio.png' height={25} width={100} />
+            </Link>
+          </Grid>
+        </Grid>
+      </Container>
+    </Typography>
+  )
 }

@@ -3,13 +3,14 @@ import Head from 'next/head'
 import Container from '@material-ui/core/Container'
 import { Box, Typography } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
+import Paper from '@material-ui/core/Paper'
 import Grid from '@material-ui/core/Grid'
+import AboutUsTimeline from '../components/about/AboutUsTimeline'
 import Card from '@material-ui/core/Card'
 import CardActionArea from '@material-ui/core/CardActionArea'
 import CardActions from '@material-ui/core/CardActions'
 import CardContent from '@material-ui/core/CardContent'
 import CardMedia from '@material-ui/core/CardMedia'
-import Paper from '@material-ui/core/Paper'
 import Button from '@material-ui/core/Button'
 
 const useStyles = makeStyles((theme) => ({
@@ -51,33 +52,32 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-const products = {
-  headerText: 'products Services',
+const about = {
+  headerText: 'Who We Are',
   headerDescription: `
-    Worrying about your patio, deck, driveway and siding has never been easier. 
-    Our technicians will take care of the dirty work so you can enjoy your time with 
-    friends or family and spend less time thinking about the dirty sidewalk.`,
-  headerImg: '/images/houston_products.jpg',
+    Maintaining the exterior of your business just got easier. 
+    Our technicians will deep clean your walkways, parking lots, heavy equipment and much more so you can focus on growing your company.`,
+  headerImg: '/images/houston_about.jpg',
   body: {
-    leadText: 'What We Offer',
+    leadText: 'Meet the Team',
     sections: [
       {
-        title: 'Patio',
+        title: 'Heavy Equipment',
         img: '',
         description: '',
       },
       {
-        title: 'Decks',
+        title: 'Lots',
         img: '',
         description: '',
       },
       {
-        title: 'Driveways',
+        title: 'Buildings',
         img: '',
         description: '',
       },
       {
-        title: 'Siding',
+        title: 'Walkways',
         img: '',
         description: '',
       },
@@ -85,29 +85,29 @@ const products = {
   },
 }
 
-const Products = (props) => {
+const About = (props) => {
   const classes = useStyles()
 
   return (
     <>
       <Head>
-        <title>Wash Houston - Products and Equipment </title>
+        <title>Wash Houston - Who We Are</title>
       </Head>
       <Container style={{ backgroundColor: '#f8f8f8', height: '100%', paddingBottom: 30 }}>
         <Container maxWidth='lg' style={{ marginBottom: 30 }}>
           <Paper elevation={4} style={{ padding: 20 }}>
             <img
-              src={products.headerImg}
+              src={about.headerImg}
               width='100%'
               height={500}
               style={{ marginBottom: 20, borderRadius: 4 }}
             />
             <Box maxWidth='lg' mt={6} style={{ padding: 10 }}>
               <Typography variant='h2' gutterBottom component='h2' color='primary'>
-                {products.headerText}
+                {about.headerText}
               </Typography>
               <Typography variant='body1' style={{ width: '75%' }}>
-                {products.headerDescription}
+                {about.headerDescription}
               </Typography>
             </Box>
             <Typography
@@ -115,38 +115,10 @@ const Products = (props) => {
               component='h4'
               color='secondary'
               style={{ marginTop: 20, padding: 10 }}>
-              What we excel at
+              {about.body.leadText}
             </Typography>
             <Grid container spacing={6}>
-              {products?.body.sections &&
-                products.body.sections.map((section, key) => {
-                  return (
-                    <Grid item xs={12} sm={6} key={key}>
-                      <Card className={classes.sectionCard}>
-                        <CardActionArea>
-                          <CardMedia
-                            style={{ height: 100 }}
-                            image=''
-                            title='Contemplative Reptile'
-                          />
-                          <CardContent>
-                            <Typography gutterBottom variant='h5' component='h2'>
-                              {section.title}
-                            </Typography>
-                            <Typography variant='body2' color='textSecondary' component='p'>
-                              {section.description}
-                            </Typography>
-                          </CardContent>
-                        </CardActionArea>
-                        <CardActions>
-                          <Button size='large' color='primary'>
-                            Get Started
-                          </Button>
-                        </CardActions>
-                      </Card>
-                    </Grid>
-                  )
-                })}
+              <AboutUsTimeline />
             </Grid>
           </Paper>
         </Container>
@@ -155,4 +127,4 @@ const Products = (props) => {
   )
 }
 
-export default Products
+export default About

@@ -21,11 +21,17 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'space-between',
     overflowX: 'auto',
     background: 'rgba(0,0,0,0.8)',
+    [theme.breakpoints.up('md')]: {
+      justifyContent: 'center',
+    },
   },
   toolbarLink: {
     padding: theme.spacing(1),
     flexShrink: 0,
     color: theme.palette.lightGrey.main,
+    [theme.breakpoints.up('md')]: {
+      paddingLeft: theme.spacing(6),
+    },
   },
   actionButton: {},
   headerImg: {
