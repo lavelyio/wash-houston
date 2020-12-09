@@ -1,16 +1,15 @@
 :global html {
-  height: 100%;
   --light: 80;
   /* the threshold at which colors are considered "light." Range: integers from 0 to 100,
 recommended 50 - 70 */
   --threshold: 70;
-  position: fixed;
 }
 :global body,
 :global #root {
-  display: flex;
-  min-width: 100%;
+  display: block;
+  min-width: 100vw;
   min-height: 100%;
+  overflow-x: hidden;
 }
 
 :global h1,
@@ -114,15 +113,17 @@ p {
   --handle-opacity-active: 0.5;
 }
 
-:global .scroll-down {
+.scroll-down {
   height: 2rem;
   position: absolute;
   bottom: 1rem;
   right: 5%;
   width: 50%;
+  z-index: 10;
+  cursor: pointer;
 }
 
-:global .scroll-down::before {
+.scroll-down::before {
   animation: bounce 1s ease infinite;
   bottom: 1rem;
   color: #fff;

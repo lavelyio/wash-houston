@@ -5,6 +5,11 @@ import Container from '@material-ui/core/Container'
 import Grid from '@material-ui/core/Grid'
 import Box from '@material-ui/core/Box'
 import Typography from '@material-ui/core/Typography'
+import FavoriteOutlinedIcon from '@material-ui/icons/FavoriteOutlined'
+import GitHubIcon from '@material-ui/icons/GitHub'
+import FacebookIcon from '@material-ui/icons/Facebook'
+import TwitterIcon from '@material-ui/icons/Twitter'
+
 import Link from '@material-ui/core/Link'
 
 function Copyright() {
@@ -22,9 +27,10 @@ function Copyright() {
 
 const useStyles = makeStyles((theme) => ({
   footer: {
-    backgroundColor: theme.palette.background.paper,
+    backgroundColor: '#fcfcfc',
+    color: theme.palette.primary.main,
     // marginTop: theme.spacing(8),
-    padding: theme.spacing(6, 0),
+    padding: theme.spacing(4, 1),
   },
 }))
 
@@ -415,12 +421,16 @@ const footers = [
   },
 ]
 
+const social = [
+  { name: 'GitHub', icon: GitHubIcon },
+  { name: 'Twitter', icon: TwitterIcon },
+  { name: 'Facebook', icon: FacebookIcon },
+]
+
 export default function Footer(props) {
   const classes = useStyles()
-  const { description, title } = props
-
   return (
-    <footer className={classes.footer}>
+    <>
       <Container maxWidth='md' component='footer' className={classes.footer}>
         <Grid container spacing={4} justify='space-evenly'>
           {footers.map((footer) => (
@@ -439,12 +449,37 @@ export default function Footer(props) {
               </ul>
             </Grid>
           ))}
+          <Container item style={{ padding: '10% 10%' }}>
+            <div style={{ padding: 10, background: 'rgba(0,0,0,0.4)' }}></div>
+            <Typography variant='h6' gutterBottom>
+              Social
+            </Typography>
+            <div style={{ display: 'flex' }}>
+              {social.map((network) => (
+                <Link
+                  display='block'
+                  color='secondary'
+                  variant='body1'
+                  href='#'
+                  key={network}
+                  style={{ marginLeft: 10 }}>
+                  <network.icon />
+                </Link>
+              ))}
+            </div>
+            <Typography variant='subtitle2' color='textSecondary' style={{ marginTop: 10 }}>
+              Consider donating to{' '}
+              <span>
+                <Link to='https://www.artleaguehouston.org/support-us'>Art League of Houston </Link>{' '}
+                to help our local Artisans and keep Houston beautiful.{' '}
+                <FavoriteOutlinedIcon style={{ color: 'red' }} />
+              </span>
+            </Typography>
+            <Copyright />
+          </Container>
         </Grid>
-        <Box mt={5}>
-          <Copyright />
-        </Box>
       </Container>
-    </footer>
+    </>
   )
 }
 

@@ -4,9 +4,6 @@ import { makeStyles } from '@material-ui/core/styles'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import Grid from '@material-ui/core/Grid'
 import Container from '@material-ui/core/Container'
-import GitHubIcon from '@material-ui/icons/GitHub'
-import FacebookIcon from '@material-ui/icons/Facebook'
-import TwitterIcon from '@material-ui/icons/Twitter'
 import { post1, post2, post3 } from '../posts'
 import { ParallaxProvider, ParallaxBanner } from 'react-scroll-parallax'
 import { Typography } from '@material-ui/core'
@@ -42,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
   },
   mural: {
-    height: '80vh',
+    height: '100vh',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
@@ -70,10 +67,9 @@ const sections = [
 ]
 
 const mainFeaturedPost = {
-  title: 'Wash Houston',
-  description: `We live and breathe Houston, and take pride in our city. Thats why we're Greater Houston Area's first choice for top quality pressure washing, 
-        roof cleaning, and exterior property restoration services for residential and commercial customers. Let's help celebrate our city's culture by
-        keeping it clean.`,
+  title: 'Hello, Houston',
+  description: `We live and breathe Houston and take pride in our city. Thats why we're the Greater Houston Area's first choice for pressure washing, 
+        roof cleaning and exterior property restoration services for residential and commercial customers.`,
   image: '/images/spacecity-bg.webp',
   imgText: 'main image description',
   linkText: 'Contact Us',
@@ -125,20 +121,23 @@ const sidebar = {
     { title: 'May 1999', url: '#' },
     { title: 'April 1999', url: '#' },
   ],
-  social: [
-    { name: 'GitHub', icon: GitHubIcon },
-    { name: 'Twitter', icon: TwitterIcon },
-    { name: 'Facebook', icon: FacebookIcon },
-  ],
 }
 
 export default function Initial() {
   const classes = useStyles()
 
+  const scrollDown = () => {
+    document.getElementById('Second').scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+      inline: 'nearest',
+    })
+  }
+
   return (
     <ParallaxProvider>
       <Header title='Wash Houston' sections={sections} />
-      <Hero post={mainFeaturedPost} />
+      <Hero post={mainFeaturedPost} scrollDown={scrollDown} />
       <ParallaxBanner
         className={classes.mural}
         layers={[
@@ -148,6 +147,7 @@ export default function Initial() {
           },
         ]}>
         <div
+          id='Second'
           style={{
             minHeight: '100%',
             display: 'flex',
@@ -157,7 +157,7 @@ export default function Initial() {
           }}>
           <Container>
             <Typography style={{ color: '#f8f8f8', textShadow: '1px 1px black' }} variant='h3'>
-              Maintaining local treasures is a goal of ours
+              Maintaining local artwork and murals is a goal of ours
             </Typography>
           </Container>
         </div>
@@ -171,11 +171,10 @@ export default function Initial() {
             title={sidebar.title}
             description={sidebar.description}
             archives={sidebar.archives}
-            social={sidebar.social}
           />
         </Grid>
       </Container>
-      <Footer title='Footer' description='Something here to give the footer a purpose!' />
+      <Footer />
     </ParallaxProvider>
   )
 }

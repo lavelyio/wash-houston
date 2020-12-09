@@ -29,23 +29,6 @@ export default function Sidebar(props) {
         <Typography>{description}</Typography>
       </Paper>
       <RequestQuote />
-
-      <Typography variant='h6' gutterBottom className={classes.sidebarSection}>
-        Social
-      </Typography>
-      <div style={{ display: 'flex' }}>
-        {social.map((network) => (
-          <Link
-            display='block'
-            color='secondary'
-            variant='body1'
-            href='#'
-            key={network}
-            style={{ marginLeft: 10 }}>
-            <network.icon />
-          </Link>
-        ))}
-      </div>
     </Grid>
   )
 }

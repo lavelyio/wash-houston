@@ -32,6 +32,8 @@
     "react-image-comparison-slider": "^1.8.4",
     "react-images": "^1.1.7",
     "react-optimized-image": "^0.4.1",
+    "react-responsive-carousel": "^3.2.11",
+    "react-reveal": "^1.2.2",
     "react-rewards": "^1.1.2",
     "react-scroll-parallax": "^2.3.5",
     "styled-components": "^5.2.1",
