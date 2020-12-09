@@ -59,7 +59,7 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 const sections = [
-  { title: 'Residential', url: '#' },
+  { title: 'Residential', url: 'residential' },
   { title: 'Commerical', url: '#' },
   { title: 'Products We Use', url: '#' },
   { title: 'Our Work', url: '#' },

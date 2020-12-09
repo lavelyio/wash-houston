@@ -6,6 +6,7 @@ import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles'
 import mediaQuery from 'css-mediaquery'
 import parser from 'ua-parser-js'
 import CssBaseline from '@material-ui/core/CssBaseline'
+
 import theme from '../theme'
 import '../styles.css'
 
@@ -38,6 +39,7 @@ const desktopMuiTheme = createMuiTheme({
 })
 
 import { useEffect } from 'react'
+
 function MyApp({ Component, pageProps }) {
   const getInitialProps = async (ctx) => {
     // I'm guessing on this line based on your _document.js example
