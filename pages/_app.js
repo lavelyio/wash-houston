@@ -69,6 +69,11 @@ function MyApp({ Component, pageProps }) {
     <MuiThemeProvider theme={pageProps.deviceType === 'mobile' ? mobileMuiTheme : desktopMuiTheme}>
       <ThemeProvider theme={theme}>
         <Head>
+          <script async src='https://www.googletagmanager.com/gtag/js?id=G-431QJNV24K'></script>
+          <script>
+            window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments)}
+            gtag('js', new Date()); gtag('config', 'G-431QJNV24K');
+          </script>
           <meta charSet='utf-8' />
           <meta httpEquiv='X-UA-Compatible' content='IE=edge' />
           <meta
