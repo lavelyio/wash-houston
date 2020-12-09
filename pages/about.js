@@ -94,34 +94,32 @@ const About = (props) => {
         <title>Wash Houston - Who We Are</title>
       </Head>
       <Container style={{ backgroundColor: '#f8f8f8', height: '100%', paddingBottom: 30 }}>
-        <Container maxWidth='lg' style={{ marginBottom: 30 }}>
-          <Paper elevation={4} style={{ padding: 20 }}>
-            <img
-              src={about.headerImg}
-              width='100%'
-              height={500}
-              style={{ marginBottom: 20, borderRadius: 4 }}
-            />
-            <Box maxWidth='lg' mt={6} style={{ padding: 10 }}>
-              <Typography variant='h2' gutterBottom component='h2' color='primary'>
-                {about.headerText}
-              </Typography>
-              <Typography variant='body1' style={{ width: '75%' }}>
-                {about.headerDescription}
-              </Typography>
-            </Box>
-            <Typography
-              variant='h4'
-              component='h4'
-              color='secondary'
-              style={{ marginTop: 20, padding: 10 }}>
-              {about.body.leadText}
+        <Grid>
+          <img
+            src={about.headerImg}
+            width='100%'
+            height={500}
+            style={{ marginBottom: 20, borderRadius: 4 }}
+          />
+          <Box maxWidth='lg' mt={6} style={{ padding: 10 }}>
+            <Typography variant='h2' gutterBottom component='h2' color='primary'>
+              {about.headerText}
             </Typography>
-            <Grid container spacing={6}>
-              <AboutUsTimeline />
-            </Grid>
-          </Paper>
-        </Container>
+            <Typography variant='body1' style={{ width: '75%' }}>
+              {about.headerDescription}
+            </Typography>
+          </Box>
+          <Typography
+            variant='h4'
+            component='h4'
+            color='secondary'
+            style={{ marginTop: 20, padding: 10 }}>
+            {about.body.leadText}
+          </Typography>
+          <Grid container spacing={6}>
+            <AboutUsTimeline />
+          </Grid>
+        </Grid>
       </Container>
     </>
   )

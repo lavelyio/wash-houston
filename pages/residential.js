@@ -93,63 +93,56 @@ const Residential = (props) => {
       <Head>
         <title>Wash Houston - Residential Services</title>
       </Head>
+      <img
+        src={residential.headerImg}
+        width='100%'
+        style={{ marginBottom: 20, maxHeight: '40vh' }}
+      />
       <Container style={{ backgroundColor: '#f8f8f8', height: '100%', paddingBottom: 30 }}>
-        <Container maxWidth='lg' style={{ marginBottom: 30 }}>
-          <Paper elevation={4} style={{ padding: 20 }}>
-            <img
-              src={residential.headerImg}
-              width='100%'
-              height={500}
-              style={{ marginBottom: 20, borderRadius: 4 }}
-            />
-            <Box maxWidth='lg' mt={6} style={{ padding: 10 }}>
-              <Typography variant='h2' gutterBottom component='h2' color='primary'>
-                {residential.headerText}
-              </Typography>
-              <Typography variant='body1' style={{ width: '75%' }}>
-                {residential.headerDescription}
-              </Typography>
-            </Box>
-            <Typography
-              variant='h4'
-              component='h4'
-              color='secondary'
-              style={{ marginTop: 20, padding: 10 }}>
-              What we excel at
+        <Grid>
+          <Box maxWidth='lg' mt={6} style={{ padding: 10 }}>
+            <Typography variant='h2' gutterBottom component='h2' color='primary'>
+              {residential.headerText}
             </Typography>
-            <Grid container spacing={6}>
-              {residential?.body.sections &&
-                residential.body.sections.map((section, key) => {
-                  return (
-                    <Grid item xs={12} sm={6} key={key}>
-                      <Card className={classes.sectionCard}>
-                        <CardActionArea>
-                          <CardMedia
-                            style={{ height: 100 }}
-                            image=''
-                            title='Contemplative Reptile'
-                          />
-                          <CardContent>
-                            <Typography gutterBottom variant='h5' component='h2'>
-                              {section.title}
-                            </Typography>
-                            <Typography variant='body2' color='textSecondary' component='p'>
-                              {section.description}
-                            </Typography>
-                          </CardContent>
-                        </CardActionArea>
-                        <CardActions>
-                          <Button size='large' color='primary'>
-                            Get Started
-                          </Button>
-                        </CardActions>
-                      </Card>
-                    </Grid>
-                  )
-                })}
-            </Grid>
-          </Paper>
-        </Container>
+            <Typography variant='body1' style={{ width: '75%' }}>
+              {residential.headerDescription}
+            </Typography>
+          </Box>
+          <Typography
+            variant='h4'
+            component='h4'
+            color='secondary'
+            style={{ marginTop: 20, padding: 10 }}>
+            What we excel at
+          </Typography>
+          <Grid container spacing={6}>
+            {residential?.body.sections &&
+              residential.body.sections.map((section, key) => {
+                return (
+                  <Grid item xs={12} sm={6} key={key}>
+                    <Card className={classes.sectionCard}>
+                      <CardActionArea>
+                        <CardMedia style={{ height: 100 }} image='' title='Contemplative Reptile' />
+                        <CardContent>
+                          <Typography gutterBottom variant='h5' component='h2'>
+                            {section.title}
+                          </Typography>
+                          <Typography variant='body2' color='textSecondary' component='p'>
+                            {section.description}
+                          </Typography>
+                        </CardContent>
+                      </CardActionArea>
+                      <CardActions>
+                        <Button size='large' color='primary'>
+                          Get Started
+                        </Button>
+                      </CardActions>
+                    </Card>
+                  </Grid>
+                )
+              })}
+          </Grid>
+        </Grid>
       </Container>
     </>
   )

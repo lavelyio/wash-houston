@@ -419,7 +419,7 @@ const useStyles = makeStyles((theme) => ({
   },
   container: {
     marginTop: theme.spacing(8),
-    marginBottom: theme.spacing(8),
+    marginBottom: theme.spacing(4),
     display: 'flex',
   },
   iconsWrapper: {
@@ -427,6 +427,7 @@ const useStyles = makeStyles((theme) => ({
   },
   icons: {
     display: 'flex',
+    justifyContent: 'center',
   },
   icon: {
     width: 48,
@@ -457,28 +458,8 @@ export default function Footer() {
   return (
     <Typography component='footer' className={classes.root}>
       <Container className={classes.container}>
-        <Grid container spacing={5}>
-          <Grid item xs={6} sm={4} md={3}>
-            <Grid
-              container
-              direction='column'
-              justify='flex-end'
-              className={classes.iconsWrapper}
-              spacing={2}>
-              <Grid item className={classes.icons}>
-                <a href='https://facebook.com/' className={classes.icon}>
-                  <img src='/images/facebook-icon.png' alt='Facebook' />
-                </a>
-                <a href='https://twitter.com/' className={classes.icon}>
-                  <img src='/images/twitter-icon.png' alt='Twitter' />
-                </a>
-              </Grid>
-              <Grid item>
-                <Copyright />
-              </Grid>
-            </Grid>
-          </Grid>
-          <Grid item xs={6} sm={4} md={2}>
+        <Grid container spacing={4}>
+          <Grid item xs={6}>
             <Typography variant='h6' marked='left' gutterBottom>
               Contact
             </Typography>
@@ -491,7 +472,7 @@ export default function Footer() {
               </li>
             </ul>
           </Grid>
-          <Grid item xs={6} sm={4} md={2}>
+          <Grid item xs={6}>
             <Typography variant='h6' marked='left' gutterBottom>
               Legal
             </Typography>
@@ -504,7 +485,7 @@ export default function Footer() {
               </li>
             </ul>
           </Grid>
-          <Grid item xs={6} sm={8} md={4}>
+          <Grid item xs={12}>
             <Typography variant='h6' marked='left' gutterBottom>
               Murals
             </Typography>
@@ -515,7 +496,27 @@ export default function Footer() {
               <FavoriteOutlinedIcon style={{ marginLeft: 5, color: 'red' }} />
             </Typography>
           </Grid>
-          <Grid item>
+          <Grid item xs={12}>
+            <Grid
+              container
+              direction='column'
+              justify='flex-end'
+              className={classes.iconsWrapper}
+              spacing={4}>
+              <Grid item className={classes.icons}>
+                <a href='https://facebook.com/' className={classes.icon}>
+                  <img src='/images/facebook-icon.png' alt='Facebook' />
+                </a>
+                <a href='https://twitter.com/' className={classes.icon}>
+                  <img src='/images/twitter-icon.png' alt='Twitter' />
+                </a>
+              </Grid>
+              <Grid item xs={6}>
+                <Copyright />
+              </Grid>
+            </Grid>
+          </Grid>
+          <Grid item xs={12}>
             <Link href='https://lavely.io' target='_' rel='sponsored' title='LavelyIO'>
               <img src='/images/developedby_lavelyio.png' height={25} width={100} />
             </Link>
