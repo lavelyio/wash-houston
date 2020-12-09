@@ -9,8 +9,10 @@ import { isMobile } from '../../utils'
 const useStyles = makeStyles((theme) => ({
   mainFeaturedPost: {
     position: 'relative',
-    height: '100vh',
+    height: '105vh',
     width: '100vw',
+    marginTop: '-115px', // Header is 114px rendered
+    paddingBottom: '115px',
     backgroundColor: theme.palette.grey[800],
     color: '#d0d0d2',
     backgroundSize: 'cover',
@@ -52,7 +54,7 @@ export default function Hero(props) {
   return (
     <div id='Hero' className={classes.mainFeaturedPost} style={paperStyles}>
       <div className={classes.mainFeaturedPostContent}>
-        <Typography variant='h1' gutterBottom>
+        <Typography variant='h1' gutterBottom style={{ marginTop: '20%' }}>
           {post.title}
         </Typography>
         <Typography

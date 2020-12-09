@@ -39,6 +39,7 @@ const desktopMuiTheme = createMuiTheme({
 })
 
 import { useEffect } from 'react'
+import AppLayout from '../components'
 
 function MyApp({ Component, pageProps }) {
   const getInitialProps = async (ctx) => {
@@ -173,7 +174,9 @@ function MyApp({ Component, pageProps }) {
         </Head>
         <CssBaseline />
 
-        <Component {...pageProps} />
+        <AppLayout>
+          <Component {...pageProps} />
+        </AppLayout>
       </ThemeProvider>
     </MuiThemeProvider>
   )

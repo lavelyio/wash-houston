@@ -1,6 +1,7 @@
 import React from 'react'
 import Head from 'next/head'
-
+import Container from '@material-ui/core/Container'
+import { Typography } from '@material-ui/core'
 const Residential = (props) => {
   console.log(props)
 
@@ -9,7 +10,9 @@ const Residential = (props) => {
       <Head>
         <title>Wash Houston - Residential Services</title>
       </Head>
-      <div>Test</div>
+      <Container>
+        <Typography variant='h1'> Test</Typography>
+      </Container>
     </>
   )
 }

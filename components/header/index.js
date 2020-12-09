@@ -28,6 +28,11 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.lightGrey.main,
   },
   actionButton: {},
+  headerImg: {
+    '&:hover': {
+      cursor: 'pointer',
+    },
+  },
 }))
 
 const ITEM_HEIGHT = 48
@@ -71,15 +76,25 @@ export default function Header(props) {
     setAnchorEl(null)
   }
 
+  const goHome = () => {
+    window.location.href = '/'
+  }
+
   return (
     <React.Fragment>
       <HideOnScroll {...props}>
         <AppBar
-          position='absolute'
+          position='sticky'
           color='transparent'
           style={{ borderBottom: '2px solid rgba(0,0,0,0.3)' }}>
           <Toolbar className={classes.toolbar}>
-            <img height={55} width={200} src='/images/logo_header.png' />
+            <img
+              className={classes.headerImg}
+              height={55}
+              width={200}
+              src='/images/logo_header.png'
+              onClick={goHome}
+            />
           </Toolbar>
           <Toolbar component='nav' variant='dense' className={classes.toolbarSecondary}>
             {sections.map((section) => (

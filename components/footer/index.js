@@ -9,12 +9,18 @@ import FavoriteOutlinedIcon from '@material-ui/icons/FavoriteOutlined'
 import GitHubIcon from '@material-ui/icons/GitHub'
 import FacebookIcon from '@material-ui/icons/Facebook'
 import TwitterIcon from '@material-ui/icons/Twitter'
+import List from '@material-ui/core/List'
+import ListItem from '@material-ui/core/ListItem'
 
 import Link from '@material-ui/core/Link'
 
 function Copyright() {
   return (
-    <Typography variant='body2' color='textSecondary' align='center'>
+    <Typography
+      variant='body2'
+      color='inherit'
+      align='center'
+      style={{ position: 'relative', bottom: '5px', width: '100%' }}>
       {'Copyright © '}
       <Link color='inherit' href='https://wash-houston.com/'>
         Wash Houston Services, LLC
@@ -27,10 +33,10 @@ function Copyright() {
 
 const useStyles = makeStyles((theme) => ({
   footer: {
-    backgroundColor: '#fcfcfc',
-    color: theme.palette.primary.main,
+    backgroundColor: 'rgb(0 0 0 / 80%)',
+    color: theme.palette.lightGrey.main,
     // marginTop: theme.spacing(8),
-    padding: theme.spacing(4, 1),
+    padding: theme.spacing(4, 2),
   },
 }))
 
@@ -430,56 +436,53 @@ const social = [
 export default function Footer(props) {
   const classes = useStyles()
   return (
-    <>
-      <Container maxWidth='md' component='footer' className={classes.footer}>
-        <Grid container spacing={4} justify='space-evenly'>
-          {footers.map((footer) => (
-            <Grid item xs={6} sm={3} key={footer.title}>
-              <Typography variant='h6' color='textPrimary' gutterBottom>
-                {footer.title}
-              </Typography>
-              <ul>
-                {footer.description.map((item) => (
-                  <li key={item}>
-                    <Link href='#' variant='subtitle1' color='textSecondary'>
-                      {item}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </Grid>
-          ))}
-          <Container item style={{ padding: '10% 10%' }}>
-            <div style={{ padding: 10, background: 'rgba(0,0,0,0.4)' }}></div>
-            <Typography variant='h6' gutterBottom>
-              Social
+    <Container maxWidth='xl' component='footer' className={classes.footer}>
+      <Grid container justify='space-between' spacing={1}>
+        {footers.map((footer) => (
+          <Grid item xs={6} key={footer.title}>
+            <Typography variant='h6' style={{ color: '#fefefe' }} gutterBottom>
+              {footer.title}
             </Typography>
-            <div style={{ display: 'flex' }}>
-              {social.map((network) => (
-                <Link
-                  display='block'
-                  color='secondary'
-                  variant='body1'
-                  href='#'
-                  key={network}
-                  style={{ marginLeft: 10 }}>
-                  <network.icon />
-                </Link>
+            <List dense>
+              {footer.description.map((item) => (
+                <ListItem key={item} style={{ listDecoration: 'none' }}>
+                  <Link href='#' variant='subtitle1' style={{ color: '#f8f8f8' }}>
+                    {item}
+                  </Link>
+                </ListItem>
               ))}
-            </div>
-            <Typography variant='subtitle2' color='textSecondary' style={{ marginTop: 10 }}>
-              Consider donating to{' '}
-              <span>
-                <Link to='https://www.artleaguehouston.org/support-us'>Art League of Houston </Link>{' '}
-                to help our local Artisans and keep Houston beautiful.{' '}
-                <FavoriteOutlinedIcon style={{ color: 'red' }} />
-              </span>
-            </Typography>
-            <Copyright />
-          </Container>
-        </Grid>
-      </Container>
-    </>
+            </List>
+          </Grid>
+        ))}
+        <Container item style={{ padding: '10% 10%' }}>
+          <Typography variant='subtitle2' color='inherit'>
+            Consider donating to{' '}
+            <Link to='https://www.artleaguehouston.org/support-us'>Art League of Houston </Link>
+            to help our local Artisans and keep Houston beautiful.{' '}
+            <FavoriteOutlinedIcon style={{ marginLeft: 5, color: 'red' }} />
+          </Typography>
+          {/*
+          <Typography variant='h6' gutterBottom color='inherit' style={{ marginTop: 20 }}>
+            Social
+          </Typography>
+          <div style={{ display: 'flex', flexFlow: 'row wrap', marginTop: 10 }}>
+            {social.map((network) => (
+              <Link
+                display='block'
+                variant='body1'
+                color='inherit'
+                href='#'
+                key={network}
+                style={{ marginLeft: 10 }}>
+                <network.icon />
+              </Link>
+            ))}
+          </div>
+            */}
+        </Container>
+      </Grid>
+      <Copyright />
+    </Container>
   )
 }
 

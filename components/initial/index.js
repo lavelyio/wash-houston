@@ -58,14 +58,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-const sections = [
-  { title: 'Residential', url: 'residential' },
-  { title: 'Commerical', url: '#' },
-  { title: 'Products We Use', url: '#' },
-  { title: 'Our Work', url: '#' },
-  { title: 'Contact Us', url: '#' },
-]
-
 const mainFeaturedPost = {
   title: 'Hello, Houston',
   description: `We live and breathe Houston and take pride in our city. Thats why we're the Greater Houston Area's first choice for pressure washing, 
@@ -136,7 +128,6 @@ export default function Initial() {
 
   return (
     <ParallaxProvider>
-      <Header title='Wash Houston' sections={sections} />
       <Hero post={mainFeaturedPost} scrollDown={scrollDown} />
       <ParallaxBanner
         className={classes.mural}
@@ -174,7 +165,6 @@ export default function Initial() {
           />
         </Grid>
       </Container>
-      <Footer />
     </ParallaxProvider>
   )
 }
