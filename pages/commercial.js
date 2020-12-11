@@ -62,22 +62,22 @@ const commercial = {
     sections: [
       {
         title: 'Heavy Equipment',
-        img: '',
+        img: '/images/heavy_equipment.webp',
         description: '',
       },
       {
         title: 'Lots',
-        img: '',
+        img: '/images/parking_lot.webp',
         description: '',
       },
       {
         title: 'Buildings',
-        img: '',
+        img: '/images/buildings.webp',
         description: '',
       },
       {
         title: 'Walkways',
-        img: '',
+        img: '/images/walkways.webp',
         description: '',
       },
     ],
@@ -91,6 +91,17 @@ const Commercial = (props) => {
     <>
       <Head>
         <title>Wash Houston - Commercial Services</title>
+        <meta
+          name='description'
+          content="Houston Wash's Commcericla Services. We'll take care of your heavy equipment, store front, parking lots, building exterior and much more!"
+        />
+        <meta
+          name='keywords'
+          content='Pressure Washing, Power Washing, Cleaning, Houston Texas, Cleaning, Wash, Pressure Wash, Power Wash, Power'
+        />
+        <meta name='author' content='Wash Houston' />
+        <meta name='copyright' content='Houston Wash Services, LLC' />
+        <meta name='robots' content='commercial,follow' />
       </Head>
       <div>
         <img
@@ -124,7 +135,7 @@ const Commercial = (props) => {
                         <CardActionArea>
                           <CardMedia
                             style={{ height: 100 }}
-                            image=''
+                            image={section.img}
                             title='Contemplative Reptile'
                           />
                           <CardContent>

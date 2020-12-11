@@ -1,0 +1,22 @@
+{
+  "siteTitle": "Wash Houston",
+  "siteDescription": "",
+  "siteKeywords": [],
+  "landingHero": {
+    "title": "",
+    "description": "",
+    "imageSrc": "",
+    "buttonText": ""
+  },
+  "pages": [
+    {
+      "title": "",
+      "description": "",
+      "keywords": [],
+      "content": {
+        "lead": {},
+        "body": {}
+      }
+    }
+  ]
+}

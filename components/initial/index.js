@@ -7,13 +7,10 @@ import Container from '@material-ui/core/Container'
 import { post1, post2, post3 } from '../posts'
 import { ParallaxProvider, ParallaxBanner } from 'react-scroll-parallax'
 import { Typography } from '@material-ui/core'
-
-const Header = dynamic(() => import('../header'))
 const Hero = dynamic(() => import('../hero'))
 const ServicesGridList = dynamic(() => import('../services/ServicesGridList'))
 const Main = dynamic(() => import('../main'))
 const Sidebar = dynamic(() => import('../sidebar'))
-const Footer = dynamic(() => import('../footer'))
 const Gallery = dynamic(() => import('../gallery'))
 
 const useStyles = makeStyles((theme) => ({

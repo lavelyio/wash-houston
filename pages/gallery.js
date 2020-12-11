@@ -3,7 +3,6 @@ import Head from 'next/head'
 import Container from '@material-ui/core/Container'
 import { Box, Typography } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
-import Paper from '@material-ui/core/Paper'
 import Grid from '@material-ui/core/Grid'
 import Card from '@material-ui/core/Card'
 import CardActionArea from '@material-ui/core/CardActionArea'
@@ -61,22 +60,22 @@ const gallery = {
     sections: [
       {
         title: 'Heavy Equipment',
-        img: '',
+        img: '/images/heavy_equipment.webp',
         description: '',
       },
       {
         title: 'Lots',
-        img: '',
+        img: '/images/parking_lot.webp',
         description: '',
       },
       {
         title: 'Buildings',
-        img: '',
+        img: '/images/buildings.webp',
         description: '',
       },
       {
         title: 'Walkways',
-        img: '',
+        img: '/images/walkways.webp',
         description: '',
       },
     ],

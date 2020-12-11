@@ -5,9 +5,8 @@ const theme = responsiveFontSizes(
   createMuiTheme({
     typography: {
       fontFamily: [
-        '"Hind Vadodara"',
+        'Hind Vadodara',
         'Roboto',
-
         'Arial',
         'sans-serif',
         '-apple-system',

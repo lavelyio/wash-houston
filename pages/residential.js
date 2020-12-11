@@ -63,22 +63,22 @@ const residential = {
     sections: [
       {
         title: 'Patio',
-        img: '',
+        img: '/images/patio.webp',
         description: '',
       },
       {
         title: 'Decks',
-        img: '',
+        img: '/images/decks.webp',
         description: '',
       },
       {
         title: 'Driveways',
-        img: '',
+        img: '/images/driveways.webp',
         description: '',
       },
       {
         title: 'Siding',
-        img: '',
+        img: '/images/siding.webp',
         description: '',
       },
     ],
@@ -92,6 +92,17 @@ const Residential = (props) => {
     <>
       <Head>
         <title>Wash Houston - Residential Services</title>
+        <meta
+          name='description'
+          content="Houston Wash's Residential Services. We'll take care of your patio, driveway, deck, siding and all other outdoor needs."
+        />
+        <meta
+          name='keywords'
+          content='Pressure Washing, Power Washing, Cleaning, Houston Texas, Cleaning, Wash, Pressure Wash, Power Wash, Power'
+        />
+        <meta name='author' content='Wash Houston' />
+        <meta name='copyright' content='Houston Wash Services, LLC' />
+        <meta name='robots' content='index,follow' />
       </Head>
       <img
         src={residential.headerImg}
