@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import dynamic from 'next/dynamic'
 import { makeStyles } from '@material-ui/core/styles'
 import { motion } from 'framer-motion'
@@ -13,6 +13,7 @@ const Main = dynamic(() => import('../main'))
 const Sidebar = dynamic(() => import('../sidebar'))
 import { useAnimation } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
+import Testimonials from '../testimonials'
 
 const BoxVariants = {
   visible: { opacity: 1, x: 0, transition: { duration: 1 } },
@@ -41,10 +42,10 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
   },
   mural: {
-    height: '100vh',
+    minHeight: '100vh',
     display: 'flex',
     flexDirection: 'column',
-    justifyContent: 'center',
+    justifyContent: 'space-around',
   },
   bannerBg: {
     background: 'rgba(0,0,0,0)',
@@ -146,40 +147,29 @@ export default function Initial() {
   return (
     <ParallaxProvider>
       <Hero post={mainFeaturedPost} scrollDown={scrollDown} />
+      <ServicesGridList />
+
       <ParallaxBanner
         className={classes.mural}
         layers={[
           {
-            image: '/images/murals/Houston-Heights-Mural-mobile.webp',
-            amount: 0.3,
+            image: '/images/murals/Houston-Heights-Mural.webp',
+            amount: 0.2,
           },
         ]}>
         <div
-          id='Second'
           style={{
-            minHeight: '100%',
+            minHeight: '100vh',
             display: 'flex',
             flexDirection: 'column',
             zIndex: 1300,
             justifyContent: 'center',
           }}>
-          <Container>
-            <motion.div animate={{ x: 100 }} transition={{ ease: 'easeOut', duration: 2 }}>
-              <Typography
-                style={{
-                  color: '#f8f8f8',
-                  textShadow: '4px 4px black',
-                  fontFamily: 'Montserrat',
-                  fontWeight: 500,
-                }}
-                variant='h2'>
-                Maintaining local artwork and murals is a goal of ours
-              </Typography>
-            </motion.div>
-          </Container>
+          <motion.div animate={{ opacity: 1 }} transition={{ ease: 'easeOut', duration: 1 }}>
+            <Testimonials />
+          </motion.div>
         </div>
       </ParallaxBanner>
-      <ServicesGridList />
 
       <Container maxWidth='lg'>
         <Grid container spacing={5} className={classes.mainGrid}>

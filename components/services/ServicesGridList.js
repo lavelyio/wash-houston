@@ -16,12 +16,10 @@ const useStyles = makeStyles((theme) => ({
     minHeight: '100vh',
     display: 'flex',
     flexDirection: 'column',
+    paddingTop: 30,
+    paddingBottom: 30,
     zIndex: 1300,
     justifyContent: 'center',
-    backgroundColor: '#d0d0d2',
-    backgroundImage: 'url(images/Tailored-Work.webp)',
-    backgroundSize: 'cover',
-    backgroundRepeat: 'no-repeat',
   },
   container: {
     paddingLeft: '20%',
@@ -39,19 +37,13 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
   },
   gridTitle: {
-    color: '#fff',
-    textShadow: '1px 1px black',
-    [theme.breakpoints.up('sm')]: {
-      fontSize: '6vw',
-    },
-    [theme.breakpoints.down('sm')]: {
-      fontSize: '9vw',
-    },
+    textShadow: '2px 2px #fff',
   },
   gridTile: {
     flexGrow: 1,
     marginTop: 5,
     marginBottom: 5,
+    borderRadius: 6,
     height: '40vh',
     [theme.breakpoints.down('sm')]: {
       minWidth: 320,
@@ -101,9 +93,9 @@ export default function ServicesGridList() {
         style={{
           padding: '8% 8%',
           zIndex: 1300,
-          width: '100vw',
+          width: '100%',
         }}>
-        <Typography variant='h3' className={classes.gridTitle} gutterBottom>
+        <Typography variant='h3' className={classes.gridTitle} color='primary' gutterBottom>
           Our Tailored Approach
         </Typography>
         <AnimatePresence>

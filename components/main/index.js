@@ -21,7 +21,7 @@ export default function Main(props) {
 
   return (
     <Grid item xs={12} md={8}>
-      <Typography variant='h3' gutterBottom>
+      <Typography variant='h3' color='primary' gutterBottom>
         {title}
       </Typography>
       <Divider />

@@ -52,12 +52,12 @@ const container = {
 }
 
 const listItem = {
-  hidden: { opacity: 0, x: 100 },
+  hidden: { opacity: 0, x: 20 },
   show: { opacity: 1, y: 30 },
 }
 const title = {
   hidden: { opacity: 0 },
-  show: { opacity: 1, x: 100 },
+  show: { opacity: 1, x: 20 },
 }
 
 export default function Hero(props) {

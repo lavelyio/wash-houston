@@ -22,14 +22,7 @@ const useStyles = makeStyles((theme) => ({
     minHeight: 350,
   },
   gridTitle: {
-    color: '#fff',
-    textShadow: '1px 1px black',
-    [theme.breakpoints.up('sm')]: {
-      fontSize: '4vw',
-    },
-    [theme.breakpoints.down('sm')]: {
-      fontSize: '7vw',
-    },
+    textShadow: '2px 2px #f8f8f8',
   },
   gridList: {
     flexWrap: 'nowrap',
@@ -90,6 +83,7 @@ const Gallery = (props) => {
         <Typography
           variant='h3'
           className={classes.gridTitle}
+          color='primary'
           style={{ marginTop: 40, marginBottom: 40 }}>
           Our Recent Work
         </Typography>

@@ -40,6 +40,7 @@
     "react-reveal": "^1.2.2",
     "react-rewards": "^1.1.2",
     "react-scroll-parallax": "^2.3.5",
+    "react-slick": "^0.27.13",
     "react-spring-lightbox": "^1.4.11",
     "styled-components": "^5.2.1",
     "ua-parser-js": "^0.7.22",
