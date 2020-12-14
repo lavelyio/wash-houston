@@ -1,18 +1,24 @@
 import React from 'react'
 import Head from 'next/head'
 import Container from '@material-ui/core/Container'
+import { motion, AnimatePresence, AnimationFeature } from 'framer-motion'
 import { Box, Typography } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import Paper from '@material-ui/core/Paper'
 import Grid from '@material-ui/core/Grid'
-import Card from '@material-ui/core/Card'
-import CardActionArea from '@material-ui/core/CardActionArea'
-import CardActions from '@material-ui/core/CardActions'
-import CardContent from '@material-ui/core/CardContent'
-import CardMedia from '@material-ui/core/CardMedia'
-import Button from '@material-ui/core/Button'
+import GridContainer from '../lib/components/Grid/GridContainer'
+import GridItem from '../lib/components/Grid/GridItem'
+import Card from '../lib/components/Card/Card'
+import CardHeader from '../lib/components/Card/CardHeader'
+import CardBody from '../lib/components/Card/CardBody'
+import CardFooter from '../lib/components/Card/CardFooter'
+import Info from '../lib/components/Typography/Info'
+import Link from 'next/link'
+import cardStyles from '../lib/assets/jss/lavelyio-pro/views/componentsSections/sectionCards.js'
+import ContactUsButton from '../components/buttons/ContactUsButton'
 
 const useStyles = makeStyles((theme) => ({
+  ...cardStyles,
   mainFeaturedPost: {
     position: 'relative',
     height: '105vh',
@@ -63,22 +69,26 @@ const commercial = {
       {
         title: 'Heavy Equipment',
         img: '/images/heavy_equipment.webp',
-        description: '',
+        description:
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
       },
       {
         title: 'Lots',
         img: '/images/parking_lot.webp',
-        description: '',
+        description:
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
       },
       {
         title: 'Buildings',
         img: '/images/buildings.webp',
-        description: '',
+        description:
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
       },
       {
         title: 'Walkways',
         img: '/images/walkways.webp',
-        description: '',
+        description:
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
       },
     ],
   },
@@ -107,7 +117,7 @@ const Commercial = (props) => {
         <img
           src={commercial.headerImg}
           width='100%'
-          style={{ marginBottom: 20, maxHeight: '40vh' }}
+          style={{ marginBottom: 20, maxHeight: '50vh' }}
         />
         <Container style={{ backgroundColor: '#f8f8f8', height: '100%', paddingBottom: 30 }}>
           <Grid>
@@ -115,7 +125,10 @@ const Commercial = (props) => {
               <Typography variant='h2' gutterBottom component='h2' color='primary'>
                 {commercial.headerText}
               </Typography>
-              <Typography variant='body1' style={{ width: '75%' }}>
+              <Typography
+                variant='subtitle1'
+                paragraph
+                style={{ width: '75%', marginTop: 20, padding: 10 }}>
                 {commercial.headerDescription}
               </Typography>
             </Box>
@@ -126,37 +139,46 @@ const Commercial = (props) => {
               style={{ marginTop: 20, padding: 10 }}>
               {commercial.body.leadText}
             </Typography>
-            <Grid container spacing={6}>
+            <GridContainer>
               {commercial?.body.sections &&
                 commercial.body.sections.map((section, key) => {
                   return (
-                    <Grid item xs={12} sm={6} key={key}>
-                      <Card className={classes.sectionCard}>
-                        <CardActionArea>
-                          <CardMedia
-                            style={{ height: 100 }}
-                            image={section.img}
-                            title='Contemplative Reptile'
-                          />
-                          <CardContent>
-                            <Typography gutterBottom variant='h5' component='h2'>
-                              {section.title}
-                            </Typography>
-                            <Typography variant='body2' color='textSecondary' component='p'>
-                              {section.description}
-                            </Typography>
-                          </CardContent>
-                        </CardActionArea>
-                        <CardActions>
-                          <Button size='large' color='primary'>
-                            Get Started
-                          </Button>
-                        </CardActions>
-                      </Card>
-                    </Grid>
+                    <AnimatePresence>
+                      <GridItem key={key} xs={12} sm={6} md={6} lg={6}>
+                        <Card blog raised>
+                          <CardHeader image>
+                            <Link href='services'>
+                              <img
+                                src={section.img}
+                                alt={section.title}
+                                style={{ maxHeight: 300 }}
+                              />
+                            </Link>
+                            <div
+                              className={classes.coloredShadow}
+                              style={{
+                                backgroundImage: ``,
+                                opacity: '1',
+                              }}
+                            />
+                          </CardHeader>
+                          <CardBody>
+                            <Info>
+                              <Typography variant='h5' className={classes.cardCategory}>
+                                {section.title}
+                              </Typography>
+                            </Info>
+                            <div className={classes.cardDescription}>{section.description}</div>
+                          </CardBody>
+                          <CardFooter>
+                            <ContactUsButton />
+                          </CardFooter>
+                        </Card>
+                      </GridItem>
+                    </AnimatePresence>
                   )
                 })}
-            </Grid>
+            </GridContainer>
           </Grid>
         </Container>
       </div>

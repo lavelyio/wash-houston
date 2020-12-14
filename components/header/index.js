@@ -6,13 +6,15 @@ import Toolbar from '@material-ui/core/Toolbar'
 import useScrollTrigger from '@material-ui/core/useScrollTrigger'
 import Slide from '@material-ui/core/Slide'
 import SpeedDialButton from '../buttons/SpeedDialButton'
-import Link from '@material-ui/core/Link'
+import * as ChildLink from '@material-ui/core/Link'
+import Link from 'next/link'
 
 const useStyles = makeStyles((theme) => ({
   toolbar: {
     borderBottom: `2px solid ${theme.palette.divider}`,
     justifyContent: 'space-between',
     background: 'rgba(245,245,245,0.7)',
+    borderBottom: '2px solid rgba(0,0,0,0.3)',
   },
   toolbarTitle: {
     flex: 1,
@@ -86,31 +88,33 @@ export default function Header(props) {
     window.location.href = '/'
   }
 
+  const routeClick = (e) => {
+    e.preventDefault()
+    const { href } = e.target
+
+    Router.push(href)
+  }
+
   return (
     <React.Fragment>
       <HideOnScroll {...props}>
-        <AppBar
-          position='sticky'
-          color='transparent'
-          style={{ borderBottom: '2px solid rgba(0,0,0,0.3)' }}>
+        <AppBar position='sticky' color='transparent' style={{ zIndex: 9991 }}>
           <Toolbar className={classes.toolbar}>
-            <img
-              className={classes.headerImg}
-              height={55}
-              width={200}
-              src='/images/logo_header.png'
-              onClick={goHome}
-            />
+            <Link href={'/'}>
+              <img
+                className={classes.headerImg}
+                height={55}
+                width={200}
+                src='/images/logo_header.png'
+              />
+            </Link>
           </Toolbar>
           <Toolbar component='nav' variant='dense' className={classes.toolbarSecondary}>
             {sections.map((section) => (
-              <Link
-                noWrap
-                key={section.title}
-                variant='body2'
-                href={section.url}
-                className={classes.toolbarLink}>
-                {section.title}
+              <Link key={section.title} href={section.url} passHref>
+                <ChildLink.default nowrap variant='body2' className={classes.toolbarLink}>
+                  {section.title}
+                </ChildLink.default>
               </Link>
             ))}
           </Toolbar>

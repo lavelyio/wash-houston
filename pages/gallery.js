@@ -4,6 +4,8 @@ import Container from '@material-ui/core/Container'
 import { Box, Typography } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import Grid from '@material-ui/core/Grid'
+import GridList from '@material-ui/core/GridList'
+import GridListTile from '@material-ui/core/GridListTile'
 import Card from '@material-ui/core/Card'
 import CardActionArea from '@material-ui/core/CardActionArea'
 import CardActions from '@material-ui/core/CardActions'
@@ -48,6 +50,16 @@ const useStyles = makeStyles((theme) => ({
   sectionCard: {
     height: 225,
   },
+  root: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'space-around',
+    overflow: 'hidden',
+  },
+  gridList: {
+    width: '100%',
+    height: 450,
+  },
 }))
 
 const gallery = {
@@ -56,30 +68,50 @@ const gallery = {
     Maintaining Houston is what we do best. We strive to leave our community with a sense of pride in their work and allow them to focus on their lives.`,
   headerImg: '/images/houston_gallery.jpg',
   body: {
-    leadText: 'Recent Work',
-    sections: [
+    leadText: 'Some of our work',
+    gallery: [
       {
         title: 'Heavy Equipment',
         img: '/images/heavy_equipment.webp',
+        cols: 2,
         description: '',
       },
       {
         title: 'Lots',
         img: '/images/parking_lot.webp',
+        cols: 1,
         description: '',
       },
       {
         title: 'Buildings',
         img: '/images/buildings.webp',
+        cols: 1,
         description: '',
       },
       {
         title: 'Walkways',
         img: '/images/walkways.webp',
+        cols: 1,
         description: '',
       },
     ],
   },
+}
+
+function ImageGridList({ images }) {
+  const classes = useStyles()
+
+  return (
+    <div className={classes.root}>
+      <GridList cellHeight={200} className={classes.gridList} cols={3}>
+        {images.map((tile) => (
+          <GridListTile key={tile.img} cols={tile.cols || 1} style={{ borderRadius: 6 }}>
+            <img src={tile.img} alt={tile.title} style={{ perspective: 1200, borderRadius: 6 }} />
+          </GridListTile>
+        ))}
+      </GridList>
+    </div>
+  )
 }
 
 const Gallery = (props) => {
@@ -90,12 +122,6 @@ const Gallery = (props) => {
       <Head>
         <title>Wash Houston - gallery Services</title>
       </Head>
-      <img
-        src={gallery.headerImg}
-        width='100%'
-        height={500}
-        style={{ marginBottom: 20, borderRadius: 4 }}
-      />
       <Container style={{ backgroundColor: '#f8f8f8', height: '100%', paddingBottom: 30 }}>
         <Grid>
           <Box maxWidth='lg' mt={6} style={{ padding: 10 }}>
@@ -107,39 +133,13 @@ const Gallery = (props) => {
             </Typography>
           </Box>
           <Typography
-            variant='h4'
-            component='h4'
+            variant='h3'
+            component='h3'
             color='secondary'
             style={{ marginTop: 20, padding: 10 }}>
             {gallery.body.leadText}
           </Typography>
-          <Grid container spacing={6}>
-            {gallery?.body.sections &&
-              gallery.body.sections.map((section, key) => {
-                return (
-                  <Grid item xs={12} sm={6} key={key}>
-                    <Card className={classes.sectionCard}>
-                      <CardActionArea>
-                        <CardMedia style={{ height: 100 }} image='' title='Contemplative Reptile' />
-                        <CardContent>
-                          <Typography gutterBottom variant='h5' component='h2'>
-                            {section.title}
-                          </Typography>
-                          <Typography variant='body2' color='textSecondary' component='p'>
-                            {section.description}
-                          </Typography>
-                        </CardContent>
-                      </CardActionArea>
-                      <CardActions>
-                        <Button size='large' color='primary'>
-                          Get Started
-                        </Button>
-                      </CardActions>
-                    </Card>
-                  </Grid>
-                )
-              })}
-          </Grid>
+          <ImageGridList images={gallery.body.gallery} />
         </Grid>
       </Container>
     </>

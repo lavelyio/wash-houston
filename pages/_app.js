@@ -1,5 +1,6 @@
 import NextApp from 'next/app'
 import Head from 'next/head'
+import Router from 'next/router'
 import React from 'react'
 import { ThemeProvider } from 'styled-components'
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles'
@@ -41,7 +42,7 @@ const desktopMuiTheme = createMuiTheme({
 import { useEffect } from 'react'
 import AppLayout from '../components'
 
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps, router = Router }) {
   const getInitialProps = async (ctx) => {
     // I'm guessing on this line based on your _document.js example
     const initialProps = await NextApp.getInitialProps(ctx)

@@ -23,7 +23,7 @@ export default function Calendar({ onChange }) {
         label='Availability'
         type='datetime-local'
         name='requestedDate'
-        defaultValue={new Date().toUTCString()}
+        defaultValue={new Date().toLocaleDateString()}
         className={classes.textField}
         InputLabelProps={{
           shrink: true,

@@ -1,7 +1,7 @@
 import React from 'react'
 import dynamic from 'next/dynamic'
 import { makeStyles } from '@material-ui/core/styles'
-import CssBaseline from '@material-ui/core/CssBaseline'
+import { motion } from 'framer-motion'
 import Grid from '@material-ui/core/Grid'
 import Container from '@material-ui/core/Container'
 import { post1, post2, post3 } from '../posts'
@@ -11,8 +11,13 @@ const Hero = dynamic(() => import('../hero'))
 const ServicesGridList = dynamic(() => import('../services/ServicesGridList'))
 const Main = dynamic(() => import('../main'))
 const Sidebar = dynamic(() => import('../sidebar'))
-const Gallery = dynamic(() => import('../gallery'))
+import { useAnimation } from 'framer-motion'
+import { useInView } from 'react-intersection-observer'
 
+const BoxVariants = {
+  visible: { opacity: 1, x: 0, transition: { duration: 1 } },
+  hidden: { opacity: 0, x: 300 },
+}
 const useStyles = makeStyles((theme) => ({
   mainGrid: {
     marginTop: theme.spacing(3),
@@ -112,6 +117,21 @@ const sidebar = {
   ],
 }
 
+const Box = () => {
+  const controls = useAnimation()
+  const [ref, inView] = useInView()
+
+  useEffect(() => {
+    if (inView) {
+      controls.start('visible')
+    }
+  }, [controls, inView])
+
+  return (
+    <motion.div ref={ref} animate={controls} initial='hidden' variants={BoxVariants}></motion.div>
+  )
+}
+
 export default function Initial() {
   const classes = useStyles()
 
@@ -144,14 +164,23 @@ export default function Initial() {
             justifyContent: 'center',
           }}>
           <Container>
-            <Typography style={{ color: '#f8f8f8', textShadow: '1px 1px black' }} variant='h3'>
-              Maintaining local artwork and murals is a goal of ours
-            </Typography>
+            <motion.div animate={{ x: 100 }} transition={{ ease: 'easeOut', duration: 2 }}>
+              <Typography
+                style={{
+                  color: '#f8f8f8',
+                  textShadow: '4px 4px black',
+                  fontFamily: 'Montserrat',
+                  fontWeight: 500,
+                }}
+                variant='h2'>
+                Maintaining local artwork and murals is a goal of ours
+              </Typography>
+            </motion.div>
           </Container>
         </div>
       </ParallaxBanner>
       <ServicesGridList />
-      <Gallery />
+
       <Container maxWidth='lg'>
         <Grid container spacing={5} className={classes.mainGrid}>
           <Main title='From the nozzle' posts={posts} />

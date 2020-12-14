@@ -1,12 +1,13 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
+import { motion, AnimatePresence } from 'framer-motion'
 import GridList from '@material-ui/core/GridList'
 import GridListTile from '@material-ui/core/GridListTile'
 import GridListTileBar from '@material-ui/core/GridListTileBar'
 import ListSubheader from '@material-ui/core/ListSubheader'
 import IconButton from '@material-ui/core/IconButton'
 import InfoIcon from '@material-ui/icons/Info'
-import { ParallaxBanner, ParallaxProvider } from 'react-scroll-parallax'
+import Gallery from '../gallery'
 import { Container, Typography } from '@material-ui/core'
 import { isMobile } from '../../utils'
 
@@ -62,7 +63,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   tileImg: {
-    borderRadius: '6px',
+    borderRadius: 6,
     [theme.breakpoints.down('sm')]: {
       minWidth: 350,
       minHeight: 275,
@@ -80,7 +81,13 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 const servicesData = [
-  { title: 'Residential', meta: '', cols: 2, src: '/images/residential-service.webp' },
+  {
+    title: 'Residential',
+    meta:
+      'We treat your home like it`s our own. Using the best cleaning materials for children and pets, you can rest easy knowing we don`t bring toxic checmicals with us.',
+    cols: 2,
+    src: '/images/residential-service.webp',
+  },
   { title: 'Commercial', meta: '', cols: 2, src: '/images/commercial_service.webp' },
 ]
 
@@ -92,30 +99,38 @@ export default function ServicesGridList() {
       <Container
         maxWidth='xl'
         style={{
-          padding: '0% 8%',
+          padding: '8% 8%',
           zIndex: 1300,
           width: '100vw',
         }}>
-        <Typography variant='h2' className={classes.gridTitle} gutterBottom>
+        <Typography variant='h3' className={classes.gridTitle} gutterBottom>
           Our Tailored Approach
         </Typography>
-        <GridList className={classes.gridList} spacing={10}>
-          {servicesData.map((tile) => (
-            <GridListTile key={tile.src} className={classes.gridTile}>
-              <img src={tile.src} alt={tile.title} className={classes.tileImg} />
-              <GridListTileBar
-                title={tile.title}
-                subtitle={<span>{tile.meta}</span>}
-                className={classes.tileBar}
-                actionIcon={
-                  <IconButton aria-label={`info about ${tile.title}`} className={classes.icon}>
-                    <InfoIcon />
-                  </IconButton>
-                }
-              />
-            </GridListTile>
-          ))}
-        </GridList>
+        <AnimatePresence>
+          <GridList className={classes.gridList} spacing={10}>
+            {servicesData.map((tile) => (
+              <GridListTile key={tile.src} className={classes.gridTile}>
+                <img src={tile.src} alt={tile.title} className={classes.tileImg} />
+
+                <GridListTileBar
+                  title={tile.title}
+                  subtitle={
+                    <Typography variant='caption' style={{ maxwidth: '60%', padding: 5 }}>
+                      {tile.meta}
+                    </Typography>
+                  }
+                  className={classes.tileBar}
+                  actionIcon={
+                    <IconButton aria-label={`info about ${tile.title}`} className={classes.icon}>
+                      <InfoIcon />
+                    </IconButton>
+                  }
+                />
+              </GridListTile>
+            ))}
+          </GridList>
+        </AnimatePresence>
+        <Gallery />
       </Container>
     </div>
   )

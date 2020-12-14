@@ -1,0 +1,18 @@
+{
+  "name": "lavelyio-pro-material-ui",
+  "version": "1.0.0",
+  "description": "Pro package offering pre-made React Material Components",
+  "main": "index.js",
+  "module": "/",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Josh Lavely <josh@lavely.io>",
+  "license": "ISC",
+  "peerDependencies": {
+    "@material-ui/core": "~4.11.0",
+    "classnames": "~2.2.6",
+    "react": "~16.13.1",
+    "prop-types": "~15.7.2"
+  }
+}

@@ -1,17 +1,14 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
-import Grid from '@material-ui/core/Grid'
+import { motion } from 'framer-motion'
+import Router from 'next/router'
 import GridList from '@material-ui/core/GridList'
 import Container from '@material-ui/core/Container'
 import GridListTile from '@material-ui/core/GridListTile'
 import GridListTileBar from '@material-ui/core/GridListTileBar'
-import ComparisonSlider from './ComparisonSlider'
 import { isMobile } from '../../utils'
-import ServicesGridList from '../services/ServicesGridList'
-import { ParallaxBanner } from 'react-scroll-parallax'
-import IconButton from '@material-ui/core/IconButton'
-import StarBorderIcon from '@material-ui/icons/StarBorderOutlined'
-import { Typography } from '@material-ui/core'
+import { Button, Typography } from '@material-ui/core'
+import GalleryModal from '../modals/GalleryModal'
 
 const mobile = isMobile()
 
@@ -22,12 +19,17 @@ const useStyles = makeStyles((theme) => ({
     marginTop: 50,
   },
   root: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    height: '100%',
-    justifyContent: 'space-around',
-    overflow: 'hidden',
-    padding: '0px 10%',
+    minHeight: 350,
+  },
+  gridTitle: {
+    color: '#fff',
+    textShadow: '1px 1px black',
+    [theme.breakpoints.up('sm')]: {
+      fontSize: '4vw',
+    },
+    [theme.breakpoints.down('sm')]: {
+      fontSize: '7vw',
+    },
   },
   gridList: {
     flexWrap: 'nowrap',
@@ -43,6 +45,7 @@ const useStyles = makeStyles((theme) => ({
         height: 400,
         width: 600,
       },
+  ...{ cursor: 'pointer' },
   title: {
     color: theme.palette.primary,
   },
@@ -53,11 +56,11 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 const images = [
-  { title: 'Buisness Lot', cols: 2, src: 'images/gallery/commercial-1.webp' },
-  { title: 'Residential Sidewalk', cols: 1, src: 'images/gallery/residential-2.webp' },
-  { title: 'Driveway Deep Clean', cols: 1, src: 'images/gallery/residential-1.webp' },
-  { title: 'Storefront', cols: 1, src: 'images/gallery/commercial-2.webp' },
-  { title: 'Extra Large Lot', cols: 1, src: 'images/gallery/commercial-3.webp' },
+  { title: 'Buisness Lot', cols: 2, src: '/images/gallery/commercial-1.webp' },
+  { title: 'Residential Sidewalk', cols: 1, src: '/images/gallery/residential-2.webp' },
+  { title: 'Driveway Deep Clean', cols: 1, src: '/images/gallery/residential-1.webp' },
+  { title: 'Storefront', cols: 1, src: '/images/gallery/commercial-2.webp' },
+  { title: 'Extra Large Lot', cols: 1, src: '/images/gallery/commercial-3.webp' },
 ]
 
 const compareImages = [
@@ -67,48 +70,64 @@ const compareImages = [
 
 const Gallery = (props) => {
   const [modalOpen, setModal] = React.useState(false)
+  const [imageIndex, setImageIndex] = React.useState(0)
   const classes = useStyles()
   const toggleModal = () => setModal(!modalOpen)
 
+  const seeMoreClick = () => {
+    Router.push('/gallery')
+  }
+
+  const handleImageClick = (index) => {
+    setImageIndex(index)
+    toggleModal()
+  }
+
   return (
-    <div className='vertical'>
-      <ParallaxBanner
-        className={classes.bannerBg}
-        layers={[
-          {
-            image: '/images/murals/Para-Mi-Gente.webp',
-            amount: 0.2,
-            children: (
-              <Container
-                style={{
-                  height: '100%',
-                  paddingTop: 30,
-                  margin: '0 auto',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  zIndex: 1300,
-                  justifyContent: 'center',
+    <div className={classes.root}>
+      {modalOpen && <GalleryModal onClose={toggleModal} images={images} imageIndex={imageIndex} />}
+      <Container disableGutters>
+        <Typography
+          variant='h3'
+          className={classes.gridTitle}
+          style={{ marginTop: 40, marginBottom: 40 }}>
+          Our Recent Work
+        </Typography>
+        <GridList className={classes.gridList} cols={2.5}>
+          {images.map((tile, i) => (
+            <GridListTile key={tile.img} name={tile.src}>
+              <motion.div
+                whileHover={{
+                  scale: 1.2,
+                  transition: { duration: 0.6 },
                 }}>
-                <ComparisonSlider isMobile={mobile} />
-                <GridList className={classes.gridList} cols={2.5}>
-                  {images.map((tile) => (
-                    <GridListTile key={tile.img} className={classes.gridItem}>
-                      <img src={tile.src} alt={tile.title} />
-                      <GridListTileBar
-                        title={tile.title}
-                        classes={{
-                          root: classes.titleBar,
-                          title: classes.title,
-                        }}
-                      />
-                    </GridListTile>
-                  ))}
-                </GridList>
-              </Container>
-            ),
-          },
-        ]}
-      />
+                <img
+                  onClick={(e) => handleImageClick(i)}
+                  className={classes.gridItem}
+                  src={tile.src}
+                  alt={tile.title}
+                />
+                <GridListTileBar
+                  title={tile.title}
+                  classes={{
+                    root: classes.titleBar,
+                    title: classes.title,
+                  }}
+                />
+              </motion.div>
+            </GridListTile>
+          ))}
+        </GridList>
+
+        <Button
+          variant='contained'
+          color='primary'
+          size='large'
+          onClick={seeMoreClick}
+          style={{ marginTop: 40, marginBottom: 60, minWidth: 180 }}>
+          See More
+        </Button>
+      </Container>
     </div>
   )
 }

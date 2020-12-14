@@ -9,6 +9,7 @@ import MailIcon from '@material-ui/icons/MailOutlineOutlined'
 import CallOutlineIcon from '@material-ui/icons/CallOutlined'
 import PrintIcon from '@material-ui/icons/Print'
 import ShareIcon from '@material-ui/icons/Share'
+import ContactSupportIcon from '@material-ui/icons/ContactSupport'
 import FavoriteIcon from '@material-ui/icons/Favorite'
 import EditIcon from '@material-ui/icons/Edit'
 import { Link } from '@material-ui/core'
@@ -23,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
     position: 'fixed',
     top: theme.spacing(2),
     right: '10vw',
-    zIndex: 1450,
+    zIndex: 9992,
   },
 }))
 
@@ -54,11 +55,11 @@ export default function SpeedDialButton() {
     <>
       <Backdrop open={open} />
       <SpeedDial
-        ariaLabel='SpeedDial openIcon example'
+        ariaLabel='SpeedDial for Houston Wash'
         className={classes.speedDial}
         color='secondary'
         hidden={hidden}
-        icon={<SpeedDialIcon />}
+        icon={<ContactSupportIcon />}
         onClose={handleClose}
         onOpen={handleOpen}
         direction='down'
