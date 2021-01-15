@@ -1,13 +1,13 @@
 import NextApp from 'next/app'
 import Head from 'next/head'
 import Router from 'next/router'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { ThemeProvider } from 'styled-components'
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles'
 import mediaQuery from 'css-mediaquery'
 import parser from 'ua-parser-js'
 import CssBaseline from '@material-ui/core/CssBaseline'
-
+import AppLayout from '../components'
 import theme from '../theme'
 import '../styles.css'
 
@@ -39,8 +39,7 @@ const desktopMuiTheme = createMuiTheme({
   },
 })
 
-import { useEffect } from 'react'
-import AppLayout from '../components'
+
 
 function MyApp({ Component, pageProps, router = Router }) {
   const getInitialProps = async (ctx) => {
@@ -149,6 +148,7 @@ function MyApp({ Component, pageProps, router = Router }) {
                 margin: 0;
                 padding: 0;
                 min-width: 100vw;
+                font-display: fallback;
               }
               :global .scroll-down {
                 height: 2rem;

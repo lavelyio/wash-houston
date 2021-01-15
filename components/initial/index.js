@@ -171,6 +171,7 @@ export default function Initial() {
         </div>
       </ParallaxBanner>
 
+      {/*
       <Container maxWidth='lg'>
         <Grid container spacing={5} className={classes.mainGrid}>
           <Main title='From the nozzle' posts={posts} />
@@ -181,6 +182,7 @@ export default function Initial() {
           />
         </Grid>
       </Container>
+      */}
     </ParallaxProvider>
   )
 }
