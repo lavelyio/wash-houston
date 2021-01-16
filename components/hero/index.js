@@ -30,6 +30,7 @@ const useStyles = makeStyles((theme) => ({
   },
   mainFeaturedPostContent: {
     padding: theme.spacing(3),
+    marginTop: 20,
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-around',
@@ -77,12 +78,12 @@ export default function Hero(props) {
             key={1}
             variants={title}
             animate={{ x: 100 }}
-            transition={{ ease: 'easeOut', duration: 0.4 }}>
+            transition={{ ease: 'easeOut', duration: 0.2 }}>
             <Typography variant='h1' gutterBottom style={{ marginTop: '20%' }}>
               {post.title}
             </Typography>
           </motion.div>
-          <motion.div key={2} variants={listItem} transition={{ ease: 'easeOut', duration: 0.6 }}>
+          <motion.div key={2} variants={listItem} transition={{ ease: 'easeOut', duration: 0.4 }}>
             <Typography
               variant='h5'
               style={{
@@ -96,7 +97,7 @@ export default function Hero(props) {
               {post.description}
             </Typography>
           </motion.div>
-          <motion.div key={3} variants={listItem} transition={{ ease: 'easeOut', duration: 0.6 }}>
+          <motion.div key={3} variants={listItem} transition={{ ease: 'easeOut', duration: 0.4 }}>
             <Button
               size='large'
               color='secondary'
