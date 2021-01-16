@@ -46,7 +46,7 @@ const container = {
   show: {
     opacity: 1,
     transition: {
-      staggerChildren: 2,
+      staggerChildren: 0.8,
       delay: 0.1,
     },
   },
@@ -89,6 +89,9 @@ export default function Hero(props) {
               style={{
                 maxWidth: 450,
                 overflowWrap: 'break-word',
+                backgroundColor: 'rgba(0,0,0,0.4)',
+                borderRadius: 6,
+                padding: 5,
               }}
               color='inherit'
               className='hero-callout'

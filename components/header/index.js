@@ -121,21 +121,23 @@ export default function Header(props) {
               href='https://m.facebook.com/WashHoustonTX/?ref=bookmarks'
               className={classes.icon}
               title='Connect With us'>
-              <a>
-                <img
-                  src='/images/nav-facebook-icon.png'
-                  height='48px'
-                  alt='Wash Houston, Facebook'
-                />
-              </a>
+              <img
+                src='/images/nav-facebook-icon.png'
+                height={30}
+                alt='Wash Houston, Facebook'
+                style={{ marginLeft: 10 }}
+              />
             </Link>
             <Link
               title='Find us on Google'
               href='https://g.page/wash-houston?gm'
               className={classes.icon}>
-              <a>
-                <img src='/images/googlemaps-icon.png' height='48px' alt='Wash Houston, Google' />
-              </a>
+              <img
+                src='/images/googlemaps-icon.png'
+                height={30}
+                alt='Wash Houston, Google'
+                style={{ marginLeft: 10 }}
+              />
             </Link>
           </Toolbar>
         </AppBar>

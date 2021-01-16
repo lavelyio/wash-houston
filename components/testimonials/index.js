@@ -87,7 +87,6 @@ export default function Testimonials({ ...rest }) {
   }
   return (
     <div {...rest}>
-      {/* Testimonials 2 START */}
       <div
         className={classes.testimonials + ' ' + classes.sectionDark + ' ' + classes.testimonial2}>
         <div className={classes.container}>
@@ -97,41 +96,38 @@ export default function Testimonials({ ...rest }) {
           <Carousel {...settings}>
             {testimonials.map((review, i) => {
               return (
-                <div key={i}>
-                  <Card testimonial plain className={classes.card2}>
-                    <CardAvatar testimonial plain>
-                      <a href='#pablo' onClick={(e) => e.preventDefault()}>
-                        <img src={review.img} alt={`Image of ${review.customer}`} />
-                      </a>
-                    </CardAvatar>
-                    <CardBody plain>
-                      <h5 className={classes.cardDescription}>
-                        {'"'}
-                        {review.description}
-                        {'"'}
-                      </h5>
-                      <h4 className={classes.cardTitle}>{review.customer}</h4>
-                      <Muted>
-                        <h6>{review.date}</h6>
-                      </Muted>
-                    </CardBody>
-                    <div>
-                      {Array.from(Array(review.rating), (e, i) => {
-                        return (
-                          <Warning>
-                            <Star className={classes.starIcons} />
-                          </Warning>
-                        )
-                      })}
-                    </div>
-                  </Card>
-                </div>
+                <Card key={i} testimonial plain className={classes.card2}>
+                  <CardAvatar testimonial plain>
+                    <a href='#pablo' onClick={(e) => e.preventDefault()}>
+                      <img src={review.img} alt={`Image of ${review.customer}`} />
+                    </a>
+                  </CardAvatar>
+                  <CardBody plain>
+                    <h5 className={classes.cardDescription}>
+                      {'"'}
+                      {review.description}
+                      {'"'}
+                    </h5>
+                    <h4 className={classes.cardTitle}>{review.customer}</h4>
+                    <Muted>
+                      <h6>{review.date}</h6>
+                    </Muted>
+                  </CardBody>
+                  <div>
+                    {Array.from(Array(review.rating), (e, i) => {
+                      return (
+                        <Warning key={i}>
+                          <Star className={classes.starIcons} />
+                        </Warning>
+                      )
+                    })}
+                  </div>
+                </Card>
               )
             })}
           </Carousel>
         </div>
       </div>
-      {/* Testimonials 2 END */}
     </div>
   )
 }
