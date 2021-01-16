@@ -117,6 +117,26 @@ export default function Header(props) {
                 </ChildLink.default>
               </Link>
             ))}
+            <Link
+              href='https://m.facebook.com/WashHoustonTX/?ref=bookmarks'
+              className={classes.icon}
+              title='Connect With us'>
+              <a>
+                <img
+                  src='/images/nav-facebook-icon.png'
+                  height='48px'
+                  alt='Wash Houston, Facebook'
+                />
+              </a>
+            </Link>
+            <Link
+              title='Find us on Google'
+              href='https://g.page/wash-houston?gm'
+              className={classes.icon}>
+              <a>
+                <img src='/images/googlemaps-icon.png' height='48px' alt='Wash Houston, Google' />
+              </a>
+            </Link>
           </Toolbar>
         </AppBar>
       </HideOnScroll>

@@ -39,8 +39,6 @@ const desktopMuiTheme = createMuiTheme({
   },
 })
 
-
-
 function MyApp({ Component, pageProps, router = Router }) {
   const getInitialProps = async (ctx) => {
     // I'm guessing on this line based on your _document.js example
@@ -133,7 +131,6 @@ function MyApp({ Component, pageProps, router = Router }) {
           <link
             rel='stylesheet'
             type='text/css'
-            charset='UTF-8'
             href='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css'
           />
           <link

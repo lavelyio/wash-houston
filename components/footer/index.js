@@ -459,7 +459,7 @@ export default function Footer() {
     <Typography component='footer' className={classes.root}>
       <Container className={classes.container}>
         <Grid container spacing={4}>
-          <Grid item xs={6}>
+          {/*<Grid item xs={6}>
             <Typography variant='h6' marked='left' gutterBottom>
               Contact
             </Typography>
@@ -485,6 +485,7 @@ export default function Footer() {
               </li>
             </ul>
           </Grid>
+  */}
           <Grid item xs={12}>
             <Typography variant='h6' marked='left' gutterBottom>
               Murals
@@ -504,11 +505,13 @@ export default function Footer() {
               className={classes.iconsWrapper}
               spacing={4}>
               <Grid item className={classes.icons}>
-                <a href='https://facebook.com/' className={classes.icon}>
-                  <img src='/images/facebook-icon.png' alt='Facebook' />
+                <a
+                  href='https://m.facebook.com/WashHoustonTX/?ref=bookmarks'
+                  className={classes.icon}>
+                  <img src='/images/facebook-icon.png' alt='Wash Houston, Facebook' />
                 </a>
-                <a href='https://twitter.com/' className={classes.icon}>
-                  <img src='/images/twitter-icon.png' alt='Twitter' />
+                <a href='https://g.page/wash-houston?gm' className={classes.icon}>
+                  <img src='/images/googlemaps-icon.png' height='48px' alt='Wash Houston, Google' />
                 </a>
               </Grid>
               <Grid item xs={6}>
