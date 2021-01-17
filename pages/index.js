@@ -5,9 +5,6 @@ import Initial from '../components/initial'
 const Home = () => {
   return (
     <>
-      <Head>
-        <title>Wash Houston</title>
-      </Head>
       <Initial />
     </>
   )

@@ -147,7 +147,9 @@ p {
     transform: translateY(-50%);
   }
 }
-
+h5 {
+  font-size: 12.5px !important;
+}
 /*
 Slick
 
