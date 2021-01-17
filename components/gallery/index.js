@@ -96,6 +96,7 @@ const Gallery = (props) => {
                   transition: { duration: 0.6 },
                 }}>
                 <img
+                  loading='lazy'
                   onClick={(e) => handleImageClick(i)}
                   className={classes.gridItem}
                   src={tile.src}

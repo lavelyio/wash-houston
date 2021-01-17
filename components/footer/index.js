@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import { makeStyles } from '@material-ui/core/styles'
 import Container from '@material-ui/core/Container'
 import Grid from '@material-ui/core/Grid'
@@ -492,7 +491,9 @@ export default function Footer() {
             </Typography>
             <Typography variant='body2'>
               Consider donating to{' '}
-              <Link to='https://www.artleaguehouston.org/support-us'>Art League of Houston </Link>
+              <Link alt='Art League of Houston' href='https://www.artleaguehouston.org/support-us'>
+                Art League of Houston{' '}
+              </Link>
               to support our local Artisans and keep Houston beautiful.{' '}
               <FavoriteOutlinedIcon style={{ marginLeft: 5, color: 'red' }} />
             </Typography>
@@ -506,12 +507,22 @@ export default function Footer() {
               spacing={4}>
               <Grid item className={classes.icons}>
                 <a
+                  alt='Wash Houston - Facebook'
                   href='https://m.facebook.com/WashHoustonTX/?ref=bookmarks'
                   className={classes.icon}>
-                  <img src='/images/facebook-icon.png' alt='Wash Houston, Facebook' />
+                  <img
+                    loading='lazy'
+                    src='/images/facebook-icon.png'
+                    alt='Wash Houston, Facebook'
+                  />
                 </a>
                 <a href='https://g.page/wash-houston?gm' className={classes.icon}>
-                  <img src='/images/googlemaps-icon.png' height='48px' alt='Wash Houston, Google' />
+                  <img
+                    loading='lazy'
+                    src='/images/googlemaps-icon.png'
+                    height='48px'
+                    alt='Wash Houston, Google'
+                  />
                 </a>
               </Grid>
               <Grid item xs={6}>
@@ -521,7 +532,12 @@ export default function Footer() {
           </Grid>
           <Grid item xs={12}>
             <Link href='https://lavely.io' target='_' rel='sponsored' title='LavelyIO'>
-              <img src='/images/developedby_lavelyio.png' height={25} width={100} />
+              <img
+                src='/images/developedby_lavelyio.png'
+                height={25}
+                width={100}
+                alt='Developed By LavelyIO'
+              />
             </Link>
           </Grid>
         </Grid>

@@ -74,7 +74,7 @@ function MyApp({ Component, pageProps, router = Router }) {
           <meta httpEquiv='X-UA-Compatible' content='IE=edge' />
           <meta
             name='viewport'
-            content='minimum-scale=1, initial-scale=1, width=device-width, maximum-scale=1, minimal-ui'
+            content='minimum-scale=1, initial-scale=1, width=device-width, maximum-scale=1'
           />
           <meta
             name='description'
@@ -128,58 +128,6 @@ function MyApp({ Component, pageProps, router = Router }) {
             href='https://fonts.googleapis.com/css2?family=Hind+Vadodara&family=Roboto&display=swap'
             rel='stylesheet'
           />
-          <link
-            rel='stylesheet'
-            type='text/css'
-            href='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css'
-          />
-          <link
-            rel='stylesheet'
-            type='text/css'
-            href='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css'
-          />
-          <style jsx>
-            {`
-              :global(html, body) {
-                background-color: #f8f8f8;
-                margin: 0;
-                padding: 0;
-                min-width: 100vw;
-                font-display: fallback;
-              }
-              :global .scroll-down {
-                height: 2rem;
-                position: absolute;
-                bottom: 1rem;
-                right: 5%;
-                width: 50%;
-                z-index: 10;
-              }
-
-              :global .scroll-down::before {
-                animation: bounce 1s ease infinite;
-                bottom: 1rem;
-                color: #fff;
-                content: '╲╱';
-                font-size: 2rem;
-                height: 3rem;
-                left: 50%;
-                letter-spacing: -1px;
-                line-height: 4rem;
-                margin-left: -1rem;
-                opacity: 0.8;
-                position: absolute;
-                text-align: center;
-                width: 4rem;
-              }
-
-              @keyframes bounce {
-                50% {
-                  transform: translateY(-50%);
-                }
-              }
-            `}
-          </style>
         </Head>
         <CssBaseline />
 

@@ -92,13 +92,13 @@ export default function Hero(props) {
           </motion.div>
           <motion.div key={2} variants={listItem} transition={{ ease: 'easeOut', duration: 0.4 }}>
             <Typography
-              variant='h5'
+              variant='h4'
               style={{
                 maxWidth: 450,
                 overflowWrap: 'break-word',
                 backgroundColor: 'rgba(0,0,0,0.4)',
                 borderRadius: 6,
-                padding: 5,
+                padding: 3,
               }}
               color='inherit'
               className='hero-callout'
