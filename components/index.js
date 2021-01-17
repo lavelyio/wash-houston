@@ -8,7 +8,6 @@ const sections = [
   { title: 'Residential', url: 'residential' },
   { title: 'Commerical', url: 'commercial' },
   { title: 'Our Work', url: 'gallery' },
-  { title: 'Contact Us', url: 'contact' },
 ]
 
 const AppLayout = (props) => {

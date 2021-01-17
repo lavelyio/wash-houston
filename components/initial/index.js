@@ -147,6 +147,7 @@ export default function Initial() {
   return (
     <ParallaxProvider>
       <Hero post={mainFeaturedPost} scrollDown={scrollDown} />
+
       <ServicesGridList />
 
       <ParallaxBanner

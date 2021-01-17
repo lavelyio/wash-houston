@@ -6,14 +6,18 @@ import Grid from '@material-ui/core/Grid'
 import TextareaAutosize from '@material-ui/core/TextareaAutosize'
 import Typography from '@material-ui/core/Typography'
 import { makeStyles } from '@material-ui/core/styles'
+import Tooltip from '@material-ui/core/Tooltip'
 import Container from '@material-ui/core/Container'
 import axios from 'axios'
 import Reward from 'react-rewards'
+import ReCAPTCHA from 'react-google-recaptcha'
 import { ErrorNotification, SuccessNotification } from '../notifications'
+
+const recaptchaKey = '6LfGsS8aAAAAAO9EwbE9SSFKJedntKWOeBx33iqm'
 
 const useStyles = makeStyles((theme) => ({
   paper: {
-    marginTop: theme.spacing(8),
+    marginTop: theme.spacing(2),
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
@@ -37,6 +41,7 @@ const initialForm = {
   email: '',
   message: '',
   requestedDate: new Date().toUTCString(),
+  valid: false,
 }
 
 export default function RequestQuote() {
@@ -76,6 +81,13 @@ export default function RequestQuote() {
     const { name, value } = target
     updateForm((form) => ({ ...form, [name]: value }))
   }
+
+  const captchaChange = (value) => {
+    console.log('Captcha: ', value)
+  }
+
+  // Site Key: 6LfGsS8aAAAAAO9EwbE9SSFKJedntKWOeBx33iqm
+  // server key: 6LfGsS8aAAAAAJAFRD5SEnMeQ_OoHX3kCJV82Vh4
 
   return (
     <Container component='main' maxWidth='xs'>
@@ -147,32 +159,39 @@ export default function RequestQuote() {
                 id='message'
                 name='message'
                 style={{ width: '100%', padding: 5 }}
-                rows={6}
+                rows={5}
                 onChange={handleChange}
                 aria-label='description'
               />
             </Grid>
+            <Grid item xs={12}>
+              <ReCAPTCHA sitekey={recaptchaKey} onChange={captchaChange} />
+            </Grid>
           </Grid>
-
-          <Button
-            type='submit'
-            fullWidth
-            variant='contained'
-            color='primary'
-            onClick={handleSubmit}
-            className={classes.submit}>
-            <Reward
-              ref={reward}
-              type='confetti'
-              lifetime={200}
-              decay={0.9}
-              spread={76}
-              startVelocity={48}
-              elementCount={65}
-              elementSize={8}
-            />
-            Send
-          </Button>
+          <Tooltip
+            title={form.valid ? 'Send us your message' : 'Ensure all fields are completed'}
+            aria-label='form submit'>
+            <Button
+              type='submit'
+              fullWidth
+              variant='contained'
+              color='primary'
+              disabled={!form.valid}
+              onClick={handleSubmit}
+              className={classes.submit}>
+              <Reward
+                ref={reward}
+                type='confetti'
+                lifetime={200}
+                decay={0.9}
+                spread={76}
+                startVelocity={48}
+                elementCount={65}
+                elementSize={8}
+              />
+              Send
+            </Button>
+          </Tooltip>
         </form>
       </div>
     </Container>

@@ -95,13 +95,18 @@ export default function ServicesGridList() {
           zIndex: 1300,
           width: '100%',
         }}>
-        <Typography variant='h3' className={classes.gridTitle} color='primary' gutterBottom>
+        <Typography
+          id='Second'
+          variant='h3'
+          className={classes.gridTitle}
+          color='primary'
+          gutterBottom>
           Our Tailored Approach
         </Typography>
         <AnimatePresence>
           <GridList className={classes.gridList} spacing={10}>
             {servicesData.map((tile) => (
-              <GridListTile key={tile.src} className={classes.gridTile}>
+              <GridListTile key={tile.src} className={classes.gridTile} style={{ borderRadius: 6 }}>
                 <img src={tile.src} alt={tile.title} className={classes.tileImg} />
 
                 <GridListTileBar

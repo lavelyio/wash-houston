@@ -1,21 +1,18 @@
 import React from 'react'
-import Head from 'next/head'
+import { NextSeo } from 'next-seo'
 import Container from '@material-ui/core/Container'
-import { motion, AnimatePresence, AnimationFeature } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import { Box, Typography } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
-import Paper from '@material-ui/core/Paper'
 import Grid from '@material-ui/core/Grid'
 import GridContainer from '../lib/components/Grid/GridContainer'
 import GridItem from '../lib/components/Grid/GridItem'
 import Card from '../lib/components/Card/Card'
 import CardHeader from '../lib/components/Card/CardHeader'
 import CardBody from '../lib/components/Card/CardBody'
-import CardFooter from '../lib/components/Card/CardFooter'
 import Info from '../lib/components/Typography/Info'
 import Link from 'next/link'
 import cardStyles from '../lib/assets/jss/lavelyio-pro/views/componentsSections/sectionCards.js'
-import ContactUsButton from '../components/buttons/ContactUsButton'
 
 const useStyles = makeStyles((theme) => ({
   ...cardStyles,
@@ -64,7 +61,7 @@ const commercial = {
     Our technicians will deep clean your walkways, parking lots, heavy equipment and much more so you can focus on growing your company.`,
   headerImg: '/images/houston_commercial.jpg',
   body: {
-    leadText: 'What We Do',
+    leadText: '',
     sections: [
       {
         title: 'Heavy Equipment',
@@ -99,25 +96,35 @@ const Commercial = (props) => {
 
   return (
     <>
-      <Head>
-        <title>Wash Houston - Commercial Services</title>
-        <meta
-          name='description'
-          content="Houston Wash's Commcericla Services. We'll take care of your heavy equipment, store front, parking lots, building exterior and much more!"
-        />
-        <meta
-          name='keywords'
-          content='Pressure Washing, Power Washing, Cleaning, Houston Texas, Cleaning, Wash, Pressure Wash, Power Wash, Power'
-        />
-        <meta name='author' content='Wash Houston' />
-        <meta name='copyright' content='Houston Wash Services, LLC' />
-        <meta name='robots' content='commercial,follow' />
-      </Head>
+      <NextSeo
+        title='Wash Houston - Commercial Services'
+        description="Wash Houston's Commercial Services. We'll take care of your heavy equipment, store front, parking lots, building exterior and much more!"
+        canonical='https://houstonwash.com/commercial'
+        openGraph={{
+          url: 'https://houstonwash.com/commercial',
+          title: 'Wash Houston, Commercial',
+          description: 'See what we can do for your home.',
+          images: [
+            {
+              url: 'https://houstonwash.com/commercial-service.webp',
+              width: 800,
+              height: 800,
+              alt: 'Wash Houston',
+            },
+            {
+              url: 'https://houstonwash.com/heavy_equipment.webp',
+              width: 900,
+              height: 800,
+              alt: 'Wash Houston',
+            },
+          ],
+        }}
+      />
       <div>
         <img
           src={commercial.headerImg}
           width='100%'
-          style={{ marginBottom: 20, maxHeight: '50vh' }}
+          style={{ marginBottom: 15, maxHeight: '50vh' }}
         />
         <Container style={{ backgroundColor: '#f8f8f8', height: '100%', paddingBottom: 30 }}>
           <Grid>
@@ -126,9 +133,10 @@ const Commercial = (props) => {
                 {commercial.headerText}
               </Typography>
               <Typography
-                variant='subtitle1'
+                variant='h5'
+                color='textSecondary'
                 paragraph
-                style={{ width: '75%', marginTop: 20, padding: 10 }}>
+                style={{ padding: '0% 5%', margin: '5% 0%' }}>
                 {commercial.headerDescription}
               </Typography>
             </Box>
@@ -148,9 +156,10 @@ const Commercial = (props) => {
                         <Card blog raised>
                           <CardHeader image>
                             <Link href='services'>
-                              <img
+                              <motion.img
+                                whileHover={{ scale: 1.1 }}
                                 src={section.img}
-                                alt={section.title}
+                                alt={`Wash Houston - ${section.title}`}
                                 style={{ maxHeight: 300 }}
                               />
                             </Link>
@@ -170,9 +179,6 @@ const Commercial = (props) => {
                             </Info>
                             <div className={classes.cardDescription}>{section.description}</div>
                           </CardBody>
-                          <CardFooter>
-                            <ContactUsButton />
-                          </CardFooter>
                         </Card>
                       </GridItem>
                     </AnimatePresence>

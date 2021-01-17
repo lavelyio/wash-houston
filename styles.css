@@ -126,7 +126,7 @@ p {
 
 .scroll-down::before {
   animation: bounce 1s ease infinite;
-  bottom: 1rem;
+  bottom: 0;
   color: #fff;
   content: '╲╱';
   font-size: 2rem;

@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import Link from '@material-ui/core/Link'
 import { motion, AnimatePresence } from 'framer-motion'
 import { makeStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
@@ -38,6 +39,12 @@ const useStyles = makeStyles((theme) => ({
       padding: theme.spacing(6),
     },
     textShadow: '1px 1px black',
+  },
+  connectContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'start',
+    marginTop: 20,
   },
 }))
 
@@ -100,18 +107,55 @@ export default function Hero(props) {
               {post.description}
             </Typography>
           </motion.div>
-          <motion.div key={3} variants={listItem} transition={{ ease: 'easeOut', duration: 0.4 }}>
-            <Button
-              size='large'
-              color='secondary'
-              variant='contained'
-              style={{ maxWidth: '30em', marginTop: 20 }}>
-              {post.linkText}
-            </Button>
+          <motion.div
+            key={3}
+            variants={listItem}
+            transition={{ ease: 'easeOut', duration: 0.4 }}
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+            }}>
+            <Grid>
+              <Button
+                size='large'
+                color='secondary'
+                variant='contained'
+                style={{ maxWidth: '30em', marginTop: 20 }}>
+                {post.linkText}
+              </Button>
+              <Grid container className={classes.connectContainer}>
+                <Typography variant='subtitle2'>Connect With Us</Typography>
+                <Grid>
+                  <Link
+                    href='https://m.facebook.com/WashHoustonTX/?ref=bookmarks'
+                    className={classes.icon}
+                    title='Connect With us'>
+                    <img
+                      src='/images/nav-facebook-icon.png'
+                      height={30}
+                      alt='Wash Houston, Facebook'
+                      style={{ marginLeft: 10 }}
+                    />
+                  </Link>
+                  <Link
+                    title='Find us on Google'
+                    href='https://g.page/wash-houston?gm'
+                    className={classes.icon}>
+                    <img
+                      src='/images/googlemaps-icon.png'
+                      height={30}
+                      alt='Wash Houston, Google'
+                      style={{ marginLeft: 10 }}
+                    />
+                  </Link>
+                </Grid>
+              </Grid>
+              {showScrollBtn && <div className='scroll-down' onClick={scrollDown} />}
+            </Grid>
           </motion.div>
         </motion.div>
       </div>
-      {showScrollBtn && <div className='scroll-down' onClick={scrollDown} />}
     </div>
   )
 }

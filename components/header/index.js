@@ -8,6 +8,8 @@ import Slide from '@material-ui/core/Slide'
 import SpeedDialButton from '../buttons/SpeedDialButton'
 import * as ChildLink from '@material-ui/core/Link'
 import Link from 'next/link'
+import QuoteModal from '../modals/QuoteModal'
+import { Button } from '@material-ui/core'
 
 const useStyles = makeStyles((theme) => ({
   toolbar: {
@@ -37,6 +39,12 @@ const useStyles = makeStyles((theme) => ({
   },
   actionButton: {},
   headerImg: {
+    height: 35,
+    width: 120,
+    [theme.breakpoints.up('sm')]: {
+      height: 55,
+      width: 200,
+    },
     '&:hover': {
       cursor: 'pointer',
     },
@@ -73,39 +81,28 @@ export default function Header(props) {
   const classes = useStyles()
   const { sections, title } = props
   const [anchorEl, setAnchorEl] = React.useState(null)
-  const [mounted, setMounted] = React.useState(false)
-  const open = Boolean(anchorEl)
+  const [quoteModalOpen, setQuoteModalOpen] = React.useState(false)
 
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget)
+  const handleModalClose = (e) => {
+    setQuoteModalOpen(false)
   }
 
-  const handleClose = () => {
-    setAnchorEl(null)
-  }
-
-  const goHome = () => {
-    window.location.href = '/'
-  }
-
-  const routeClick = (e) => {
-    e.preventDefault()
-    const { href } = e.target
-
-    Router.push(href)
+  const handleModalOpen = (e) => {
+    if (e) e.preventDefault()
+    setQuoteModalOpen(!quoteModalOpen)
   }
 
   return (
-    <React.Fragment>
+    <>
+      <QuoteModal open={quoteModalOpen} handleClose={handleModalClose} />
       <HideOnScroll {...props}>
         <AppBar position='sticky' color='transparent' style={{ zIndex: 9991 }}>
           <Toolbar className={classes.toolbar}>
-            <Link href={'/'}>
+            <Link href={'/'} alt='Wash Houston Home'>
               <img
                 className={classes.headerImg}
-                height={55}
-                width={200}
                 src='/images/logo_header.png'
+                alt=' Wash Houston Logo'
               />
             </Link>
           </Toolbar>
@@ -117,33 +114,20 @@ export default function Header(props) {
                 </ChildLink.default>
               </Link>
             ))}
-            <Link
-              href='https://m.facebook.com/WashHoustonTX/?ref=bookmarks'
-              className={classes.icon}
-              title='Connect With us'>
-              <img
-                src='/images/nav-facebook-icon.png'
-                height={30}
-                alt='Wash Houston, Facebook'
-                style={{ marginLeft: 10 }}
-              />
-            </Link>
-            <Link
-              title='Find us on Google'
-              href='https://g.page/wash-houston?gm'
-              className={classes.icon}>
-              <img
-                src='/images/googlemaps-icon.png'
-                height={30}
-                alt='Wash Houston, Google'
-                style={{ marginLeft: 10 }}
-              />
+            <Link href='#quote' passHref>
+              <ChildLink.default
+                nowrap
+                variant='body2'
+                className={classes.toolbarLink}
+                onClick={handleModalOpen}>
+                Get A Quote
+              </ChildLink.default>
             </Link>
           </Toolbar>
         </AppBar>
       </HideOnScroll>
       <SpeedDialButton />
-    </React.Fragment>
+    </>
   )
 }
 
