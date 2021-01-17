@@ -1,19 +1,15 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import dynamic from 'next/dynamic'
 import { makeStyles } from '@material-ui/core/styles'
 import { motion } from 'framer-motion'
-import Grid from '@material-ui/core/Grid'
-import Container from '@material-ui/core/Container'
 import { post1, post2, post3 } from '../posts'
 import { ParallaxProvider, ParallaxBanner } from 'react-scroll-parallax'
-import { Typography } from '@material-ui/core'
-const Hero = dynamic(() => import('../hero'))
-const ServicesGridList = dynamic(() => import('../services/ServicesGridList'))
-const Main = dynamic(() => import('../main'))
-const Sidebar = dynamic(() => import('../sidebar'))
 import { useAnimation } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import Testimonials from '../testimonials'
+
+const Hero = dynamic(() => import('../hero'))
+const Testimonials = dynamic(() => import('../testimonials'))
+const ServicesGridList = dynamic(() => import('../services/ServicesGridList'))
 
 const BoxVariants = {
   visible: { opacity: 1, x: 0, transition: { duration: 1 } },
@@ -118,21 +114,6 @@ const sidebar = {
   ],
 }
 
-const Box = () => {
-  const controls = useAnimation()
-  const [ref, inView] = useInView()
-
-  useEffect(() => {
-    if (inView) {
-      controls.start('visible')
-    }
-  }, [controls, inView])
-
-  return (
-    <motion.div ref={ref} animate={controls} initial='hidden' variants={BoxVariants}></motion.div>
-  )
-}
-
 export default function Initial() {
   const classes = useStyles()
 
@@ -147,9 +128,7 @@ export default function Initial() {
   return (
     <ParallaxProvider>
       <Hero post={mainFeaturedPost} scrollDown={scrollDown} />
-
       <ServicesGridList />
-
       <ParallaxBanner
         className={classes.mural}
         layers={[

@@ -1,15 +1,14 @@
-import React from 'react'
+import { useEffect, useState } from 'react'
+import dynamic from 'next/dynamic'
 import { makeStyles } from '@material-ui/core/styles'
 import { motion, AnimatePresence } from 'framer-motion'
 import GridList from '@material-ui/core/GridList'
 import GridListTile from '@material-ui/core/GridListTile'
 import GridListTileBar from '@material-ui/core/GridListTileBar'
-import ListSubheader from '@material-ui/core/ListSubheader'
 import IconButton from '@material-ui/core/IconButton'
 import InfoIcon from '@material-ui/icons/Info'
-import Gallery from '../gallery'
+
 import { Container, Typography } from '@material-ui/core'
-import { isMobile } from '../../utils'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -84,51 +83,61 @@ const servicesData = [
 ]
 
 export default function ServicesGridList() {
+  const [isMounted, setMounted] = useState(false)
   const classes = useStyles()
-  const mobile = isMobile()
-  return (
-    <div className={classes.root}>
-      <Container
-        maxWidth='xl'
-        style={{
-          padding: '8% 8%',
-          zIndex: 1300,
-          width: '100%',
-        }}>
-        <Typography
-          id='Second'
-          variant='h3'
-          className={classes.gridTitle}
-          color='primary'
-          gutterBottom>
-          Our Tailored Approach
-        </Typography>
-        <AnimatePresence>
-          <GridList className={classes.gridList} spacing={10}>
-            {servicesData.map((tile) => (
-              <GridListTile key={tile.src} className={classes.gridTile} style={{ borderRadius: 6 }}>
-                <img src={tile.src} alt={tile.title} className={classes.tileImg} />
 
-                <GridListTileBar
-                  title={tile.title}
-                  subtitle={
-                    <Typography variant='caption' style={{ maxwidth: '60%', padding: 5 }}>
-                      {tile.meta}
-                    </Typography>
-                  }
-                  className={classes.tileBar}
-                  actionIcon={
-                    <IconButton aria-label={`info about ${tile.title}`} className={classes.icon}>
-                      <InfoIcon />
-                    </IconButton>
-                  }
-                />
-              </GridListTile>
-            ))}
-          </GridList>
-        </AnimatePresence>
-        <Gallery />
-      </Container>
-    </div>
-  )
+  useEffect(() => {
+    if (!isMounted) setMounted(true)
+  }, [])
+  if (isMounted) {
+    const Gallery = dynamic(() => import('../gallery'))
+    return (
+      <div className={classes.root}>
+        <Container
+          maxWidth='xl'
+          style={{
+            padding: '8% 8%',
+            zIndex: 1300,
+            width: '100%',
+          }}>
+          <Typography
+            id='Second'
+            variant='h3'
+            className={classes.gridTitle}
+            color='primary'
+            gutterBottom>
+            Our Tailored Approach
+          </Typography>
+          <AnimatePresence>
+            <GridList className={classes.gridList} spacing={10}>
+              {servicesData.map((tile) => (
+                <GridListTile
+                  key={tile.src}
+                  className={classes.gridTile}
+                  style={{ borderRadius: 6 }}>
+                  <img src={tile.src} alt={tile.title} className={classes.tileImg} />
+
+                  <GridListTileBar
+                    title={tile.title}
+                    subtitle={
+                      <Typography variant='caption' style={{ maxwidth: '60%', padding: 5 }}>
+                        {tile.meta}
+                      </Typography>
+                    }
+                    className={classes.tileBar}
+                    actionIcon={
+                      <IconButton aria-label={`info about ${tile.title}`} className={classes.icon}>
+                        <InfoIcon />
+                      </IconButton>
+                    }
+                  />
+                </GridListTile>
+              ))}
+            </GridList>
+          </AnimatePresence>
+          <Gallery />
+        </Container>
+      </div>
+    )
+  } else return null
 }

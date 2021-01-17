@@ -56,14 +56,10 @@ const images = [
   { title: 'Extra Large Lot', cols: 1, src: '/images/gallery/commercial-3.webp' },
 ]
 
-const compareImages = [
-  { src: 'images/compare/drivethrough-before.webp' },
-  { src: 'images/compare/drivethrough-after.webp' },
-]
-
 const Gallery = (props) => {
   const [modalOpen, setModal] = React.useState(false)
   const [imageIndex, setImageIndex] = React.useState(0)
+  const [isMounted, setisMounted] = React.useState(false)
   const classes = useStyles()
   const toggleModal = () => setModal(!modalOpen)
 
@@ -76,55 +72,63 @@ const Gallery = (props) => {
     toggleModal()
   }
 
-  return (
-    <div className={classes.root}>
-      {modalOpen && <GalleryModal onClose={toggleModal} images={images} imageIndex={imageIndex} />}
-      <Container disableGutters>
-        <Typography
-          variant='h3'
-          className={classes.gridTitle}
-          color='primary'
-          style={{ marginTop: 40, marginBottom: 40 }}>
-          Our Recent Work
-        </Typography>
-        <GridList className={classes.gridList} cols={2.5}>
-          {images.map((tile, i) => (
-            <GridListTile key={tile.img} name={tile.src}>
-              <motion.div
-                whileHover={{
-                  scale: 1.2,
-                  transition: { duration: 0.6 },
-                }}>
-                <img
-                  loading='lazy'
-                  onClick={(e) => handleImageClick(i)}
-                  className={classes.gridItem}
-                  src={tile.src}
-                  alt={tile.title}
-                />
-                <GridListTileBar
-                  title={tile.title}
-                  classes={{
-                    root: classes.titleBar,
-                    title: classes.title,
-                  }}
-                />
-              </motion.div>
-            </GridListTile>
-          ))}
-        </GridList>
+  React.useEffect(() => {
+    if (!isMounted) setisMounted(true)
+  }, [])
 
-        <Button
-          variant='contained'
-          color='primary'
-          size='large'
-          onClick={seeMoreClick}
-          style={{ marginTop: 40, marginBottom: 60, minWidth: 180 }}>
-          See More
-        </Button>
-      </Container>
-    </div>
-  )
+  if (isMounted) {
+    return (
+      <div className={classes.root}>
+        {modalOpen && (
+          <GalleryModal onClose={toggleModal} images={images} imageIndex={imageIndex} />
+        )}
+        <Container disableGutters>
+          <Typography
+            variant='h3'
+            className={classes.gridTitle}
+            color='primary'
+            style={{ marginTop: 40, marginBottom: 40 }}>
+            Our Recent Work
+          </Typography>
+          <GridList className={classes.gridList} cols={2.5}>
+            {images.map((tile, i) => (
+              <GridListTile key={tile.img} name={tile.src}>
+                <motion.div
+                  whileHover={{
+                    scale: 1.2,
+                    transition: { duration: 0.6 },
+                  }}>
+                  <img
+                    loading='lazy'
+                    onClick={(e) => handleImageClick(i)}
+                    className={classes.gridItem}
+                    src={tile.src}
+                    alt={tile.title}
+                  />
+                  <GridListTileBar
+                    title={tile.title}
+                    classes={{
+                      root: classes.titleBar,
+                      title: classes.title,
+                    }}
+                  />
+                </motion.div>
+              </GridListTile>
+            ))}
+          </GridList>
+
+          <Button
+            variant='contained'
+            color='primary'
+            size='large'
+            onClick={seeMoreClick}
+            style={{ marginTop: 40, marginBottom: 60, minWidth: 180 }}>
+            See More
+          </Button>
+        </Container>
+      </div>
+    )
+  } else return null
 }
 
 export default Gallery

@@ -8,7 +8,6 @@ import Star from '@material-ui/icons/Star'
 // core components
 import Card from '../../lib/components/Card/Card.js'
 import CardBody from '../../lib/components/Card/CardBody.js'
-import CardFooter from '../../lib/components/Card/CardFooter.js'
 import CardAvatar from '../../lib/components/Card/CardAvatar.js'
 import Muted from '../../lib/components/Typography/Muted.js'
 import Warning from '../../lib/components/Typography/Warning.js'
