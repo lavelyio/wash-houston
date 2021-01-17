@@ -74,7 +74,7 @@ function MyApp({ Component, pageProps, router = Router }) {
           <meta httpEquiv='X-UA-Compatible' content='IE=edge' />
           <meta
             name='viewport'
-            content='minimum-scale=1, initial-scale=1, width=device-width, maximum-scale=1'
+            content='minimum-scale=1, initial-scale=1, width=device-width, maximum-scale=1, minimal-ui'
           />
           <meta
             name='description'
