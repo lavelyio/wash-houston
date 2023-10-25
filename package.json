@@ -1,6 +1,10 @@
 {
   "name": "wash-houston",
   "version": "0.1.0",
+  "repository": {
+    "url": "https://github.com/lavelyio/wash-houston",
+    "type": "git"
+  },
   "author": {
     "email": "josh@lavely.io",
     "name": "Josh Lavely",
