@@ -2,7 +2,7 @@
   "name": "wash-houston",
   "version": "0.1.0",
   "repository": {
-    "url": "https://github.com/lavelyio/wash-houston",
+    "url": "https://github.com/lavelyio/wash-houston.git",
     "type": "git"
   },
   "author": {
